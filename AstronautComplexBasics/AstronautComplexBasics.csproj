@@ -100,8 +100,8 @@
 		xcopy "$(TargetDir)Data" "$(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)\Data\" /Y /E /I
 	</PostBuildEvent>
 	<PostBuildEvent Condition="'$(OS)' != 'Windows_NT'">
-		cp $(TargetPath) $(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)\
-		cp -r $(TargetDir)Data $(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)\Data\
+		mkdir -p $(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName) && cp $(TargetPath) $(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)
+		mkdir -p $(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)\Data && cp -r $(TargetDir)Data $(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)\Data
 	</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
