@@ -13,7 +13,7 @@ namespace AstronautComplex
     {
         public const string DirectoryPlugins = @"\Plugins";
 
-        public Dictionary<string, AstronautTest> Tests { get; set; }
+        public List<AstronautTest> Tests { get; set; }
 
         /// <summary>
         /// Builds an AstronautComplex main form.
@@ -21,7 +21,7 @@ namespace AstronautComplex
         public AstronautTestForm()
         {
             InitializeComponent();
-            Tests = new Dictionary<string, AstronautTest>();
+            Tests = new List<AstronautTest>();
         }
 
         /// <summary>
@@ -37,19 +37,38 @@ namespace AstronautComplex
                     {
                         if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(AstronautTest)))
                         {
-                            AstronautTest test = (AstronautTest)Activator.CreateInstance(type);
-                            test.Form = this;
-                            Tests.Add(type.Name, test);
-
-                            ToolStripMenuItem menuItem = new ToolStripMenuItem();
-                            menuItem.Name = "MenuItem" + type.Name;
-                            menuItem.Text = test.Description;
-                            menuItem.Click += (sender, e) =>
+                            foreach(AstronautTestDifficulty difficulty in Enum.GetValues(typeof(AstronautTestDifficulty)))
                             {
-                                panelTest.Controls.Clear();
-                                panelTest.Controls.Add(test);
-                            };
-                            MenuItemNew.DropDownItems.Add(menuItem);
+                                string key = "MenuItemNew" + difficulty.ToString();
+
+                                ToolStripMenuItem menuItemDifficulty;
+                                if(!MenuItemNew.DropDownItems.ContainsKey(key))
+                                {
+                                    menuItemDifficulty = new ToolStripMenuItem();
+                                    menuItemDifficulty.Name = key;
+                                    menuItemDifficulty.Text = difficulty.ToString();
+                                    MenuItemNew.DropDownItems.Add(menuItemDifficulty);
+                                }
+                                else
+                                {
+                                    menuItemDifficulty = (ToolStripMenuItem)MenuItemNew.DropDownItems[key];
+                                }
+
+                                AstronautTest test = (AstronautTest)Activator.CreateInstance(type);
+                                test.Difficulty = difficulty;
+                                test.Form = this;
+                                Tests.Add(test);
+
+                                ToolStripMenuItem menuItem = new ToolStripMenuItem();
+                                menuItem.Name = key + type.Name;
+                                menuItem.Text = test.Description;
+                                menuItem.Click += (sender, e) =>
+                                {
+                                    panelTest.Controls.Clear();
+                                    panelTest.Controls.Add(test);
+                                };
+                                menuItemDifficulty.DropDownItems.Add(menuItem);
+                            }
                         }
                     }
                 }

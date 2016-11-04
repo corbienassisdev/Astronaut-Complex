@@ -28,19 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.labelTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Location = new System.Drawing.Point(0, 0);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Padding = new System.Windows.Forms.Padding(20, 20, 0, 0);
+            this.labelTitle.Size = new System.Drawing.Size(1495, 95);
+            this.labelTitle.TabIndex = 0;
+            this.labelTitle.Text = "labelTitle";
             // 
             // AstronautTestMathematics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelTitle);
             this.Name = "AstronautTestMathematics";
-            this.Size = new System.Drawing.Size(1393, 676);
+            this.Size = new System.Drawing.Size(1495, 588);
             this.Load += new System.EventHandler(this.AstronautTestMathematics_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label labelTitle;
     }
 }

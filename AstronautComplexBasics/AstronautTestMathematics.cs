@@ -15,7 +15,8 @@ namespace AstronautComplexBasics
         public const string FileQuestions = @"\Data\mathematics.xml";
         public const string MessageUnableLoadFile = "Le fichier de données existe mais ses données sont invalides.";
 
-        public List<Question> Questions = new List<Question>();
+        public List<Question> Questions { get; protected set; }
+        public int CurrentQuestion { get; protected set; }
 
         /// <summary>
         /// Builds an astronaut mathematic test.
@@ -23,6 +24,8 @@ namespace AstronautComplexBasics
         public AstronautTestMathematics() : base("Mathématiques")
         {
             InitializeComponent();
+            Questions = new List<Question>();
+            CurrentQuestion = 0;
         }
 
         /// <summary>
@@ -46,11 +49,33 @@ namespace AstronautComplexBasics
                     }
                     Questions.Add(new Question(title, answer, answers));
                 }
+
+                ShuffleQuestions();
+                AskQuestion();
             }
             catch (Exception exception)
             {
                 Form.DisplayError(string.Format("{0} ({1})", MessageUnableLoadFile, exception.Message));
             }
+        }
+
+        public void ShuffleQuestions()
+        {
+            int n = Questions.Count;
+            while(n > 1)
+            {
+                n--;
+                int random = Random.Next(n + 1);
+                Question holder = Questions[random];
+                Questions[random] = Questions[n];
+                Questions[n] = holder;
+            }
+        }
+
+        public void AskQuestion()
+        {
+            Question question = Questions[CurrentQuestion];
+            labelTitle.Text = string.Format("{0} ({1})", Description, Difficulty.ToString());
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace AstronautComplex
 {
@@ -8,7 +9,9 @@ namespace AstronautComplex
     public class AstronautTest : UserControl
     {
         public string Description { get; set; }
+        public AstronautTestDifficulty Difficulty { get; set; }
         public AstronautTestForm Form { get; set; }
+        protected Random Random { get; set; }
 
         /// <summary>
         /// Builds an astronaut test. Empty constructor is mandatory for the interface designer.
@@ -17,6 +20,7 @@ namespace AstronautComplex
         {
             Name = "PanelTest" + GetType().Name;
             Dock = DockStyle.Fill;
+            Random = new Random();
         }
 
         /// <summary>
