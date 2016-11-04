@@ -1,5 +1,7 @@
 #AstronautComplex
 
+[![Build Status](https://travis-ci.org/Grox2006/AstronautComplex.svg?branch=master)](https://travis-ci.org/Grox2006/AstronautComplex)
+
 Astronaut Complex est un projet scolaire permettant de tester les aptitudes cognitives d'astronautes de l'[ESA](http://www.esa.int/ESA). Il est écrit en [C#](https://fr.wikipedia.org/wiki/C_sharp).
 
 ##I. Documentation
