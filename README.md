@@ -18,4 +18,4 @@ Une version est prévue mais n'est pas encore disponible.
 
 ##III. Utilisation
 
-Une notice d'utilisation est prévue mais n'est pas encore disponible. 
+Une notice d'utilisation est prévue mais n'est pas encore disponible.

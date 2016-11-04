@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("AstronautComplex")]
+[assembly: AssemblyTitle("AstronautComplexBasics")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AstronautComplex")]
+[assembly: AssemblyProduct("AstronautComplexBasics")]
 [assembly: AssemblyCopyright("Copyright © Corentin Bienassis, Thibaud Laurent 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("30ecf2ad-95ac-486e-8b1e-30514f491bc4")]
+[assembly: Guid("09f8c112-11cb-41a5-8f84-1a8363a3acfd")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //

@@ -4,18 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{30ECF2AD-95AC-486E-8B1E-30514F491BC4}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{09F8C112-11CB-41A5-8F84-1A8363A3ACFD}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AstronautComplex</RootNamespace>
-    <AssemblyName>AstronautComplex</AssemblyName>
+    <RootNamespace>AstronautComplexBasics</RootNamespace>
+    <AssemblyName>AstronautComplexBasics</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,57 +33,63 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AstronautComplex.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AstronautComplex.Designer.cs">
-      <DependentUpon>AstronautComplex.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AstronautTest.cs">
+    <Compile Include="AstronautTestMathematics.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="AstronautTestMathematics.Designer.cs">
+      <DependentUpon>AstronautTestMathematics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AstronautTestFocus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AstronautTestFocus.Designer.cs">
+      <DependentUpon>AstronautTestFocus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AstronautTestCalculus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AstronautTestCalculus.Designer.cs">
+      <DependentUpon>AstronautTestCalculus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AstronautTestPerception.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AstronautTestPerception.Designer.cs">
+      <DependentUpon>AstronautTestPerception.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AstronautComplex.resx">
-      <DependentUpon>AstronautComplex.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AstronautTest.resx">
-      <DependentUpon>AstronautTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\AstronautComplex\AstronautComplex.csproj">
+      <Project>{30ecf2ad-95ac-486e-8b1e-30514f491bc4}</Project>
+      <Name>AstronautComplex</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AstronautTestMathematics.resx">
+      <DependentUpon>AstronautTestMathematics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AstronautTestFocus.resx">
+      <DependentUpon>AstronautTestFocus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AstronautTestCalculus.resx">
+      <DependentUpon>AstronautTestCalculus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AstronautTestPerception.resx">
+      <DependentUpon>AstronautTestPerception.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)$(SolutionName)\$(OutDir)Plugins\" /Y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
