@@ -1,6 +1,6 @@
 ﻿namespace AstronautComplex
 {
-    partial class AstronautComplex
+    partial class AstronautTestForm
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

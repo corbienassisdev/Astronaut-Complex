@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Questions>
+  <Question answer="1">
+    <Title>Hors saison, un hôtel propose une chambre double à 80€. En pleine saison, le prix augmente de 15%. Quel est le prix de la chambre double en pleine saison ?</Title>
+    <Answer id="0">81,5€</Answer>
+    <Answer id="1">92€</Answer>
+    <Answer id="2">95€</Answer>
+    <Answer id="3">120€</Answer>
+  </Question>
+  <Question answer="0">
+    <Title>La somme des âges de deux enfants est de 23 ans. Sachant que le premier a 5 ans de plus que le deuxième, quel est l'âge du plus jeune ?</Title>
+    <Answer id="0">9 ans</Answer>
+    <Answer id="1">10 ans</Answer>
+    <Answer id="2">11 ans</Answer>
+    <Answer id="3">13 ans</Answer>
+  </Question>
+</Questions>

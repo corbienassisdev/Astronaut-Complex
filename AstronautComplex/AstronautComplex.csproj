@@ -46,19 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AstronautComplex.cs">
+    <Compile Include="AstronautTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AstronautComplex.Designer.cs">
-      <DependentUpon>AstronautComplex.cs</DependentUpon>
+    <Compile Include="AstronautTestForm.Designer.cs">
+      <DependentUpon>AstronautTestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AstronautTest.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AstronautComplex.resx">
-      <DependentUpon>AstronautComplex.cs</DependentUpon>
+    <EmbeddedResource Include="AstronautTestForm.resx">
+      <DependentUpon>AstronautTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AstronautTest.resx">
       <DependentUpon>AstronautTest.cs</DependentUpon>

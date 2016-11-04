@@ -35,7 +35,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "AstronautTestMathematics";
-            this.Size = new System.Drawing.Size(1495, 588);
+            this.Size = new System.Drawing.Size(1393, 676);
+            this.Load += new System.EventHandler(this.AstronautTestMathematics_Load);
             this.ResumeLayout(false);
 
         }

@@ -9,7 +9,7 @@ namespace AstronautComplex
     /// <summary>
     /// Represents an AstronautComplex main form.
     /// </summary>
-    public partial class AstronautComplex : Form
+    public partial class AstronautTestForm : Form
     {
         public const string DirectoryPlugins = @"\Plugins";
 
@@ -18,7 +18,7 @@ namespace AstronautComplex
         /// <summary>
         /// Builds an AstronautComplex main form.
         /// </summary>
-        public AstronautComplex()
+        public AstronautTestForm()
         {
             InitializeComponent();
             Tests = new Dictionary<string, AstronautTest>();
@@ -31,13 +31,14 @@ namespace AstronautComplex
         {
             try
             {
-                foreach (string pathPlugin in Directory.GetFiles(Directory.GetCurrentDirectory() + DirectoryPlugins, "*.dll"))
+                foreach (string pathPlugin in Directory.GetFiles(Directory.GetCurrentDirectory() + DirectoryPlugins, "*.dll", SearchOption.AllDirectories))
                 {
                     foreach (Type type in Assembly.LoadFile(pathPlugin).GetTypes())
                     {
                         if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(AstronautTest)))
                         {
                             AstronautTest test = (AstronautTest)Activator.CreateInstance(type);
+                            test.Form = this;
                             Tests.Add(type.Name, test);
 
                             ToolStripMenuItem menuItem = new ToolStripMenuItem();

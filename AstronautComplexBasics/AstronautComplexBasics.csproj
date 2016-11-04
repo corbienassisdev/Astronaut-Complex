@@ -65,6 +65,7 @@
       <DependentUpon>AstronautTestPerception.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AstronautComplex\AstronautComplex.csproj">
@@ -86,9 +87,15 @@
       <DependentUpon>AstronautTestPerception.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\mathematics.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)$(SolutionName)\$(OutDir)Plugins\" /Y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)\" /Y
+xcopy "$(TargetDir)Data" "$(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)\Data\" /Y /E /I</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

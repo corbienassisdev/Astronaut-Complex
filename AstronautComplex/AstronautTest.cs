@@ -8,6 +8,7 @@ namespace AstronautComplex
     public class AstronautTest : UserControl
     {
         public string Description { get; set; }
+        public AstronautTestForm Form { get; set; }
 
         /// <summary>
         /// Builds an astronaut test. Empty constructor is mandatory for the interface designer.
