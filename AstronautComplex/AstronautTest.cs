@@ -8,7 +8,8 @@ namespace AstronautComplex
     /// </summary>
     public class AstronautTest : UserControl
     {
-        public string Description { get; set; }
+    
+        public string Title { get; set; }
         public AstronautTestDifficulty Difficulty { get; set; }
         public AstronautTestForm Form { get; set; }
         protected Random Random { get; set; }
@@ -26,10 +27,21 @@ namespace AstronautComplex
         /// <summary>
         /// Builds an astronaut test. The description shall be used to display the test in a menu, for instance.
         /// </summary>
-        /// <param name="description">The short description.</param>
-        public AstronautTest(string description) : this()
+        /// <param name="title">The short description.</param>
+        public AstronautTest(string title) : this()
         {
-            Description = description;
+            Title = title;
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // AstronautTest
+            // 
+            this.Name = "AstronautTest";
+            this.ResumeLayout(false);
+
         }
     }
 }

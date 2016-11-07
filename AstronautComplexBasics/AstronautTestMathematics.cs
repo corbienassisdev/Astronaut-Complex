@@ -51,12 +51,13 @@ namespace AstronautComplexBasics
                 }
 
                 ShuffleQuestions();
-                AskQuestion();
             }
             catch (Exception exception)
             {
                 Form.DisplayError(string.Format("{0} ({1})", MessageUnableLoadFile, exception.Message));
             }
+
+            AskQuestion();
         }
 
         public void ShuffleQuestions()
@@ -75,7 +76,8 @@ namespace AstronautComplexBasics
         public void AskQuestion()
         {
             Question question = Questions[CurrentQuestion];
-            labelTitle.Text = string.Format("{0} ({1})", Description, Difficulty.ToString());
+            labelTitle.Text = string.Format("{0} ({1})", Title, Difficulty.ToString());
+            textBoxQuestion.Text = question.Title;
         }
 
         /// <summary>

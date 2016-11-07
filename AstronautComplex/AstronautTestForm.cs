@@ -61,7 +61,7 @@ namespace AstronautComplex
 
                                 ToolStripMenuItem menuItem = new ToolStripMenuItem();
                                 menuItem.Name = key + type.Name;
-                                menuItem.Text = test.Description;
+                                menuItem.Text = test.Title;
                                 menuItem.Click += (sender, e) =>
                                 {
                                     panelTest.Controls.Clear();
