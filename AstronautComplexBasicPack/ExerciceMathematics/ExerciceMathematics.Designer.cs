@@ -1,6 +1,6 @@
-﻿namespace AstronautComplexBasics
+﻿namespace AstronautComplexBasicPack.ExerciceMathematics
 {
-    partial class AstronautTestMathematics
+    partial class ExerciceMathematics
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.

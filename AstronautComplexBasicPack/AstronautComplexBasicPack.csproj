@@ -7,8 +7,8 @@
     <ProjectGuid>{09F8C112-11CB-41A5-8F84-1A8363A3ACFD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AstronautComplexBasics</RootNamespace>
-    <AssemblyName>AstronautComplexBasics</AssemblyName>
+    <RootNamespace>AstronautComplexBasicPack</RootNamespace>
+    <AssemblyName>AstronautComplexBasicPack</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -40,32 +40,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AstronautTestMathematics.cs">
+    <Compile Include="ExerciceMathematics\ExerciceMathematics.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AstronautTestMathematics.Designer.cs">
-      <DependentUpon>AstronautTestMathematics.cs</DependentUpon>
+    <Compile Include="ExerciceMathematics\ExerciceMathematics.Designer.cs">
+      <DependentUpon>ExerciceMathematics.cs</DependentUpon>
     </Compile>
-    <Compile Include="AstronautTestFocus.cs">
+    <Compile Include="ExerciceFocus\ExerciceFocus.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AstronautTestFocus.Designer.cs">
-      <DependentUpon>AstronautTestFocus.cs</DependentUpon>
+    <Compile Include="ExerciceFocus\ExerciceFocus.Designer.cs">
+      <DependentUpon>ExerciceFocus.cs</DependentUpon>
     </Compile>
-    <Compile Include="AstronautTestCalculus.cs">
+    <Compile Include="ExerciceCalculus\ExerciceCalculus.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AstronautTestCalculus.Designer.cs">
-      <DependentUpon>AstronautTestCalculus.cs</DependentUpon>
+    <Compile Include="ExerciceCalculus\ExerciceCalculus.Designer.cs">
+      <DependentUpon>ExerciceCalculus.cs</DependentUpon>
     </Compile>
-    <Compile Include="AstronautTestPerception.cs">
+    <Compile Include="ExercicePerception\ExercicePerception.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="AstronautTestPerception.Designer.cs">
-      <DependentUpon>AstronautTestPerception.cs</DependentUpon>
+    <Compile Include="ExercicePerception\ExercicePerception.Designer.cs">
+      <DependentUpon>ExercicePerception.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Question.cs" />
+    <Compile Include="ExerciceMathematics\Question.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AstronautComplex\AstronautComplex.csproj">
@@ -74,31 +74,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AstronautTestMathematics.resx">
-      <DependentUpon>AstronautTestMathematics.cs</DependentUpon>
+    <EmbeddedResource Include="ExerciceMathematics\ExerciceMathematics.resx">
+      <DependentUpon>ExerciceMathematics.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AstronautTestFocus.resx">
-      <DependentUpon>AstronautTestFocus.cs</DependentUpon>
+    <EmbeddedResource Include="ExerciceFocus\ExerciceFocus.resx">
+      <DependentUpon>ExerciceFocus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AstronautTestCalculus.resx">
-      <DependentUpon>AstronautTestCalculus.cs</DependentUpon>
+    <EmbeddedResource Include="ExerciceCalculus\ExerciceCalculus.resx">
+      <DependentUpon>ExerciceCalculus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AstronautTestPerception.resx">
-      <DependentUpon>AstronautTestPerception.cs</DependentUpon>
+    <EmbeddedResource Include="ExercicePerception\ExercicePerception.resx">
+      <DependentUpon>ExercicePerception.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Data\mathematics.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
     <PostBuildEvent Condition="'$(OS)' == 'Windows_NT' ">
-		xcopy "$(TargetPath)" "$(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)\" /Y
-		xcopy "$(TargetDir)Data" "$(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)\Data\" /Y /E /I
+		xcopy "$(TargetPath)" "$(SolutionDir)$(SolutionName)\$(OutDir)Plugins\" /Y
 	</PostBuildEvent>
     <PostBuildEvent Condition="'$(OS)' != 'Windows_NT'">
     </PostBuildEvent>

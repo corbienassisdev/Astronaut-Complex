@@ -1,6 +1,6 @@
-﻿namespace AstronautComplexBasics
+﻿namespace AstronautComplexBasicPack.ExercicePerception
 {
-    partial class AstronautTestPerception
+    partial class ExercicePerception
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.

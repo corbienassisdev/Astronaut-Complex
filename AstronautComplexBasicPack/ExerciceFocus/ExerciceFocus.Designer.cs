@@ -1,6 +1,6 @@
-﻿namespace AstronautComplexBasics
+﻿namespace AstronautComplexBasicPack.ExerciceFocus
 {
-    partial class AstronautTestCalculus
+    partial class ExerciceFocus
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -30,11 +30,11 @@
         {
             this.SuspendLayout();
             // 
-            // AstronautTestCalculus
+            // AstronautTestFocus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "AstronautTestCalculus";
+            this.Name = "AstronautTestFocus";
             this.Size = new System.Drawing.Size(1495, 588);
             this.ResumeLayout(false);
 

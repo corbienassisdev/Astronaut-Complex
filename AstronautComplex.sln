@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstronautComplex", "AstronautComplex\AstronautComplex.csproj", "{30ECF2AD-95AC-486E-8B1E-30514F491BC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstronautComplexBasics", "AstronautComplexBasics\AstronautComplexBasics.csproj", "{09F8C112-11CB-41A5-8F84-1A8363A3ACFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstronautComplexBasicPack", "AstronautComplexBasicPack\AstronautComplexBasicPack.csproj", "{09F8C112-11CB-41A5-8F84-1A8363A3ACFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

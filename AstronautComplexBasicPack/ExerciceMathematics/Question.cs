@@ -1,4 +1,4 @@
-﻿namespace AstronautComplexBasics
+﻿namespace AstronautComplexBasicPack.ExerciceMathematics
 {
     /// <summary>
     /// Represents a multiple-answer question.
@@ -7,7 +7,7 @@
     {
         public string Title { get; protected set; }
         public int Answer { get; protected set; }
-        public string[] Answers {get; protected set;}
+        public string[] Answers { get; protected set; }
 
         /// <summary>
         /// Builds a multiple-answer question.
@@ -21,5 +21,7 @@
             Answer = answer;
             Answers = answers;
         }
+
+
     }
 }
