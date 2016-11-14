@@ -6,6 +6,12 @@ using System.Drawing;
 
 namespace AstronautComplexBasicPack.ExercicePerception
 {
+    public enum Shape
+    {
+        Square,
+        Circle
+    }
+
     /// <summary>
     /// Is a colored shape with the letter and digit associated
     /// </summary>
