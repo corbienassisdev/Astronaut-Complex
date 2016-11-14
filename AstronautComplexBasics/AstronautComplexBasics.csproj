@@ -94,13 +94,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent></PostBuildEvent>
-	<PostBuildEvent Condition="'$(OS)' == 'Windows_NT' ">
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <PostBuildEvent Condition="'$(OS)' == 'Windows_NT' ">
 		xcopy "$(TargetPath)" "$(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)\" /Y
 		xcopy "$(TargetDir)Data" "$(SolutionDir)$(SolutionName)\$(OutDir)Plugins\$(TargetName)\Data\" /Y /E /I
 	</PostBuildEvent>
-	<PostBuildEvent Condition="'$(OS)' != 'Windows_NT'">
-	</PostBuildEvent>
+    <PostBuildEvent Condition="'$(OS)' != 'Windows_NT'">
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
