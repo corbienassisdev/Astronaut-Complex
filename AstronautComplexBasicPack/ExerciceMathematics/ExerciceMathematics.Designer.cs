@@ -42,7 +42,7 @@
             this.textBoxQuestion.Name = "textBoxQuestion";
             this.textBoxQuestion.ReadOnly = true;
             this.textBoxQuestion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBoxQuestion.Size = new System.Drawing.Size(1353, 586);
+            this.textBoxQuestion.Size = new System.Drawing.Size(1216, 626);
             this.textBoxQuestion.TabIndex = 1;
             this.textBoxQuestion.Text = "textBoxQuestionTitle";
             // 
@@ -53,7 +53,7 @@
             this.panelQuestion.Location = new System.Drawing.Point(0, 70);
             this.panelQuestion.Name = "panelQuestion";
             this.panelQuestion.Padding = new System.Windows.Forms.Padding(20, 0, 20, 20);
-            this.panelQuestion.Size = new System.Drawing.Size(1393, 606);
+            this.panelQuestion.Size = new System.Drawing.Size(1256, 646);
             this.panelQuestion.TabIndex = 2;
             // 
             // labelTitle
@@ -63,18 +63,18 @@
             this.labelTitle.Location = new System.Drawing.Point(0, 0);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Padding = new System.Windows.Forms.Padding(20, 20, 0, 0);
-            this.labelTitle.Size = new System.Drawing.Size(1393, 70);
+            this.labelTitle.Size = new System.Drawing.Size(1256, 70);
             this.labelTitle.TabIndex = 1;
             this.labelTitle.Text = "labelTitle";
             // 
-            // AstronautTestMathematics
+            // ExerciceMathematics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelQuestion);
             this.Controls.Add(this.labelTitle);
-            this.Name = "AstronautTestMathematics";
-            this.Size = new System.Drawing.Size(1393, 676);
+            this.Name = "ExerciceMathematics";
+            this.Size = new System.Drawing.Size(1256, 716);
             this.Load += new System.EventHandler(this.AstronautTestMathematics_Load);
             this.panelQuestion.ResumeLayout(false);
             this.panelQuestion.PerformLayout();
