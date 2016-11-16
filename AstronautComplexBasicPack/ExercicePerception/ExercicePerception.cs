@@ -1,6 +1,8 @@
 ﻿using AstronautComplex;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
+using System;
 
 namespace AstronautComplexBasicPack.ExercicePerception
 {
@@ -9,43 +11,15 @@ namespace AstronautComplexBasicPack.ExercicePerception
     /// </summary>
     public partial class ExercicePerception : AstronautTest
     {
-        public List<Mask> Masks { get; protected set; }
-        public int CurrentMask { get; protected set; }
+        public List<Component> Components { get; protected set; }
 
         /// <summary>
         /// Builds an astronaut perception test.
         /// </summary>
         public ExercicePerception() : base("Perception et mémoire associative")
         {
-            InitializeComponent();
-            Masks = new List<Mask>();
-            CurrentMask = 0;
-        }
-
-        /// <summary>
-        /// Builds an astronaut perception test.
-        /// </summary>
-        public void LoadMasks()
-        {
-            Component c1 = new Component('A', Color.Yellow, Shape.Circle, 3);
-            Component c2 = new Component('B', Color.Blue, Shape.Square, 8);
-
-            List<Component> components = new List<Component>();
-            components.Add(c1);
-            components.Add(c2);
-
-            Mask mask1 = new Mask(components);
-            // TODO: create a random generator according to the specifications, or an xml file
-        }
-
-        /// <summary>
-        /// Displays the current mask with its components in the form.
-        /// </summary>
-        public void ShowMask()
-        {
-            Mask mask = Masks[CurrentMask];
-            //foreach elements graphiques de type case de grid layout,
-            //Dessiner le component correspondant à l'intérieur
+            Components = new List<Component>();
+            InitializeComponent(); //not related to our component class
         }
 
         /// <summary>
@@ -55,15 +29,70 @@ namespace AstronautComplexBasicPack.ExercicePerception
         /// <param name="e">The event arguments.</param>
         private void AstronautTestPerception_Load(object sender, System.EventArgs e)
         {
-            //TODO : show the mask 1
-            Graphics surface = this.CreateGraphics();
-            Pen p = new Pen(System.Drawing.Color.Turquoise, 5);
-            Rectangle rectangle = new Rectangle(100, 100, 100, 100);
-            surface.DrawRectangle(p, rectangle);
-            SolidBrush myBrush = new SolidBrush(Color.Pink);
-            surface.FillRectangle(myBrush, rectangle);
-            this.Invalidate();
+            
+            
         }
 
+        /// <summary>
+        /// Displays the interface with all the components inside
+        /// </summary>
+        public void LoadComponents()
+        {
+            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
+            Components.Add(new Component('A', Color.Yellow, Shape.Square, 2));
+            Components.Add(new Component('A', Color.Blue, Shape.Circle, 4));
+            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
+            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
+            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
+            Components.Add(new Component('A', Color.Blue, Shape.Circle, 4));
+            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
+            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
+            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
+            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
+            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
+
+            // TODO: create a random generator according to the specifications, or an xml file
+        }
+
+        /// <summary>
+        /// Adds components form the list attribute in the tableLayoutPanel
+        /// </summary>
+        private void AddComponentsToLayout()
+        {
+            for (int i = 0; i < 3; i++) //TODO : rajouter attributs nbLignes et colonnes
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    tableLayoutPanelMask.Controls.Add(Components[0], i, j); //TODO : trouver formule
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Displays the current interface with its components in the form.
+        /// </summary>
+        public void ShowComponents()
+        {
+            tableLayoutPanelMask.Refresh(); //call the onPaint method of each component in the tableLayoutPanel
+        }
+
+        private void ExercicePerception_Load(object sender, EventArgs e)
+        {
+            //TODO : Give the instructions
+            //MessageBox.Show("Ceci est la consigne");
+
+            //TODO : For 1 to 10, Display successive screens (2 or 4 seconds according to the difficulty) and increment answers
+            for (int i = 0; i < 1; i++) //mettre valeur 10 en variable 10101010101010
+            {
+                //je remplis ma liste de 12 composants
+                LoadComponents();
+                //je les rajoute à mon tablelayoutpanel
+                AddComponentsToLayout();
+                //je les affiche 2 ou 4 secondes
+                ShowComponents();
+                //j'incremente les réponses
+            }
+        }
     }
 }

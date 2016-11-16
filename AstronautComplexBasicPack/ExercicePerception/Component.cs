@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace AstronautComplexBasicPack.ExercicePerception
 {
@@ -15,7 +16,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
     /// <summary>
     /// Is a colored shape with the letter and digit associated
     /// </summary>
-    public class Component
+    public class Component : Panel
     {
         public char Letter { get; protected set; }
         public Color Color { get; protected set; }
@@ -35,6 +36,26 @@ namespace AstronautComplexBasicPack.ExercicePerception
             Color = color;
             Shape = shape;
             Digit = digit;
+
+            this.Dock = DockStyle.Fill;
+        }
+
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            base.OnPaint(pe);
+            SolidBrush myBrush = new SolidBrush(this.Color);
+            Graphics formGraphics = this.CreateGraphics();
+            switch (this.Shape)
+            {
+                case Shape.Circle:
+                    formGraphics.FillEllipse(myBrush, new Rectangle(Width / 2 - 50, Height / 2 - 50, 100, 100)); //Mettre des constantes
+                    break;
+                case Shape.Square:
+                    formGraphics.FillRectangle(myBrush, new Rectangle(Width / 2 - 50, Height / 2 - 50, 100, 100)); //Mettre des constantes
+                    break;
+            }
+            myBrush.Dispose();
+            formGraphics.Dispose();
         }
     }
 }
