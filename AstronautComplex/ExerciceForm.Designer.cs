@@ -1,6 +1,6 @@
 ﻿namespace AstronautComplex
 {
-    partial class AstronautTestForm
+    partial class ExerciceForm
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -30,9 +30,9 @@
         {
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.MenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelTest = new System.Windows.Forms.Panel();
+            this.MenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelExercice = new System.Windows.Forms.Panel();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +54,13 @@
             this.MenuItemFile.Size = new System.Drawing.Size(54, 20);
             this.MenuItemFile.Text = "Fichier";
             // 
+            // MenuItemNew
+            // 
+            this.MenuItemNew.Name = "MenuItemNew";
+            this.MenuItemNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.MenuItemNew.Size = new System.Drawing.Size(165, 22);
+            this.MenuItemNew.Text = "Nouveau";
+            // 
             // MenuItemQuit
             // 
             this.MenuItemQuit.Name = "MenuItemQuit";
@@ -62,30 +69,23 @@
             this.MenuItemQuit.Text = "Quitter";
             this.MenuItemQuit.Click += new System.EventHandler(this.MenuItemQuit_Click);
             // 
-            // MenuItemNew
+            // panelExercice
             // 
-            this.MenuItemNew.Name = "MenuItemNew";
-            this.MenuItemNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.MenuItemNew.Size = new System.Drawing.Size(165, 22);
-            this.MenuItemNew.Text = "Nouveau";
+            this.panelExercice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelExercice.Location = new System.Drawing.Point(0, 24);
+            this.panelExercice.Name = "panelExercice";
+            this.panelExercice.Size = new System.Drawing.Size(784, 437);
+            this.panelExercice.TabIndex = 1;
             // 
-            // panelTest
-            // 
-            this.panelTest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTest.Location = new System.Drawing.Point(0, 24);
-            this.panelTest.Name = "panelTest";
-            this.panelTest.Size = new System.Drawing.Size(784, 437);
-            this.panelTest.TabIndex = 1;
-            // 
-            // AstronautComplex
+            // ExerciceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.panelTest);
+            this.Controls.Add(this.panelExercice);
             this.Controls.Add(this.menuStripMain);
             this.MainMenuStrip = this.menuStripMain;
-            this.Name = "AstronautComplex";
+            this.Name = "ExerciceForm";
             this.Text = "Astronaut Complex";
             this.Load += new System.EventHandler(this.AstronautComplex_Load);
             this.menuStripMain.ResumeLayout(false);
@@ -101,7 +101,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItemFile;
         private System.Windows.Forms.ToolStripMenuItem MenuItemQuit;
         private System.Windows.Forms.ToolStripMenuItem MenuItemNew;
-        private System.Windows.Forms.Panel panelTest;
+        private System.Windows.Forms.Panel panelExercice;
     }
 }
 

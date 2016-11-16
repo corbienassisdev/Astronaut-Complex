@@ -9,25 +9,26 @@ namespace AstronautComplex
     /// <summary>
     /// Represents an AstronautComplex main form.
     /// </summary>
-    public partial class AstronautTestForm : Form
+    public partial class ExerciceForm : Form
     {
         public const string DirectoryPlugins = @"\Plugins";
 
-        public List<AstronautTest> Tests { get; set; }
+        public List<Exercice> Exercices { get; protected set; }
+        public int Exercice { get; protected set; }
 
         /// <summary>
         /// Builds an AstronautComplex main form.
         /// </summary>
-        public AstronautTestForm()
+        public ExerciceForm()
         {
             InitializeComponent();
-            Tests = new List<AstronautTest>();
+            Exercices = new List<Exercice>();
         }
 
         /// <summary>
-        /// Loads all tests located in the Plugins folder.
+        /// Loads all exercices located in the Plugins folder.
         /// </summary>
-        public void LoadTests()
+        public void LoadExercices()
         {
             try
             {
@@ -35,9 +36,9 @@ namespace AstronautComplex
                 {
                     foreach (Type type in Assembly.LoadFile(pathPlugin).GetTypes())
                     {
-                        if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(AstronautTest)))
+                        if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(Exercice)))
                         {
-                            foreach(AstronautTestDifficulty difficulty in Enum.GetValues(typeof(AstronautTestDifficulty)))
+                            foreach(ExerciceDifficulty difficulty in Enum.GetValues(typeof(ExerciceDifficulty)))
                             {
                                 string key = "MenuItemNew" + difficulty.ToString();
 
@@ -54,18 +55,19 @@ namespace AstronautComplex
                                     menuItemDifficulty = (ToolStripMenuItem)MenuItemNew.DropDownItems[key];
                                 }
 
-                                AstronautTest test = (AstronautTest)Activator.CreateInstance(type);
-                                test.Difficulty = difficulty;
-                                test.Form = this;
-                                Tests.Add(test);
+                                Exercice exercice = (Exercice)Activator.CreateInstance(type);
+                                exercice.Difficulty = difficulty;
+                                exercice.Form = this;
+                                Exercices.Add(exercice);
 
                                 ToolStripMenuItem menuItem = new ToolStripMenuItem();
                                 menuItem.Name = key + type.Name;
-                                menuItem.Text = test.Title;
+                                menuItem.Text = exercice.Title;
                                 menuItem.Click += (sender, e) =>
                                 {
-                                    panelTest.Controls.Clear();
-                                    panelTest.Controls.Add(test);
+                                    exercice.Initialize();
+                                    panelExercice.Controls.Clear();
+                                    panelExercice.Controls.Add(exercice);
                                 };
                                 menuItemDifficulty.DropDownItems.Add(menuItem);
                             }
@@ -77,6 +79,14 @@ namespace AstronautComplex
             {
                 DisplayError(exception.Message);
             }
+        }
+
+        /// <summary>
+        /// Clears the exercice panel.
+        /// </summary>
+        public void ClearPanel()
+        {
+            panelExercice.Controls.Clear();
         }
 
         /// <summary>
@@ -95,7 +105,7 @@ namespace AstronautComplex
         /// <param name="e">The event arguments.</param>
         private void AstronautComplex_Load(object sender, EventArgs e)
         {
-            LoadTests();
+            LoadExercices();
         }
 
         /// <summary>

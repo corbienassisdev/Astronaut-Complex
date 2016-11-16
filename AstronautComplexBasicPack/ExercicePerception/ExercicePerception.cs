@@ -1,7 +1,6 @@
 ﻿using AstronautComplex;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Windows.Forms;
 using System;
 
 namespace AstronautComplexBasicPack.ExercicePerception
@@ -9,7 +8,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
     /// <summary>
     /// Represents an astronaut perception test.
     /// </summary>
-    public partial class ExercicePerception : AstronautTest
+    public partial class ExercicePerception : Exercice
     {
         public List<Component> Components { get; protected set; }
 
@@ -20,6 +19,11 @@ namespace AstronautComplexBasicPack.ExercicePerception
         {
             Components = new List<Component>();
             InitializeComponent(); //not related to our component class
+        }
+
+        public override void Initialize()
+        {
+
         }
 
         /// <summary>

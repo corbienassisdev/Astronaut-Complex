@@ -1,10 +1,14 @@
-﻿namespace AstronautComplexBasicPack.ExerciceMathematics
+﻿using AstronautComplex;
+using System;
+
+namespace AstronautComplexBasicPack.ExerciceMathematics
 {
     /// <summary>
     /// Represents a multiple-answer question.
     /// </summary>
-    public class Question
+    public abstract class Question
     {
+        public string TitleFormat { get; protected set; }
         public string Title { get; protected set; }
         public int Answer { get; protected set; }
         public string[] Answers { get; protected set; }
@@ -12,16 +16,17 @@
         /// <summary>
         /// Builds a multiple-answer question.
         /// </summary>
-        /// <param name="title">The question title.</param>
-        /// <param name="answer">The question correct answer id.</param>
-        /// <param name="answers">The question possible answers.</param>
-        public Question(string title, int answer, string[] answers)
+        /// <param name="titleFormat">The question title format.</param>
+        public Question(string titleFormat)
         {
-            Title = title;
-            Answer = answer;
-            Answers = answers;
+            TitleFormat = titleFormat;
         }
 
-
+        /// <summary>
+        /// Builds the question, setting the possible answers and the good answer, depending on the difficulty. Needs to be implemented.
+        /// </summary>
+        /// <param name="difficulty">The exercice difficulty.</param>
+        /// <param name="random">The exercice random number generator.</param>
+        public abstract void Build(ExerciceDifficulty difficulty, Random random);
     }
 }

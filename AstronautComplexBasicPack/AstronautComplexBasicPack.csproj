@@ -58,7 +58,10 @@
     <Compile Include="ExerciceCalculus\ExerciceCalculus.Designer.cs">
       <DependentUpon>ExerciceCalculus.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExercicePerception\Component.cs" />
+    <Compile Include="ExerciceMathematics\QuestionPercentage.cs" />
+    <Compile Include="ExercicePerception\Component.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ExercicePerception\ExercicePerception.cs">
       <SubType>UserControl</SubType>
     </Compile>

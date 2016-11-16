@@ -30,31 +30,62 @@
         {
             this.textBoxQuestion = new System.Windows.Forms.TextBox();
             this.panelQuestion = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableLayoutPanelAnswers = new System.Windows.Forms.TableLayoutPanel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.panelQuestion.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxQuestion
             // 
+            this.textBoxQuestion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxQuestion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxQuestion.Location = new System.Drawing.Point(20, 0);
+            this.textBoxQuestion.Location = new System.Drawing.Point(27, 0);
             this.textBoxQuestion.Multiline = true;
             this.textBoxQuestion.Name = "textBoxQuestion";
             this.textBoxQuestion.ReadOnly = true;
             this.textBoxQuestion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBoxQuestion.Size = new System.Drawing.Size(1216, 626);
+            this.textBoxQuestion.Size = new System.Drawing.Size(1441, 398);
             this.textBoxQuestion.TabIndex = 1;
             this.textBoxQuestion.Text = "textBoxQuestionTitle";
             // 
             // panelQuestion
             // 
             this.panelQuestion.Controls.Add(this.textBoxQuestion);
+            this.panelQuestion.Controls.Add(this.flowLayoutPanel1);
+            this.panelQuestion.Controls.Add(this.tableLayoutPanelAnswers);
             this.panelQuestion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelQuestion.Location = new System.Drawing.Point(0, 70);
             this.panelQuestion.Name = "panelQuestion";
-            this.panelQuestion.Padding = new System.Windows.Forms.Padding(20, 0, 20, 20);
-            this.panelQuestion.Size = new System.Drawing.Size(1256, 646);
+            this.panelQuestion.Padding = new System.Windows.Forms.Padding(27, 0, 27, 20);
+            this.panelQuestion.Size = new System.Drawing.Size(1495, 518);
             this.panelQuestion.TabIndex = 2;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(27, 398);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1441, 0);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // tableLayoutPanelAnswers
+            // 
+            this.tableLayoutPanelAnswers.ColumnCount = 1;
+            this.tableLayoutPanelAnswers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelAnswers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelAnswers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelAnswers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelAnswers.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanelAnswers.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
+            this.tableLayoutPanelAnswers.Location = new System.Drawing.Point(27, 398);
+            this.tableLayoutPanelAnswers.Name = "tableLayoutPanelAnswers";
+            this.tableLayoutPanelAnswers.RowCount = 1;
+            this.tableLayoutPanelAnswers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelAnswers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelAnswers.Size = new System.Drawing.Size(1441, 100);
+            this.tableLayoutPanelAnswers.TabIndex = 0;
             // 
             // labelTitle
             // 
@@ -63,7 +94,7 @@
             this.labelTitle.Location = new System.Drawing.Point(0, 0);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Padding = new System.Windows.Forms.Padding(20, 20, 0, 0);
-            this.labelTitle.Size = new System.Drawing.Size(1256, 70);
+            this.labelTitle.Size = new System.Drawing.Size(1495, 70);
             this.labelTitle.TabIndex = 1;
             this.labelTitle.Text = "labelTitle";
             // 
@@ -74,8 +105,7 @@
             this.Controls.Add(this.panelQuestion);
             this.Controls.Add(this.labelTitle);
             this.Name = "ExerciceMathematics";
-            this.Size = new System.Drawing.Size(1256, 716);
-            this.Load += new System.EventHandler(this.AstronautTestMathematics_Load);
+            this.Size = new System.Drawing.Size(1495, 588);
             this.panelQuestion.ResumeLayout(false);
             this.panelQuestion.PerformLayout();
             this.ResumeLayout(false);
@@ -87,5 +117,7 @@
         private System.Windows.Forms.TextBox textBoxQuestion;
         private System.Windows.Forms.Panel panelQuestion;
         protected System.Windows.Forms.Label labelTitle;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAnswers;
     }
 }

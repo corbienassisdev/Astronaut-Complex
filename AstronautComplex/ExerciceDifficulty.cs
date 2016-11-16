@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents an astronaut test difficulty.
     /// </summary>
-    public enum AstronautTestDifficulty
+    public enum ExerciceDifficulty
     {
         Easy,
         Hard

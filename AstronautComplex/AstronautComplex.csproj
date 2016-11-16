@@ -46,23 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AstronautTestDifficulty.cs" />
-    <Compile Include="AstronautTestForm.cs">
+    <Compile Include="Exercice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Exercice.Designer.cs">
+      <DependentUpon>Exercice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExerciceDifficulty.cs" />
+    <Compile Include="ExerciceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AstronautTestForm.Designer.cs">
-      <DependentUpon>AstronautTestForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AstronautTest.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="ExerciceForm.Designer.cs">
+      <DependentUpon>ExerciceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AstronautTestForm.resx">
-      <DependentUpon>AstronautTestForm.cs</DependentUpon>
+    <EmbeddedResource Include="Exercice.resx">
+      <DependentUpon>Exercice.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AstronautTest.resx">
-      <DependentUpon>AstronautTest.cs</DependentUpon>
+    <EmbeddedResource Include="ExerciceForm.resx">
+      <DependentUpon>ExerciceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
