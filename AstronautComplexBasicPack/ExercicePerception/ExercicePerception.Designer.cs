@@ -50,7 +50,6 @@
             this.tableLayoutPanelMask.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelMask.Size = new System.Drawing.Size(1256, 716);
             this.tableLayoutPanelMask.TabIndex = 0;
-            this.tableLayoutPanelMask.Visible = false;
             this.tableLayoutPanelMask.Resize += new System.EventHandler(this.tableLayoutPanelMask_Resize);
             // 
             // ExercicePerception
@@ -61,7 +60,6 @@
             this.MinimumSize = new System.Drawing.Size(450, 580);
             this.Name = "ExercicePerception";
             this.Size = new System.Drawing.Size(1256, 716);
-            this.Load += new System.EventHandler(this.ExercicePerception_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

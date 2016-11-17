@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System;
+using System.Windows.Forms;
 
 namespace AstronautComplexBasicPack.ExercicePerception
 {
@@ -23,6 +24,21 @@ namespace AstronautComplexBasicPack.ExercicePerception
         public override void Initialize()
         {
             Components = new List<Component>();
+
+            //TODO : Give the instructions
+            //MessageBox.Show("Ceci est la consigne");
+
+            //TODO : For 1 to 10, Display successive screens (2 or 4 seconds according to the difficulty) and increment answers
+            //for (int i = 0; i < 1; i++) //mettre valeur 10 en variable 10101010101010
+            //{
+            //je remplis ma liste de 12 composants
+            LoadComponents();
+            //je les rajoute à mon tablelayoutpanel
+            AddComponentsToLayout();
+            //je les affiche 2 ou 4 secondes
+            ShowComponents();
+            //j'incremente les réponses
+            //}
         }
 
         /// <summary>
@@ -70,6 +86,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
             tableLayoutPanelMask.Refresh(); //call the onPaint method of each component in the tableLayoutPanel
         }
 
+        //n'est plus appelé
         private void ExercicePerception_Load(object sender, EventArgs e)
         {
             //TODO : Give the instructions
