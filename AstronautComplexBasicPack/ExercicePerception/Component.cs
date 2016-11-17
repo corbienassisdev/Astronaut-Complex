@@ -25,9 +25,20 @@ namespace AstronautComplexBasicPack.ExercicePerception
         public Shape Shape { get; protected set; }
         public int Digit { get; protected set; }
 
-        public const int shapeLength = 100;
-        public const int charHeight = 20;
-        public const string fontFamily = "Arial";
+        public static int shapeLength = 100;
+        public static int charHeight = 20;
+        public static string fontFamily = "Arial";
+
+        private static Random r = new Random();
+
+        public Component()
+        {
+            Color = (r.Next(0, 2) == 0) ? Color.RoyalBlue : Color.Yellow; //transform to Enum ?
+            Shape = RandomEnumValue<Shape>();
+            Digit = r.Next(0, 10); //0 to 9
+
+            this.Dock = DockStyle.Fill;
+        }
 
         /// <summary>
         /// Builds a component with a lettern color, shape and digit given.
@@ -45,6 +56,12 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
             this.Dock = DockStyle.Fill;
         }
+
+        static T RandomEnumValue<T>()
+        {
+            var v = Enum.GetValues(typeof(T));
+            return (T)v.GetValue(r.Next(v.Length));
+        } // Generic in case of a color enum
 
         protected override void OnPaint(PaintEventArgs pe)
         {

@@ -33,7 +33,8 @@ namespace AstronautComplexBasicPack.ExercicePerception
             //for (int i = 0; i < 1; i++) //mettre valeur 10 en variable 10101010101010
             //{
             //je remplis ma liste de 12 composants
-            LoadComponents();
+            //LoadComponents();
+            GenerateRandomComponents(12);
             //je les rajoute à mon tablelayoutpanel
             AddComponentsToLayout();
             //je les affiche 2 ou 4 secondes
@@ -48,19 +49,25 @@ namespace AstronautComplexBasicPack.ExercicePerception
         public void LoadComponents()
         {
             Components.Add(new Component('A', Color.Yellow, Shape.Circle, 2));
-            Components.Add(new Component('B', Color.DodgerBlue, Shape.Square, 8));
+            Components.Add(new Component('B', Color.RoyalBlue, Shape.Square, 8));
             Components.Add(new Component('C', Color.Yellow, Shape.Square, 1));
             Components.Add(new Component('D', Color.Yellow, Shape.Circle, 8));
-            Components.Add(new Component('E', Color.DodgerBlue, Shape.Circle, 7));
+            Components.Add(new Component('E', Color.RoyalBlue, Shape.Circle, 7));
             Components.Add(new Component('F', Color.Yellow, Shape.Square, 1));
             Components.Add(new Component('G', Color.DodgerBlue, Shape.Circle, 5));
             Components.Add(new Component('H', Color.Yellow, Shape.Square, 2));
-            Components.Add(new Component('I', Color.DodgerBlue, Shape.Square, 9));
+            Components.Add(new Component('I', Color.RoyalBlue, Shape.Square, 9));
             Components.Add(new Component('J', Color.Yellow, Shape.Circle, 8));
-            Components.Add(new Component('K', Color.DodgerBlue, Shape.Circle, 7));
+            Components.Add(new Component('K', Color.RoyalBlue, Shape.Circle, 7));
             Components.Add(new Component('L', Color.Yellow, Shape.Square, 1));
 
             // TODO: create a random generator according to the specifications, or an xml file
+        }
+
+        private void GenerateRandomComponents(int numberOfComponents)
+        {
+            for (int i = 0; i < numberOfComponents; i++)
+                Components.Add(new Component());
         }
 
         /// <summary>
