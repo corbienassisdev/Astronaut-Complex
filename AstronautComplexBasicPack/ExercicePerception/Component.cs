@@ -25,9 +25,9 @@ namespace AstronautComplexBasicPack.ExercicePerception
         public Shape Shape { get; protected set; }
         public int Digit { get; protected set; }
 
-        private const int shapeLength = 100;
-        private const int charHeight = 20;
-        private const string fontFamily = "Arial";
+        public const int shapeLength = 100;
+        public const int charHeight = 20;
+        public const string fontFamily = "Arial";
 
         /// <summary>
         /// Builds a component with a lettern color, shape and digit given.

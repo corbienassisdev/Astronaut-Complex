@@ -23,6 +23,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         public override void Initialize()
         {
+            Form.MinimumSize = new Size(500, 600);
             Components = new List<Component>();
 
             //TODO : Give the instructions
