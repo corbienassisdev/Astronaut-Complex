@@ -17,13 +17,12 @@ namespace AstronautComplexBasicPack.ExercicePerception
         /// </summary>
         public ExercicePerception() : base("Perception et mémoire associative")
         {
-            Components = new List<Component>();
             InitializeComponent(); //not related to our component class
         }
 
         public override void Initialize()
         {
-
+            Components = new List<Component>();
         }
 
         /// <summary>
