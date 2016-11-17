@@ -83,7 +83,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
         /// </summary>
         public void ShowComponents()
         {
-            tableLayoutPanelMask.Refresh(); //call the onPaint method of each component in the tableLayoutPanel
+            //tableLayoutPanelMask.Refresh(); //call the onPaint method of each component in the tableLayoutPanel
         }
 
         //n'est plus appelé

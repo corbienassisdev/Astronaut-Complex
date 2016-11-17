@@ -74,14 +74,14 @@
             this.panelExercice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelExercice.Location = new System.Drawing.Point(0, 24);
             this.panelExercice.Name = "panelExercice";
-            this.panelExercice.Size = new System.Drawing.Size(784, 437);
+            this.panelExercice.Size = new System.Drawing.Size(784, 587);
             this.panelExercice.TabIndex = 1;
             // 
             // ExerciceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 461);
+            this.ClientSize = new System.Drawing.Size(784, 611);
             this.Controls.Add(this.panelExercice);
             this.Controls.Add(this.menuStripMain);
             this.MainMenuStrip = this.menuStripMain;
