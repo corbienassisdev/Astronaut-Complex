@@ -26,33 +26,22 @@ namespace AstronautComplexBasicPack.ExercicePerception
         }
 
         /// <summary>
-        /// Called on control loading.
-        /// </summary>
-        /// <param name="sender">The event sender.</param>
-        /// <param name="e">The event arguments.</param>
-        private void AstronautTestPerception_Load(object sender, System.EventArgs e)
-        {
-            
-            
-        }
-
-        /// <summary>
         /// Displays the interface with all the components inside
         /// </summary>
         public void LoadComponents()
         {
-            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
-            Components.Add(new Component('A', Color.Yellow, Shape.Square, 2));
-            Components.Add(new Component('A', Color.Blue, Shape.Circle, 4));
-            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
-            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
-            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
-            Components.Add(new Component('A', Color.Blue, Shape.Circle, 4));
-            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
-            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
-            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
-            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
-            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 4));
+            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 2));
+            Components.Add(new Component('B', Color.DodgerBlue, Shape.Square, 8));
+            Components.Add(new Component('C', Color.Yellow, Shape.Square, 1));
+            Components.Add(new Component('D', Color.Yellow, Shape.Circle, 8));
+            Components.Add(new Component('E', Color.DodgerBlue, Shape.Circle, 7));
+            Components.Add(new Component('F', Color.Yellow, Shape.Square, 1));
+            Components.Add(new Component('G', Color.DodgerBlue, Shape.Circle, 5));
+            Components.Add(new Component('H', Color.Yellow, Shape.Square, 2));
+            Components.Add(new Component('I', Color.DodgerBlue, Shape.Square, 9));
+            Components.Add(new Component('J', Color.Yellow, Shape.Circle, 8));
+            Components.Add(new Component('K', Color.DodgerBlue, Shape.Circle, 7));
+            Components.Add(new Component('L', Color.Yellow, Shape.Square, 1));
 
             // TODO: create a random generator according to the specifications, or an xml file
         }
@@ -62,14 +51,15 @@ namespace AstronautComplexBasicPack.ExercicePerception
         /// </summary>
         private void AddComponentsToLayout()
         {
-            for (int i = 0; i < 3; i++) //TODO : rajouter attributs nbLignes et colonnes
+            int index = 0;
+            for (int i = 0; i < tableLayoutPanelMask.RowCount; i++)
             {
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < tableLayoutPanelMask.ColumnCount; j++)
                 {
-                    tableLayoutPanelMask.Controls.Add(Components[0], i, j); //TODO : trouver formule
+                    tableLayoutPanelMask.Controls.Add(Components[index], j, i);
+                    index++;
                 }
             }
-
         }
 
         /// <summary>
@@ -86,8 +76,8 @@ namespace AstronautComplexBasicPack.ExercicePerception
             //MessageBox.Show("Ceci est la consigne");
 
             //TODO : For 1 to 10, Display successive screens (2 or 4 seconds according to the difficulty) and increment answers
-            for (int i = 0; i < 1; i++) //mettre valeur 10 en variable 10101010101010
-            {
+            //for (int i = 0; i < 1; i++) //mettre valeur 10 en variable 10101010101010
+            //{
                 //je remplis ma liste de 12 composants
                 LoadComponents();
                 //je les rajoute à mon tablelayoutpanel
@@ -95,7 +85,12 @@ namespace AstronautComplexBasicPack.ExercicePerception
                 //je les affiche 2 ou 4 secondes
                 ShowComponents();
                 //j'incremente les réponses
-            }
+            //}
+        }
+
+        private void tableLayoutPanelMask_Resize(object sender, EventArgs e)
+        {
+            tableLayoutPanelMask.Refresh();
         }
     }
 }

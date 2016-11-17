@@ -51,12 +51,14 @@
             this.tableLayoutPanelMask.Size = new System.Drawing.Size(1256, 716);
             this.tableLayoutPanelMask.TabIndex = 0;
             this.tableLayoutPanelMask.Visible = false;
+            this.tableLayoutPanelMask.Resize += new System.EventHandler(this.tableLayoutPanelMask_Resize);
             // 
             // ExercicePerception
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanelMask);
+            this.MinimumSize = new System.Drawing.Size(450, 580);
             this.Name = "ExercicePerception";
             this.Size = new System.Drawing.Size(1256, 716);
             this.Load += new System.EventHandler(this.ExercicePerception_Load);

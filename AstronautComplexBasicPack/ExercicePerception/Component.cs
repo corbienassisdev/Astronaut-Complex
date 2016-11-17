@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 
 namespace AstronautComplexBasicPack.ExercicePerception
 {
@@ -22,6 +24,10 @@ namespace AstronautComplexBasicPack.ExercicePerception
         public Color Color { get; protected set; }
         public Shape Shape { get; protected set; }
         public int Digit { get; protected set; }
+
+        private const int shapeLength = 100;
+        private const int charHeight = 20;
+        private const string fontFamily = "Arial";
 
         /// <summary>
         /// Builds a component with a lettern color, shape and digit given.
@@ -42,20 +48,46 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         protected override void OnPaint(PaintEventArgs pe)
         {
-            base.OnPaint(pe);
-            SolidBrush myBrush = new SolidBrush(this.Color);
-            Graphics formGraphics = this.CreateGraphics();
+            #region Intializing local variables
+            SolidBrush brush = new SolidBrush(this.Color);
+            Graphics graphics = this.CreateGraphics();
+            Pen pen = new Pen(Color.Black); //for shape outlines
+            Font font = new Font(fontFamily, charHeight);
+            StringFormat format = new StringFormat();
+            Point center = new Point(Width / 2, Height / 2); //center of the panel
+            Rectangle rectangle = new Rectangle(center.X - (shapeLength / 2), center.Y - (shapeLength / 2), shapeLength, shapeLength); //for shapes
+            #endregion
+
+            #region Setting Properties
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+            #endregion
+
+            //shape with color
             switch (this.Shape)
             {
                 case Shape.Circle:
-                    formGraphics.FillEllipse(myBrush, new Rectangle(Width / 2 - 50, Height / 2 - 50, 100, 100)); //Mettre des constantes
+                    graphics.FillEllipse(brush, rectangle);
+                    graphics.DrawEllipse(pen, rectangle);
                     break;
                 case Shape.Square:
-                    formGraphics.FillRectangle(myBrush, new Rectangle(Width / 2 - 50, Height / 2 - 50, 100, 100)); //Mettre des constantes
+                    graphics.FillRectangle(brush, rectangle);
+                    graphics.DrawRectangle(pen, rectangle);
                     break;
             }
-            myBrush.Dispose();
-            formGraphics.Dispose();
+
+            //lettre
+            brush.Color = Color.Black;
+            int letterWidth = TextRenderer.MeasureText(this.Letter.ToString(), font).Width;
+            graphics.DrawString(this.Letter.ToString(), font, brush, center.X - (letterWidth / 2 - 3), center.Y - (shapeLength / 2 + charHeight + 15), format); //15 is the margin between the letter and the shape
+            //digit
+            int digitWidth = TextRenderer.MeasureText(this.Digit.ToString(), font).Width;
+            graphics.DrawString(this.Digit.ToString(), font, brush, center.X - (digitWidth / 2 - 3), center.Y - charHeight + 4, format);
+            //concrete values here correspond to margins or offsets in order to get the perfect center. They adapt to constant values like the font size, etc.
+
+
+            brush.Dispose();
+            graphics.Dispose();
         }
     }
 }
