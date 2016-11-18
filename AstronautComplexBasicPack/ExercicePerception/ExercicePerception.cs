@@ -30,26 +30,33 @@ namespace AstronautComplexBasicPack.ExercicePerception
                 + "Sur chaque figure est écrit un nombre variant de 0 à 9.\n\n"
                 + "Votre but est de retenir uniquement les nombres contenus dans les figures de forme X et de couleur Y\n"
                 + "Exemple : Retenez les nombres des figures de forme carrée et de couleur jaune).";
-            MessageBox.Show(startingInstruction, "Consigne générale", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(startingInstruction, "Consigne générale", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
         public override void Run()
         {
             //TODO : For 1 to 10, Display successive screens (2 or 4 seconds according to the difficulty) and increment answers
-            //for (int i = 0; i < 1; i++) //mettre valeur 10 en variable 10101010101010
-            //{
-            //TODO : Give the instructions
-            MessageBox.Show("Retenez le nombre associé aux carrés jaunes", "Instruction", MessageBoxButtons.OK, MessageBoxIcon.None);
-            //je remplis ma liste de 12 composants
-            GenerateRandomComponents(12);
-            //TODO : shuffleComponents and AddLetterToComponents
-            //je les rajoute à mon tablelayoutpanel
-            AddComponentsToLayout();
-            //je les affiche 2 ou 4 secondes
-            ShowComponents();
-            //j'incremente les réponses
-            //}
+            for (int i = 0; i < 3; i++)
+            {
+                //TODO : Give the instructions
+                MessageBox.Show("Retenez le nombre associé aux carrés jaunes", "Instruction", MessageBoxButtons.OK, MessageBoxIcon.None);
+                //je remplis ma liste de 12 composants
+                Components.Clear();
+                tableLayoutPanelMask.Controls.Clear();
+                GenerateRandomComponents(12);
+                //TODO : shuffleComponents and AddLetterToComponents
+                //je les rajoute à mon tablelayoutpanel
+                AddComponentsToLayout();
+                tableLayoutPanelMask.Refresh();
+                System.Threading.Thread.Sleep(2000);
+                //je les affiche 2 ou 4 secondes
+                ShowComponents();
+
+                //j'incremente les réponses
+            }
         }
+
+
 
         private void GenerateRandomComponents(int numberOfComponents)
         {

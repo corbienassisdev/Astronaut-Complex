@@ -7,12 +7,12 @@ namespace AstronautComplex
 {
     public class ExerciceScore
     {
-        public int GoodAndswers { get; set; }
+        public int GoodAnswers { get; set; }
         public int TotalAnswers { get; set; }
 
         public override string ToString()
         {
-            return ((double)GoodAndswers / TotalAnswers) * 100 + " %";
+            return ((double)GoodAnswers / TotalAnswers) * 100 + " %";
         }
     }
 }

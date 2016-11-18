@@ -33,11 +33,14 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         public override void Initialize()
         {
             Score = new ExerciceScore();
-            Score.GoodAndswers = 0;
+            Score.GoodAnswers = 0;
             Questions = new List<Question>();
-            CurrentQuestion = 0;
+            CurrentQuestion = 0;                      
         }
 
+        /// <summary>
+        /// Runs the exercice.
+        /// </summary>
         public override void Run()
         {
             GenerateQuestions(20);
@@ -118,7 +121,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
                 message = string.Format("Bonne réponse ! Il s'agissait bien de {0} !", correctAnswer);
                 caption = "Bravo !";
                 icon = MessageBoxIcon.Information;
-                Score.GoodAndswers++;
+                Score.GoodAnswers++;
             }
             else
             {

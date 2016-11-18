@@ -65,10 +65,10 @@ namespace AstronautComplex
                                 menuItem.Text = exercice.Title;
                                 menuItem.Click += (sender, e) =>
                                 {
-                                    exercice.Initialize();
-                                    exercice.Run();
                                     panelExercice.Controls.Clear();
                                     panelExercice.Controls.Add(exercice);
+                                    exercice.Initialize();
+                                    exercice.Run();
                                 };
                                 menuItemDifficulty.DropDownItems.Add(menuItem);
                             }
