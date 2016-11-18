@@ -20,7 +20,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
     /// </summary>
     public class Component : Panel
     {
-        public char Letter { get; protected set; }
+        public char Letter { get; set; }
         public Color Color { get; protected set; }
         public Shape Shape { get; protected set; }
         public int Digit { get; protected set; }

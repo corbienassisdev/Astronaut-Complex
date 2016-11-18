@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System;
 using System.Windows.Forms;
+using System.Timers;
+using System.Threading;
 
 namespace AstronautComplexBasicPack.ExercicePerception
 {
@@ -12,6 +14,8 @@ namespace AstronautComplexBasicPack.ExercicePerception
     public partial class ExercicePerception : Exercice
     {
         public List<Component> Components { get; protected set; }
+
+        public static int numberOfMasks = 3;
 
         /// <summary>
         /// Builds an astronaut perception test.
@@ -35,28 +39,57 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         public override void Run()
         {
-            //TODO : For 1 to 10, Display successive screens (2 or 4 seconds according to the difficulty) and increment answers
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < numberOfMasks; i++)
             {
-                //TODO : Give the instructions
-                MessageBox.Show("Retenez le nombre associé aux carrés jaunes", "Instruction", MessageBoxButtons.OK, MessageBoxIcon.None);
-                //je remplis ma liste de 12 composants
-                Components.Clear();
-                tableLayoutPanelMask.Controls.Clear();
-                GenerateRandomComponents(12);
-                //TODO : shuffleComponents and AddLetterToComponents
-                //je les rajoute à mon tablelayoutpanel
-                AddComponentsToLayout();
-                tableLayoutPanelMask.Refresh();
-                System.Threading.Thread.Sleep(2000);
-                //je les affiche 2 ou 4 secondes
-                ShowComponents();
+                GiveInstructions();
+                ResetMask();
+                ShowMask();
+                GetAnswers();
+            }
+            Finish();
+        }
 
-                //j'incremente les réponses
+        private void GiveInstructions()
+        {
+            MessageBox.Show("Retenez le nombre associé aux carrés jaunes", "Instruction", MessageBoxButtons.OK, MessageBoxIcon.None);
+        }
+
+        private void ResetMask()
+        {
+            Components.Clear();
+            tableLayoutPanelMask.Controls.Clear();
+
+            GenerateRandomComponents(12);
+            ShuffleComponents();
+            AddLetterToComponents();
+            
+            AddComponentsToLayout();
+        }
+
+        private void ShowMask()
+        {
+            tableLayoutPanelMask.Refresh();
+
+            switch (Difficulty)
+            {
+                case ExerciceDifficulty.Easy:
+                    System.Threading.Thread.Sleep(2000); // Wait 2 seconds without blocking
+                    //System.Threading.Tasks.Task.Delay(2000); //Needs the Microsoft .NET framework 4.5 and higher.
+                    break;
+                case ExerciceDifficulty.Hard:
+                    Thread.Sleep(4000);
+                    //System.Threading.Tasks.Task.Delay(4000); //Needs the Microsoft .NET framework 4.5 and higher.
+                    break;
+                default:
+                    throw new NotImplementedException();
             }
         }
 
-
+        private void GetAnswers()
+        {
+            MessageBox.Show("Je veux des réponses", "Réponses", MessageBoxButtons.OK, MessageBoxIcon.None);
+            //throw new NotImplementedException();
+        }
 
         private void GenerateRandomComponents(int numberOfComponents)
         {
@@ -71,6 +104,39 @@ namespace AstronautComplexBasicPack.ExercicePerception
             for (int i = 0; i < numberOfComponents - numberOfFixedComponents; i++)
             { 
                 Components.Add(Component.RandomComponentWithoutBoth(askedColor, askedShape));
+            }
+        }
+
+        /// <summary>
+        /// Generates a random permutation of the components. Fisher–Yates logic.
+        /// </summary>
+        private void ShuffleComponents()
+        {
+            int n = Components.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = new Random().Next(n + 1);
+                Component c = Components[k];
+                Components[k] = Components[n];
+                Components[n] = c;
+            }
+        }
+
+        /// <summary>
+        /// Affects to each component in the list a letter from A to Z. This method implies that the number of components is less than 25
+        /// </summary>
+        private void AddLetterToComponents()
+        {
+            if(Components.Count > 26)
+                throw new NotImplementedException();
+
+            int AsciiIndex = 65;
+
+            foreach(Component c in Components)
+            {
+                c.Letter = (char)AsciiIndex;
+                AsciiIndex++;
             }
         }
 
