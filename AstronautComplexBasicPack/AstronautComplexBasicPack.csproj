@@ -68,6 +68,7 @@
     <Compile Include="ExercicePerception\ExercicePerception.Designer.cs">
       <DependentUpon>ExercicePerception.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExercicePerception\Mask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ExerciceMathematics\Question.cs" />
   </ItemGroup>

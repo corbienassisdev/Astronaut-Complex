@@ -21,15 +21,43 @@ namespace AstronautComplexBasicPack.ExercicePerception
     public class Component : Panel
     {
         public char Letter { get; set; }
-        public Color Color { get; protected set; }
         public Shape Shape { get; protected set; }
+        public Color Color { get; protected set; }
         public int Digit { get; protected set; }
 
+        #region Statics attributes
         public static int shapeLength = 100;
         public static int charHeight = 20;
         public static string fontFamily = "Arial";
-
+       
         private static Random r = new Random();
+        #endregion
+
+        public static T RandomEnumValue<T>()
+        {
+            var v = Enum.GetValues(typeof(T));
+            return (T)v.GetValue(r.Next(v.Length));
+        } // Generic in case of a color enum
+        
+        public Component() {}
+
+        /// <summary>
+        /// Builds a component with a lettern color, shape and digit given.
+        /// </summary>
+        /// <param name="letter">The letter of the component. Will always start with A and decrease until the last component.</param>
+        /// <param name="color">The color of the component.</param>
+        /// <param name="shape">The shape of the component (square or circle).</param>
+        /// <param name="digit">The digit displayed on the shape [0~9].</param>
+        public Component(char letter, Color color, Shape shape, int digit)
+        {
+            Letter = letter;
+            Color = color;
+            Shape = shape;
+            Digit = digit;
+
+            this.Dock = DockStyle.Fill;
+        }
+
 
         /// <summary>
         /// Creates and returns a new random component with shape and color given.
@@ -71,32 +99,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
             return c;
         }
 
-        public Component()
-        {}
-
-        /// <summary>
-        /// Builds a component with a lettern color, shape and digit given.
-        /// </summary>
-        /// <param name="letter">The letter of the component. Will always start with A and decrease until the last component.</param>
-        /// <param name="color">The color of the component.</param>
-        /// <param name="shape">The shape of the component (square or circle).</param>
-        /// <param name="digit">The digit displayed on the shape [0~9].</param>
-        public Component(char letter, Color color, Shape shape, int digit)
-        {
-            Letter = letter;
-            Color = color;
-            Shape = shape;
-            Digit = digit;
-
-            this.Dock = DockStyle.Fill;
-        }
-
-        static T RandomEnumValue<T>()
-        {
-            var v = Enum.GetValues(typeof(T));
-            return (T)v.GetValue(r.Next(v.Length));
-        } // Generic in case of a color enum
-
+        
         protected override void OnPaint(PaintEventArgs pe)
         {
             #region Intializing local variables
