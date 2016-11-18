@@ -30,9 +30,10 @@ namespace AstronautComplexBasicPack.ExercicePerception
             Form.MinimumSize = new Size(500, 600);
             CurrentMask = new Mask();
 
-            string startingInstruction = "Lors de ce test, des figures de forme et de couleur différentes vont être affichées à l'écran pendant X secondes.\n"
+            string secondes = (Difficulty == ExerciceDifficulty.Easy) ? "4" : "2";
+            string startingInstruction = "Lors de ce test, des figures de forme et de couleur différentes vont être affichées à l'écran pendant " + secondes + " secondes.\n"
                 + "Sur chaque figure est écrit un nombre variant de 0 à 9.\n\n"
-                + "Votre but est de retenir uniquement les nombres contenus dans les figures de forme X et de couleur Y\n"
+                + "Votre but est de retenir uniquement les nombres contenus dans les figures de forme X et de couleur Y\n\n"
                 + "Exemple : Retenez les nombres des figures de forme carrée et de couleur jaune).";
             MessageBox.Show(startingInstruction, "Consigne générale", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
@@ -41,9 +42,11 @@ namespace AstronautComplexBasicPack.ExercicePerception
         {
             for (int i = 0; i < numberOfMasks; i++)
             {
+                CurrentMask.SetRandomReferenceShapeAndColor();
+
                 GiveInstructions();
-                CurrentMask.ResetMask(tableLayoutPanelMask);
-                CurrentMask.ShowMask(Difficulty, tableLayoutPanelMask);
+                CurrentMask.ResetMask(tableLayoutPanel);
+                CurrentMask.ShowMask(Difficulty, tableLayoutPanel);
                 GetAnswers();
             }
             Finish();
@@ -51,7 +54,23 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         private void GiveInstructions()
         {
-            MessageBox.Show("Retenez le nombre associé aux carrés jaunes", "Instruction", MessageBoxButtons.OK, MessageBoxIcon.None);
+            string shape;
+            switch(CurrentMask.ReferenceShape)
+            {
+                case Shape.Circle:
+                    shape = "cercle";
+                    break;
+                case Shape.Square:
+                    shape = "carré";
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            string color = (CurrentMask.ReferenceColor == Color.Yellow)? "jaune":"bleu";
+
+            string instruction = "Retenez la valeur des " + shape + "s " + color + "s.";
+
+            MessageBox.Show(instruction, "Instruction", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
         private void GetAnswers()
@@ -62,7 +81,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         private void tableLayoutPanelMask_Resize(object sender, EventArgs e)
         {
-            tableLayoutPanelMask.Refresh();
+            tableLayoutPanel.Refresh();
         }
     }
 }

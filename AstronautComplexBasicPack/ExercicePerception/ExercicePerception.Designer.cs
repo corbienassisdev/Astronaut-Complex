@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanelMask = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
-            // tableLayoutPanelMask
+            // tableLayoutPanel
             // 
-            this.tableLayoutPanelMask.AutoSize = true;
-            this.tableLayoutPanelMask.ColumnCount = 4;
-            this.tableLayoutPanelMask.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelMask.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelMask.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelMask.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelMask.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelMask.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelMask.Name = "tableLayoutPanelMask";
-            this.tableLayoutPanelMask.RowCount = 3;
-            this.tableLayoutPanelMask.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelMask.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelMask.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelMask.Size = new System.Drawing.Size(1256, 716);
-            this.tableLayoutPanelMask.TabIndex = 0;
-            this.tableLayoutPanelMask.Resize += new System.EventHandler(this.tableLayoutPanelMask_Resize);
+            this.tableLayoutPanel.AutoSize = true;
+            this.tableLayoutPanel.ColumnCount = 4;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            this.tableLayoutPanel.RowCount = 3;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1256, 716);
+            this.tableLayoutPanel.TabIndex = 0;
+            this.tableLayoutPanel.Resize += new System.EventHandler(this.tableLayoutPanelMask_Resize);
             // 
             // ExercicePerception
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanelMask);
+            this.Controls.Add(this.tableLayoutPanel);
             this.MinimumSize = new System.Drawing.Size(450, 580);
             this.Name = "ExercicePerception";
             this.Size = new System.Drawing.Size(1256, 716);
@@ -65,6 +65,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMask;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
     }
 }

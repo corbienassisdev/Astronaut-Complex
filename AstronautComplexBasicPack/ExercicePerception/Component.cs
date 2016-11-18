@@ -65,7 +65,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
         /// <param name="color">will be the color of the returned component</param>
         /// <param name="shape">will be the shape of the returned component</param>
         /// <returns>Returns a new component WITHOUT random letter and digit but with the shape and color in parameters</returns>
-        public static Component RandomComponentWithoutBoth(Color color, Shape shape)
+        public static Component RandomComponentWithoutBoth(Shape referenceShape, Color referenceColor)
         {
             Component c = new Component();
             //changing shape and color of component if it has both of the excluded characteristics
@@ -73,7 +73,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
             {
                 c.Color = (r.Next(0, 2) == 0) ? Color.RoyalBlue : Color.Yellow; //transform to Enum ?;
                 c.Shape = RandomEnumValue<Shape>();
-            } while (c.Color == color && c.Shape == shape);
+            } while (c.Shape == referenceShape && c.Color == referenceColor);
             c.Digit = r.Next(0, 10); //0 to 9
 
             c.Dock = DockStyle.Fill;
@@ -87,11 +87,11 @@ namespace AstronautComplexBasicPack.ExercicePerception
         /// <param name="color">will be the color of the returned component</param>
         /// <param name="shape">will be the shape of the returned component</param>
         /// <returns>Returns a new component WITH random letter and digit but with the shape and color in parameters</returns>
-        public static Component RandomComponentWith(Color fixedColor, Shape fixedShape)
+        public static Component RandomComponentWith(Shape referenceShape, Color referenceColor)
         {
             Component c = new Component();
-            c.Color = fixedColor;
-            c.Shape = fixedShape;
+            c.Shape = referenceShape;
+            c.Color = referenceColor;
             c.Digit = r.Next(0, 10); //0 to 9
 
             c.Dock = DockStyle.Fill;

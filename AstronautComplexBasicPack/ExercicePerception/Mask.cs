@@ -12,29 +12,97 @@ namespace AstronautComplexBasicPack.ExercicePerception
     public class Mask
     {
         public List<Component> Components { get; set; }
+        public Shape ReferenceShape { get; set; } //the shape the user will have to memorize
+        public Color ReferenceColor { get; set; } //the color the user will have to memorize
+
+        public static int numberOfComponents = 12;
 
         public Mask()
         {
             Components = new List<Component>();
         }
 
+        
+        /// <summary>
+        /// Reset the mask
+        /// </summary>
+        /// <param name="tlp"></param>
+        public void ResetMask(TableLayoutPanel tlp)
+        {
+            Components.Clear();
+            tlp.Controls.Clear();
+
+            GenerateRandomComponents();
+            ShuffleComponents();
+            AddLetterToComponents();
+
+            AddComponentsToLayout(tlp);
+        }
+
+        /// <summary>
+        /// Displays the current mask.
+        /// </summary>
+        /// <param name="difficulty"></param>
+        /// <param name="tlp"></param>
+        public void ShowMask(ExerciceDifficulty difficulty, TableLayoutPanel tlp)
+        {
+            tlp.Visible = true;
+
+            tlp.Refresh();
+
+            switch (difficulty)
+            {
+                case ExerciceDifficulty.Easy:
+                    Thread.Sleep(4000); // Wait 2 seconds without blocking
+                    //System.Threading.Tasks.Task.Delay(2000); //Needs the Microsoft .NET framework 4.5 and higher.
+                    break;
+                case ExerciceDifficulty.Hard:
+                    Thread.Sleep(2000);
+                    //System.Threading.Tasks.Task.Delay(4000); //Needs the Microsoft .NET framework 4.5 and higher.
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            tlp.Visible = false;
+        }
+
+        public void SetRandomReferenceShapeAndColor()
+        {
+            ReferenceShape = Component.RandomEnumValue<Shape>();
+            ReferenceColor = (new Random().Next(0, 2) == 0) ? Color.RoyalBlue : Color.Yellow;
+        }
+
+        /// <summary>
+        /// Adds components form the list attribute in the tableLayoutPanel
+        /// </summary>
+        private void AddComponentsToLayout(TableLayoutPanel tlp)
+        {
+            int index = 0;
+            for (int i = 0; i < tlp.RowCount; i++)
+            {
+                for (int j = 0; j < tlp.ColumnCount; j++)
+                {
+                    tlp.Controls.Add(Components[index], j, i);
+                    index++;
+                }
+            }
+        }
+
         /// <summary>
         /// Generates and adding to the list pseudo-random components (pseudo because they are according to the specifications)
         /// </summary>
         /// <param name="numberOfComponents">The number of components to generate</param>
-        private void GenerateRandomComponents(int numberOfComponents)
+        private void GenerateRandomComponents()
         {
-            Color askedColor = Color.Yellow;
-            Shape askedShape = Shape.Square;
             int numberOfFixedComponents = 4;
 
             //generate and add to the list of components 3 or 4 components with specified color and shape
             for (int i = 0; i < numberOfFixedComponents; i++)
-                Components.Add(Component.RandomComponentWith(askedColor, askedShape));
+                Components.Add(Component.RandomComponentWith(ReferenceShape, ReferenceColor));
 
             for (int i = 0; i < numberOfComponents - numberOfFixedComponents; i++)
             {
-                Components.Add(Component.RandomComponentWithoutBoth(askedColor, askedShape));
+                Components.Add(Component.RandomComponentWithoutBoth(ReferenceShape, ReferenceColor));
             }
         }
 
@@ -68,62 +136,6 @@ namespace AstronautComplexBasicPack.ExercicePerception
             {
                 c.Letter = (char)AsciiIndex;
                 AsciiIndex++;
-            }
-        }
-
-        /// <summary>
-        /// Reset the mask
-        /// </summary>
-        /// <param name="tlp"></param>
-        public void ResetMask(TableLayoutPanel tlp)
-        {
-            Components.Clear();
-            tlp.Controls.Clear();
-
-            GenerateRandomComponents(12);
-            ShuffleComponents();
-            AddLetterToComponents();
-
-            AddComponentsToLayout(tlp);
-        }
-
-        /// <summary>
-        /// Displays the current mask.
-        /// </summary>
-        /// <param name="difficulty"></param>
-        /// <param name="tlp"></param>
-        public void ShowMask(ExerciceDifficulty difficulty, TableLayoutPanel tlp)
-        {
-            tlp.Refresh();
-
-            switch (difficulty)
-            {
-                case ExerciceDifficulty.Easy:
-                    Thread.Sleep(2000); // Wait 2 seconds without blocking
-                    //System.Threading.Tasks.Task.Delay(2000); //Needs the Microsoft .NET framework 4.5 and higher.
-                    break;
-                case ExerciceDifficulty.Hard:
-                    Thread.Sleep(4000);
-                    //System.Threading.Tasks.Task.Delay(4000); //Needs the Microsoft .NET framework 4.5 and higher.
-                    break;
-                default:
-                    throw new NotImplementedException();
-            }
-        }
-
-        /// <summary>
-        /// Adds components form the list attribute in the tableLayoutPanel
-        /// </summary>
-        private void AddComponentsToLayout(TableLayoutPanel tlp)
-        {
-            int index = 0;
-            for (int i = 0; i < tlp.RowCount; i++)
-            {
-                for (int j = 0; j < tlp.ColumnCount; j++)
-                {
-                    tlp.Controls.Add(Components[index], j, i);
-                    index++;
-                }
             }
         }
     }
