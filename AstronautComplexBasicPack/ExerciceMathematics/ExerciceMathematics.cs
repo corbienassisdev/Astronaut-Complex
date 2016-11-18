@@ -32,7 +32,8 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// </summary>
         public override void Initialize()
         {
-            Score = 0;
+            Score = new ExerciceScore();
+            Score.GoodAndswers = 0;
             Questions = new List<Question>();
             CurrentQuestion = 0;
             GenerateQuestions(20);
@@ -102,6 +103,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// <param name="index">The answer index.</param>
         public void AnswerQuestion(int index)
         {
+            Score.TotalAnswers++;
             Question question = Questions[CurrentQuestion];
             string correctAnswer = question.Answers[question.Answer];
             string message;
@@ -112,7 +114,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
                 message = string.Format("Bonne réponse ! Il s'agissait bien de {0} !", correctAnswer);
                 caption = "Bravo !";
                 icon = MessageBoxIcon.Information;
-                Score++;
+                Score.GoodAndswers++;
             }
             else
             {

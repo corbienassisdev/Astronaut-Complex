@@ -12,7 +12,7 @@ namespace AstronautComplex
 
         public override string ToString()
         {
-            return (GoodAndswers / TotalAnswers) * 100 + " %";
+            return ((double)GoodAndswers / TotalAnswers) * 100 + " %";
         }
     }
 }
