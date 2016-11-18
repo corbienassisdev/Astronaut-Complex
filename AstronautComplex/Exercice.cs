@@ -8,7 +8,7 @@ namespace AstronautComplex
         public string Title { get; set; }
         public ExerciceDifficulty Difficulty { get; set; }
         public ExerciceForm Form { get; set; }
-        protected int Score { get; set; }
+        protected ExerciceScore Score { get; set; }
         protected Random Random { get; set; }
 
         /// <summary>
