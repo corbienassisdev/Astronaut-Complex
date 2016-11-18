@@ -31,14 +31,48 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         private static Random r = new Random();
 
-        public Component()
+        /// <summary>
+        /// Creates and returns a new random component with shape and color given.
+        /// </summary>
+        /// <param name="color">will be the color of the returned component</param>
+        /// <param name="shape">will be the shape of the returned component</param>
+        /// <returns>Returns a new component WITHOUT random letter and digit but with the shape and color in parameters</returns>
+        public static Component RandomComponentWithoutBoth(Color color, Shape shape)
         {
-            Color = (r.Next(0, 2) == 0) ? Color.RoyalBlue : Color.Yellow; //transform to Enum ?
-            Shape = RandomEnumValue<Shape>();
-            Digit = r.Next(0, 10); //0 to 9
+            Component c = new Component();
+            //changing shape and color of component if it has both of the excluded characteristics
+            do
+            {
+                c.Color = (r.Next(0, 2) == 0) ? Color.RoyalBlue : Color.Yellow; //transform to Enum ?;
+                c.Shape = RandomEnumValue<Shape>();
+            } while (c.Color == color && c.Shape == shape);
+            c.Digit = r.Next(0, 10); //0 to 9
 
-            this.Dock = DockStyle.Fill;
+            c.Dock = DockStyle.Fill;
+
+            return c;
         }
+
+        /// <summary>
+        /// Creates and returns a new random component with shape and color given.
+        /// </summary>
+        /// <param name="color">will be the color of the returned component</param>
+        /// <param name="shape">will be the shape of the returned component</param>
+        /// <returns>Returns a new component WITH random letter and digit but with the shape and color in parameters</returns>
+        public static Component RandomComponentWith(Color fixedColor, Shape fixedShape)
+        {
+            Component c = new Component();
+            c.Color = fixedColor;
+            c.Shape = fixedShape;
+            c.Digit = r.Next(0, 10); //0 to 9
+
+            c.Dock = DockStyle.Fill;
+
+            return c;
+        }
+
+        public Component()
+        {}
 
         /// <summary>
         /// Builds a component with a lettern color, shape and digit given.

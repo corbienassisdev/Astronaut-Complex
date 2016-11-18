@@ -36,6 +36,10 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
             Score.GoodAndswers = 0;
             Questions = new List<Question>();
             CurrentQuestion = 0;
+        }
+
+        public override void Run()
+        {
             GenerateQuestions(20);
             AskQuestion();
         }

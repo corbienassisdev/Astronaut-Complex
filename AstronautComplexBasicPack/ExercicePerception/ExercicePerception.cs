@@ -26,15 +26,23 @@ namespace AstronautComplexBasicPack.ExercicePerception
             Form.MinimumSize = new Size(500, 600);
             Components = new List<Component>();
 
-            //TODO : Give the instructions
-            //MessageBox.Show("Ceci est la consigne");
+            string startingInstruction = "Lors de ce test, des figures de forme et de couleur différentes vont être affichées à l'écran pendant X secondes.\n"
+                + "Sur chaque figure est écrit un nombre variant de 0 à 9.\n\n"
+                + "Votre but est de retenir uniquement les nombres contenus dans les figures de forme X et de couleur Y\n"
+                + "Exemple : Retenez les nombres des figures de forme carrée et de couleur jaune).";
+            MessageBox.Show(startingInstruction, "Consigne générale", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
+        public override void Run()
+        {
             //TODO : For 1 to 10, Display successive screens (2 or 4 seconds according to the difficulty) and increment answers
             //for (int i = 0; i < 1; i++) //mettre valeur 10 en variable 10101010101010
             //{
+            //TODO : Give the instructions
+            MessageBox.Show("Retenez le nombre associé aux carrés jaunes", "Instruction", MessageBoxButtons.OK, MessageBoxIcon.None);
             //je remplis ma liste de 12 composants
-            //LoadComponents();
             GenerateRandomComponents(12);
+            //TODO : shuffleComponents and AddLetterToComponents
             //je les rajoute à mon tablelayoutpanel
             AddComponentsToLayout();
             //je les affiche 2 ou 4 secondes
@@ -43,31 +51,20 @@ namespace AstronautComplexBasicPack.ExercicePerception
             //}
         }
 
-        /// <summary>
-        /// Displays the interface with all the components inside
-        /// </summary>
-        public void LoadComponents()
-        {
-            Components.Add(new Component('A', Color.Yellow, Shape.Circle, 2));
-            Components.Add(new Component('B', Color.RoyalBlue, Shape.Square, 8));
-            Components.Add(new Component('C', Color.Yellow, Shape.Square, 1));
-            Components.Add(new Component('D', Color.Yellow, Shape.Circle, 8));
-            Components.Add(new Component('E', Color.RoyalBlue, Shape.Circle, 7));
-            Components.Add(new Component('F', Color.Yellow, Shape.Square, 1));
-            Components.Add(new Component('G', Color.DodgerBlue, Shape.Circle, 5));
-            Components.Add(new Component('H', Color.Yellow, Shape.Square, 2));
-            Components.Add(new Component('I', Color.RoyalBlue, Shape.Square, 9));
-            Components.Add(new Component('J', Color.Yellow, Shape.Circle, 8));
-            Components.Add(new Component('K', Color.RoyalBlue, Shape.Circle, 7));
-            Components.Add(new Component('L', Color.Yellow, Shape.Square, 1));
-
-            // TODO: create a random generator according to the specifications, or an xml file
-        }
-
         private void GenerateRandomComponents(int numberOfComponents)
         {
-            for (int i = 0; i < numberOfComponents; i++)
-                Components.Add(new Component());
+            Color askedColor = Color.Yellow;
+            Shape askedShape = Shape.Square;
+            int numberOfFixedComponents = 4;
+
+            //generate and add to the list of components 3 or 4 components with specified color and shape
+            for (int i = 0; i < numberOfFixedComponents; i++)
+                Components.Add(Component.RandomComponentWith(askedColor, askedShape));
+
+            for (int i = 0; i < numberOfComponents - numberOfFixedComponents; i++)
+            { 
+                Components.Add(Component.RandomComponentWithoutBoth(askedColor, askedShape));
+            }
         }
 
         /// <summary>
@@ -92,25 +89,6 @@ namespace AstronautComplexBasicPack.ExercicePerception
         public void ShowComponents()
         {
             //tableLayoutPanelMask.Refresh(); //call the onPaint method of each component in the tableLayoutPanel
-        }
-
-        //n'est plus appelé
-        private void ExercicePerception_Load(object sender, EventArgs e)
-        {
-            //TODO : Give the instructions
-            //MessageBox.Show("Ceci est la consigne");
-
-            //TODO : For 1 to 10, Display successive screens (2 or 4 seconds according to the difficulty) and increment answers
-            //for (int i = 0; i < 1; i++) //mettre valeur 10 en variable 10101010101010
-            //{
-                //je remplis ma liste de 12 composants
-                LoadComponents();
-                //je les rajoute à mon tablelayoutpanel
-                AddComponentsToLayout();
-                //je les affiche 2 ou 4 secondes
-                ShowComponents();
-                //j'incremente les réponses
-            //}
         }
 
         private void tableLayoutPanelMask_Resize(object sender, EventArgs e)

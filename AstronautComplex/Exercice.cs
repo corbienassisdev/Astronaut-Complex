@@ -44,5 +44,10 @@ namespace AstronautComplex
         /// Initializes the exercice. Needs to be implemented.
         /// </summary>
         public virtual void Initialize() { }
+
+        /// <summary>
+        /// Runs the exercice. Needs to be implemented.
+        /// </summary>
+        public virtual void Run() { }
     }
 }

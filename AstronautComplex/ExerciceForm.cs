@@ -66,6 +66,7 @@ namespace AstronautComplex
                                 menuItem.Click += (sender, e) =>
                                 {
                                     exercice.Initialize();
+                                    exercice.Run();
                                     panelExercice.Controls.Clear();
                                     panelExercice.Controls.Add(exercice);
                                 };
