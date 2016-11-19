@@ -5,6 +5,7 @@ using System;
 using System.Windows.Forms;
 using System.Timers;
 using System.Threading;
+using Microsoft.VisualBasic;
 
 namespace AstronautComplexBasicPack.ExercicePerception
 {
@@ -96,8 +97,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         private int AskDigitOfComponent(Component c)
         {
-            //Form inputForm = new Form();
-            throw new NotImplementedException();
+            string input = Interaction.InputBox("Prompt", "Title", "Default", -1, -1);
             return 1;
         }
 
