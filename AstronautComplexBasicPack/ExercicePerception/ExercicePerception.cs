@@ -15,7 +15,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
     {
         public Mask CurrentMask { get; set; }
 
-        public static int numberOfMasks = 3;
+        public static int numberOfMasks = 1;
 
         /// <summary>
         /// Builds an astronaut perception test.
@@ -34,7 +34,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
             string startingInstruction = "Lors de ce test, des figures de forme et de couleur différentes vont être affichées à l'écran pendant " + secondes + " secondes.\n"
                 + "Sur chaque figure est écrit un nombre variant de 0 à 9.\n\n"
                 + "Votre but est de retenir uniquement les nombres contenus dans les figures de forme X et de couleur Y\n\n"
-                + "Exemple : Retenez les nombres des figures de forme carrée et de couleur jaune).";
+                + "Exemple : Retenez la valeur des cercles jaunes";
             MessageBox.Show(startingInstruction, "Consigne générale", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
@@ -43,7 +43,6 @@ namespace AstronautComplexBasicPack.ExercicePerception
             for (int i = 0; i < numberOfMasks; i++)
             {
                 CurrentMask.SetRandomReferenceShapeAndColor();
-
                 GiveInstructions();
                 CurrentMask.ResetMask(tableLayoutPanel);
                 CurrentMask.ShowMask(Difficulty, tableLayoutPanel);
@@ -75,8 +74,31 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         private void GetAnswers()
         {
+            foreach(Component c in CurrentMask.Components)
+            {
+                if(c.Shape == CurrentMask.ReferenceShape && c.Color == CurrentMask.ReferenceColor)
+                {
+                    int i = AskDigitOfComponent(c);
+                }
+            }
+
+            //récupération des bonnes lettres
+            
             MessageBox.Show("Je veux des réponses", "Réponses", MessageBoxButtons.OK, MessageBoxIcon.None);
+
+            //pour chaque composant de forme ReferenceShape et de couleur ReferenceColor,
+            //demander la valeur avec une boîte de dialogue en donnant la lettre
+            //si valeur correspond, Score.GoodAnswer++;
+            //fin pour
+            //Score.TotalAnswers++;
             //throw new NotImplementedException();
+        }
+
+        private int AskDigitOfComponent(Component c)
+        {
+            //Form inputForm = new Form();
+            throw new NotImplementedException();
+            return 1;
         }
 
         private void tableLayoutPanelMask_Resize(object sender, EventArgs e)

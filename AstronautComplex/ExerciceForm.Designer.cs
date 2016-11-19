@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExerciceForm));
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.MenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,8 +85,10 @@
             this.ClientSize = new System.Drawing.Size(784, 611);
             this.Controls.Add(this.panelExercice);
             this.Controls.Add(this.menuStripMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "ExerciceForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Astronaut Complex";
             this.Load += new System.EventHandler(this.AstronautComplex_Load);
             this.menuStripMain.ResumeLayout(false);
