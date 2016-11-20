@@ -16,7 +16,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
     {
         public Mask CurrentMask { get; set; }
 
-        public static int numberOfMasks = 2;
+        public static int numberOfMasks = 10;
 
         /// <summary>
         /// Builds an astronaut perception test.
@@ -97,9 +97,15 @@ namespace AstronautComplexBasicPack.ExercicePerception
             NumericUpDown updown = new NumericUpDown();
             Button buttonOk = new Button();
 
+            #region Form creation
             form.Text = "Figure " + c.Letter.ToString();
             label.Text = "Quelle était la valeur associée\n à la figure " + c.Letter.ToString() + " ?";
             updown.ResetText();
+
+            Panel buttonOkPanel = new Panel(); //only about aesthectics
+            buttonOkPanel.Dock = DockStyle.Bottom;
+            buttonOkPanel.Height = 50;
+            buttonOkPanel.BackColor = Color.WhiteSmoke;
 
             buttonOk.Text = "OK";
             buttonOk.DialogResult = DialogResult.OK;
@@ -108,24 +114,29 @@ namespace AstronautComplexBasicPack.ExercicePerception
             label.Font = new Font("Arial", 11);
             label.TextAlign = ContentAlignment.MiddleCenter;
             label.Dock = DockStyle.Top;
-            label.Height = 80;
+            label.Height = 50;
+            label.BackColor = Color.White;
 
-            updown.Location = new Point(105, 85);
+            updown.Location = new Point(105, 60);
             updown.Width = 75;
             updown.TextAlign = HorizontalAlignment.Center;
             updown.Minimum = 0;
             updown.Maximum = 9;
 
-            buttonOk.Location = new Point(105, 140);
+            buttonOk.Location = new Point(191, 13);
             buttonOk.Width = 75;
-            buttonOk.Height = 30;
+            buttonOk.Height = 25;
             buttonOk.Text = "OK";
 
-            form.ClientSize = new Size(280, 200);
-            form.Controls.AddRange(new Control[] { label, updown, buttonOk });
+            buttonOkPanel.Controls.Add(buttonOk);
+
+            form.ClientSize = new Size(280, 158);
+            form.Controls.AddRange(new Control[] { label, updown, buttonOkPanel });
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
             form.StartPosition = FormStartPosition.CenterScreen;
+            form.BackColor = Color.White;
             form.AcceptButton = buttonOk;
+            #endregion
 
             form.ShowDialog();
 
