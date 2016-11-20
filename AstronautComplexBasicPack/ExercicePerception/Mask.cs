@@ -53,8 +53,9 @@ namespace AstronautComplexBasicPack.ExercicePerception
             switch (difficulty)
             {
                 case ExerciceDifficulty.Easy:
-                    Thread.Sleep(4000); // Wait 2 seconds without blocking
+                    Thread.Sleep(4000); // Wait 2 seconds, freeze the thread (and UI)
                     //System.Threading.Tasks.Task.Delay(2000); //Needs the Microsoft .NET framework 4.5 and higher.
+                    //System.Threading.Tasks.Task.Delay(4000);
                     break;
                 case ExerciceDifficulty.Hard:
                     Thread.Sleep(2000);

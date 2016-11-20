@@ -16,7 +16,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
     {
         public Mask CurrentMask { get; set; }
 
-        public static int numberOfMasks = 1;
+        public static int numberOfMasks = 3;
 
         /// <summary>
         /// Builds an astronaut perception test.
@@ -97,7 +97,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         private int AskDigitOfComponent(Component c)
         {
-            string input = Interaction.InputBox("Prompt", "Title", "Default", -1, -1);
+            //string input = Interaction.InputBox("c.Letter", c.Letter, "Default", -1, -1);
             return 1;
         }
 

@@ -1,4 +1,4 @@
-L'application AstronautComplex est sous license MIT. Elle correspond à la solution et tous ses projets.
+﻿L'application AstronautComplex est sous license MIT. Elle correspond à la solution et tous ses projets.
 
 > Copyright (c) 2016: Corentin Bienassis, Thibaud Laurent and contributors :
 
