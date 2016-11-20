@@ -33,7 +33,6 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         public override void Initialize()
         {
             Score = new ExerciceScore();
-            Score.GoodAnswers = 0;
             Questions = new List<Question>();
             CurrentQuestion = 0;                      
         }

@@ -45,7 +45,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
         /// </summary>
         /// <param name="difficulty"></param>
         /// <param name="tlp"></param>
-        public async void ShowMask(ExerciceDifficulty difficulty, TableLayoutPanel tlp)
+        public void ShowMask(ExerciceDifficulty difficulty, TableLayoutPanel tlp)
         {
             tlp.Visible = true;
 
@@ -63,6 +63,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
                 default:
                     throw new NotImplementedException();
             }
+
             tlp.Visible = false;
         }
 
@@ -94,12 +95,13 @@ namespace AstronautComplexBasicPack.ExercicePerception
         /// <param name="numberOfComponents">The number of components to generate</param>
         private void GenerateRandomComponents()
         {
-            int numberOfFixedComponents = 4;
+            int numberOfFixedComponents = new Random().Next(3,5); //3 or 4 (cf. specifications)
 
-            //generate and add to the list of components 3 or 4 components with specified color and shape
+            //generates and add to the list of components 3 or 4 components with specified color and shape
             for (int i = 0; i < numberOfFixedComponents; i++)
                 Components.Add(Component.RandomComponentWith(ReferenceShape, ReferenceColor));
 
+            //generates the other components randomly, without the same reference color and shape as the first ones
             for (int i = 0; i < numberOfComponents - numberOfFixedComponents; i++)
             {
                 Components.Add(Component.RandomComponentWithoutBoth(ReferenceShape, ReferenceColor));

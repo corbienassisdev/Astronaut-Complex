@@ -28,6 +28,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         public override void Initialize()
         {
+            Score = new ExerciceScore();
             Form.MinimumSize = new Size(500, 600);
             CurrentMask = new Mask();
 
@@ -79,26 +80,56 @@ namespace AstronautComplexBasicPack.ExercicePerception
             {
                 if(c.Shape == CurrentMask.ReferenceShape && c.Color == CurrentMask.ReferenceColor)
                 {
-                    int i = AskDigitOfComponent(c);
+                    int n = AskDigitOfComponent(c);
+
+                    if(n == c.Digit)
+                        Score.GoodAnswers++;
+
+                    Score.TotalAnswers++;
                 }
             }
-
-            //récupération des bonnes lettres
-            
-            MessageBox.Show("Je veux des réponses", "Réponses", MessageBoxButtons.OK, MessageBoxIcon.None);
-
-            //pour chaque composant de forme ReferenceShape et de couleur ReferenceColor,
-            //demander la valeur avec une boîte de dialogue en donnant la lettre
-            //si valeur correspond, Score.GoodAnswer++;
-            //fin pour
-            //Score.TotalAnswers++;
-            //throw new NotImplementedException();
         }
 
         private int AskDigitOfComponent(Component c)
         {
-            //string input = Interaction.InputBox("c.Letter", c.Letter, "Default", -1, -1);
-            return 1;
+            Form form = new Form();
+            Label label = new Label();
+            NumericUpDown updown = new NumericUpDown();
+            Button buttonOk = new Button();
+
+            form.Text = "Figure " + c.Letter.ToString();
+            label.Text = "Quelle était la valeur associée\n à la figure " + c.Letter.ToString() + " ?";
+            updown.ResetText();
+
+            buttonOk.Text = "OK";
+            buttonOk.DialogResult = DialogResult.OK;
+
+            label.Dock = DockStyle.Top;
+            label.Font = new Font("Arial", 11);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Dock = DockStyle.Top;
+            label.Height = 80;
+
+            updown.Location = new Point(105, 85);
+            updown.Width = 75;
+            updown.TextAlign = HorizontalAlignment.Center;
+            updown.Minimum = 0;
+            updown.Maximum = 9;
+
+            buttonOk.Location = new Point(105, 140);
+            buttonOk.Width = 75;
+            buttonOk.Height = 30;
+            buttonOk.Text = "OK";
+
+            form.ClientSize = new Size(280, 200);
+            form.Controls.AddRange(new Control[] { label, updown, buttonOk });
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.AcceptButton = buttonOk;
+
+            form.ShowDialog();
+
+            return (int)updown.Value;
         }
 
         private void tableLayoutPanelMask_Resize(object sender, EventArgs e)
