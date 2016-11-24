@@ -21,7 +21,7 @@ namespace AstronautComplex
 
         public override string ToString()
         {
-            return ((double)GoodAnswers / TotalAnswers) * 100 + " %";
+            return Math.Round(((double)GoodAnswers / TotalAnswers) * 100 ,2) + " %"; //round value at 2 decimals
         }
     }
 }

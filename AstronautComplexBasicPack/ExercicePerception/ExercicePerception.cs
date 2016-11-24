@@ -16,7 +16,10 @@ namespace AstronautComplexBasicPack.ExercicePerception
     {
         public Mask CurrentMask { get; set; }
 
-        public static int numberOfMasks = 10;
+        public static int numberOfMasks = 3;
+
+        public static int timeHard = 2;
+        public static int timeEasy = 4;
 
         /// <summary>
         /// Builds an astronaut perception test.
@@ -32,7 +35,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
             Form.MinimumSize = new Size(500, 600);
             CurrentMask = new Mask();
 
-            string secondes = (Difficulty == ExerciceDifficulty.Easy) ? "4" : "2";
+            string secondes = (Difficulty == ExerciceDifficulty.Easy) ? timeEasy.ToString() : timeHard.ToString(); ;
             string startingInstruction = "Lors de ce test, des figures de forme et de couleur différentes vont être affichées à l'écran pendant " + secondes + " secondes.\n"
                 + "Sur chaque figure est écrit un nombre variant de 0 à 9.\n\n"
                 + "Votre but est de retenir uniquement les nombres contenus dans les figures de forme X et de couleur Y\n\n"
