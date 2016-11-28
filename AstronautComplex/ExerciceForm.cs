@@ -45,9 +45,10 @@ namespace AstronautComplex
                                 ToolStripMenuItem menuItemDifficulty;
                                 if(!MenuItemNew.DropDownItems.ContainsKey(key))
                                 {
+                                    string difficultyText = Properties.Resources.ResourceManager.GetString("lang" + difficulty.ToString());
                                     menuItemDifficulty = new ToolStripMenuItem();
                                     menuItemDifficulty.Name = key;
-                                    menuItemDifficulty.Text = difficulty.ToString();
+                                    menuItemDifficulty.Text = (difficultyText != null) ? difficultyText : difficulty.ToString();
                                     MenuItemNew.DropDownItems.Add(menuItemDifficulty);
                                 }
                                 else

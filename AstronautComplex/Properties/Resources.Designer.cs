@@ -59,5 +59,23 @@ namespace AstronautComplex.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Facile.
+        /// </summary>
+        internal static string langEasy {
+            get {
+                return ResourceManager.GetString("langEasy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Difficile.
+        /// </summary>
+        internal static string langHard {
+            get {
+                return ResourceManager.GetString("langHard", resourceCulture);
+            }
+        }
     }
 }
