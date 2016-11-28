@@ -30,11 +30,11 @@
         {
             this.SuspendLayout();
             // 
-            // AstronautTestFocus
+            // ExerciceFocus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "AstronautTestFocus";
+            this.Name = "ExerciceFocus";
             this.Size = new System.Drawing.Size(1495, 588);
             this.ResumeLayout(false);
 
