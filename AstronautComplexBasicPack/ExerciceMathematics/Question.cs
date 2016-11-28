@@ -1,5 +1,6 @@
 ﻿using AstronautComplex;
 using System;
+using System.Collections.Generic;
 
 namespace AstronautComplexBasicPack.ExerciceMathematics
 {
@@ -9,6 +10,8 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
     public abstract class Question
     {
         public string TitleFormat { get; protected set; }
+        public string SuffixeAnswer { get; protected set; }
+
         public string Title { get; protected set; }
         public int Answer { get; protected set; }
         public string[] Answers { get; protected set; }
@@ -17,9 +20,39 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// Builds a multiple-answer question.
         /// </summary>
         /// <param name="titleFormat">The question title format.</param>
-        public Question(string titleFormat)
+        /// <param name="suffixeAnswers">The answer suffixe (usually a measure unit).</param>
+        public Question(string titleFormat, string suffixeAnswer)
         {
             TitleFormat = titleFormat;
+            SuffixeAnswer = suffixeAnswer;
+        }
+
+        /// <summary>
+        /// Generates the question title based on its format.
+        /// </summary>
+        /// <param name="args">The question format arguments.</param>
+        public void GenerateTitle(params object[] argsQuestion)
+        {
+            Title = string.Format(TitleFormat, argsQuestion);
+        }
+
+        /// <summary>
+        /// Generates the question answers based on the correct answer.
+        /// </summary>
+        /// <param name="correctAnswer">The correct answer.</param>
+        /// <param name="randomRange">The random range in which the function can select random values.</param>
+        /// <param name="minAnswers">The answers minimum number.</param>
+        /// <param name="maxAnswers">The answers maximum number.</param>
+        /// <param name="random">The exercice random number generator.</param>
+        public void GenerateAnswers(decimal correctAnswer, decimal randomRange, byte minAnswers, byte maxAnswers, Random random)
+        {
+            Answers = new string[random.Next(minAnswers, maxAnswers)];
+            Answer = random.Next(0, Answers.Length);
+
+            for (int i = 0; i < Answers.Length; i++)
+            {
+                Answers[i] = string.Format("{0}{1}", correctAnswer + ((i - Answer) * randomRange), SuffixeAnswer);
+            }
         }
 
         /// <summary>

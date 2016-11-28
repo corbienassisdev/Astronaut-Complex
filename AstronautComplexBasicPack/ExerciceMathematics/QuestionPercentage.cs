@@ -5,13 +5,17 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
 {
     public class QuestionPercentage : Question
     {
+        public bool IsNegative { get; protected set; }
+
         /// <summary>
         /// Builds a multiple-answer question on a percentage problem.
         /// </summary>
         /// <param name="titleFormat">The question title format.</param>
-        public QuestionPercentage(string titleFormat) : base(titleFormat)
+        /// <param name="suffixeAnswer">The answer suffixe (usually a measure unit).</param>
+        /// <param name="isNegative">True if the question is a reduction percentage, false if it is an augmentation percentage. Default is false.</param>
+        public QuestionPercentage(string titleFormat, string suffixeAnswer, bool isNegative = false) : base(titleFormat, suffixeAnswer)
         {
-
+            IsNegative = isNegative;
         }
 
         /// <summary>
@@ -23,17 +27,12 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         {
             decimal startPrice = random.Next(50, 200);
             decimal percentage = random.Next(5, 30);
+            percentage = IsNegative ? -percentage : percentage;
             decimal correctAnswer = startPrice + (percentage / 100) * startPrice;
             decimal randomRange = random.Next((int)correctAnswer / 10, (int)correctAnswer / 5);
 
-            Title = string.Format(TitleFormat, startPrice, percentage);
-            Answers = new string[random.Next(3, 6)];
-            Answer = random.Next(0, Answers.Length);
-
-            for (int i = 0; i < Answers.Length; i++)
-            {
-                Answers[i] = string.Format("{0}€", correctAnswer + ((i - Answer) * randomRange));
-            }
+            GenerateTitle(startPrice, percentage);
+            GenerateAnswers(correctAnswer, randomRange, 3, 6, random);
         }
     }
 }
