@@ -27,9 +27,8 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         #region Statics attributes
         public static int shapeLength = 100;
-        public static int charHeight = 20;
-        public static string fontFamily = "Arial";
-       
+        public static int minDigit = 0;
+        public static int maxDigit = 9;
         private static Random r = new Random();
         #endregion
 
@@ -74,7 +73,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
                 c.Color = (r.Next(0, 2) == 0) ? Color.RoyalBlue : Color.Yellow; //transform to Enum ?;
                 c.Shape = RandomEnumValue<Shape>();
             } while (c.Shape == referenceShape && c.Color == referenceColor);
-            c.Digit = r.Next(0, 10); //0 to 9
+            c.Digit = r.Next(minDigit, maxDigit = 1);
 
             c.Dock = DockStyle.Fill;
 
@@ -92,7 +91,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
             Component c = new Component();
             c.Shape = referenceShape;
             c.Color = referenceColor;
-            c.Digit = r.Next(0, 10); //0 to 9
+            c.Digit = r.Next(minDigit, maxDigit + 1);
 
             c.Dock = DockStyle.Fill;
 
@@ -106,7 +105,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
             SolidBrush brush = new SolidBrush(this.Color);
             Graphics graphics = this.CreateGraphics();
             Pen pen = new Pen(Color.Black); //for shape outlines
-            Font font = new Font(fontFamily, charHeight);
+            Font font = new Font("Arial", 20);
             StringFormat format = new StringFormat();
             Point center = new Point(Width / 2, Height / 2); //center of the panel
             Rectangle rectangle = new Rectangle(center.X - (shapeLength / 2), center.Y - (shapeLength / 2), shapeLength, shapeLength); //for shapes
@@ -133,10 +132,10 @@ namespace AstronautComplexBasicPack.ExercicePerception
             //lettre
             brush.Color = Color.Black;
             int letterWidth = TextRenderer.MeasureText(this.Letter.ToString(), font).Width;
-            graphics.DrawString(this.Letter.ToString(), font, brush, center.X - (letterWidth / 2 - 3), center.Y - (shapeLength / 2 + charHeight + 15), format); //15 is the margin between the letter and the shape
+            graphics.DrawString(this.Letter.ToString(), font, brush, center.X - (letterWidth / 2 - 3), center.Y - (shapeLength / 2 + 20 + 15), format); //15 is the margin between the letter and the shape
             //digit
             int digitWidth = TextRenderer.MeasureText(this.Digit.ToString(), font).Width;
-            graphics.DrawString(this.Digit.ToString(), font, brush, center.X - (digitWidth / 2 - 3), center.Y - charHeight + 4, format);
+            graphics.DrawString(this.Digit.ToString(), font, brush, center.X - (digitWidth / 2 - 3), center.Y - 20 + 4, format);
             //concrete values here correspond to margins or offsets in order to get the perfect center. They adapt to constant values like the font size, etc.
 
 
