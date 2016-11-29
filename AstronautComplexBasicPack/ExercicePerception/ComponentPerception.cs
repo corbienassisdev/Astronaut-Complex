@@ -18,7 +18,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
     /// <summary>
     /// Is a colored shape with the letter and digit associated
     /// </summary>
-    public class Component : Panel
+    public class ComponentPerception : Panel
     {
         public char Letter { get; set; }
         public Shape Shape { get; protected set; }
@@ -38,7 +38,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
             return (T)v.GetValue(r.Next(v.Length));
         } // Generic in case of a color enum
         
-        public Component() {}
+        public ComponentPerception() {}
 
         /// <summary>
         /// Builds a component with a lettern color, shape and digit given.
@@ -47,7 +47,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
         /// <param name="color">The color of the component.</param>
         /// <param name="shape">The shape of the component (square or circle).</param>
         /// <param name="digit">The digit displayed on the shape [0~9].</param>
-        public Component(char letter, Color color, Shape shape, int digit)
+        public ComponentPerception(char letter, Color color, Shape shape, int digit)
         {
             Letter = letter;
             Color = color;
@@ -64,16 +64,16 @@ namespace AstronautComplexBasicPack.ExercicePerception
         /// <param name="color">will be the color of the returned component</param>
         /// <param name="shape">will be the shape of the returned component</param>
         /// <returns>Returns a new component WITHOUT random letter and digit but with the shape and color in parameters</returns>
-        public static Component RandomComponentWithoutBoth(Shape referenceShape, Color referenceColor)
+        public static ComponentPerception RandomComponentWithoutBoth(Shape referenceShape, Color referenceColor)
         {
-            Component c = new Component();
+            ComponentPerception c = new ComponentPerception();
             //changing shape and color of component if it has both of the excluded characteristics
             do
             {
                 c.Color = (r.Next(0, 2) == 0) ? Color.RoyalBlue : Color.Yellow; //transform to Enum ?;
                 c.Shape = RandomEnumValue<Shape>();
             } while (c.Shape == referenceShape && c.Color == referenceColor);
-            c.Digit = r.Next(minDigit, maxDigit = 1);
+            c.Digit = r.Next(minDigit, maxDigit + 1);
 
             c.Dock = DockStyle.Fill;
 
@@ -86,9 +86,9 @@ namespace AstronautComplexBasicPack.ExercicePerception
         /// <param name="color">will be the color of the returned component</param>
         /// <param name="shape">will be the shape of the returned component</param>
         /// <returns>Returns a new component WITH random letter and digit but with the shape and color in parameters</returns>
-        public static Component RandomComponentWith(Shape referenceShape, Color referenceColor)
+        public static ComponentPerception RandomComponentWith(Shape referenceShape, Color referenceColor)
         {
-            Component c = new Component();
+            ComponentPerception c = new ComponentPerception();
             c.Shape = referenceShape;
             c.Color = referenceColor;
             c.Digit = r.Next(minDigit, maxDigit + 1);
@@ -116,7 +116,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
             graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
             #endregion
 
-            //shape with color
+            //Rendering shapes with colors
             switch (this.Shape)
             {
                 case Shape.Circle:
@@ -129,14 +129,14 @@ namespace AstronautComplexBasicPack.ExercicePerception
                     break;
             }
 
-            //lettre
+            //Rendering letters
             brush.Color = Color.Black;
             int letterWidth = TextRenderer.MeasureText(this.Letter.ToString(), font).Width;
             graphics.DrawString(this.Letter.ToString(), font, brush, center.X - (letterWidth / 2 - 3), center.Y - (shapeLength / 2 + 20 + 15), format); //15 is the margin between the letter and the shape
-            //digit
+            //Rendering digits
             int digitWidth = TextRenderer.MeasureText(this.Digit.ToString(), font).Width;
             graphics.DrawString(this.Digit.ToString(), font, brush, center.X - (digitWidth / 2 - 3), center.Y - 20 + 4, format);
-            //concrete values here correspond to margins or offsets in order to get the perfect center. They adapt to constant values like the font size, etc.
+            //concrete values here correspond to margins or offsets in order to get the perfect center.
 
 
             brush.Dispose();

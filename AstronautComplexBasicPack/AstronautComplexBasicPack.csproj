@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExerciceFocus\ComponentFocus.cs" />
+    <Compile Include="ExerciceFocus\Series.cs" />
     <Compile Include="ExerciceMathematics\ExerciceMathematics.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -61,7 +63,7 @@
     </Compile>
     <Compile Include="ExerciceMathematics\QuestionHypothenuse.cs" />
     <Compile Include="ExerciceMathematics\QuestionPercentage.cs" />
-    <Compile Include="ExercicePerception\Component.cs">
+    <Compile Include="ExercicePerception\ComponentPerception.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ExercicePerception\ExercicePerception.cs">

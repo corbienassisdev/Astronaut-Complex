@@ -79,7 +79,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         private void GetAnswers()
         {
-            foreach(Component c in CurrentMask.Components)
+            foreach(ComponentPerception c in CurrentMask.Components)
             {
                 if(c.Shape == CurrentMask.ReferenceShape && c.Color == CurrentMask.ReferenceColor)
                 {
@@ -93,7 +93,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
             }
         }
 
-        private int AskDigitOfComponent(Component c)
+        private int AskDigitOfComponent(ComponentPerception c)
         {
             Form form = new Form();
             Label label = new Label();

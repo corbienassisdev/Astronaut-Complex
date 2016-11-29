@@ -12,7 +12,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
 {
     public class Mask
     {
-        public List<Component> Components { get; set; }
+        public List<ComponentPerception> Components { get; set; }
         public Shape ReferenceShape { get; set; } //the shape the user will have to memorize
         public Color ReferenceColor { get; set; } //the color the user will have to memorize
 
@@ -20,7 +20,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         public Mask()
         {
-            Components = new List<Component>();
+            Components = new List<ComponentPerception>();
         }
 
         
@@ -54,10 +54,10 @@ namespace AstronautComplexBasicPack.ExercicePerception
             switch (difficulty)
             {
                 case ExerciceDifficulty.Easy:
-                    Thread.Sleep(ExercicePerception.timeEasy); // Wait 2 seconds, but freeze the thread (and UI)
+                    Thread.Sleep(ExercicePerception.timeEasy * 1000); // Wait 2 seconds, but freeze the thread (and UI)
                     break;
                 case ExerciceDifficulty.Hard:
-                    Thread.Sleep(ExercicePerception.timeHard);
+                    Thread.Sleep(ExercicePerception.timeHard * 1000);
                     //System.Threading.Tasks.Task.Delay(4000); //Needs the Microsoft .NET framework 4.5 and higher.
                     break;
                 default:
@@ -69,7 +69,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         public void SetRandomReferenceShapeAndColor()
         {
-            ReferenceShape = Component.RandomEnumValue<Shape>();
+            ReferenceShape = ComponentPerception.RandomEnumValue<Shape>();
             ReferenceColor = (new Random().Next(0, 2) == 0) ? Color.RoyalBlue : Color.Yellow;
         }
 
@@ -99,12 +99,12 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
             //generates and add to the list of components 3 or 4 components with specified color and shape
             for (int i = 0; i < numberOfFixedComponents; i++)
-                Components.Add(Component.RandomComponentWith(ReferenceShape, ReferenceColor));
+                Components.Add(ComponentPerception.RandomComponentWith(ReferenceShape, ReferenceColor));
 
             //generates the other components randomly, without the same reference color and shape as the first ones
             for (int i = 0; i < numberOfComponents - numberOfFixedComponents; i++)
             {
-                Components.Add(Component.RandomComponentWithoutBoth(ReferenceShape, ReferenceColor));
+                Components.Add(ComponentPerception.RandomComponentWithoutBoth(ReferenceShape, ReferenceColor));
             }
         }
 
@@ -118,7 +118,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
             {
                 n--;
                 int k = new Random().Next(n + 1);
-                Component c = Components[k];
+                ComponentPerception c = Components[k];
                 Components[k] = Components[n];
                 Components[n] = c;
             }
@@ -134,7 +134,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
             int AsciiIndex = 65;
 
-            foreach (Component c in Components)
+            foreach (ComponentPerception c in Components)
             {
                 c.Letter = (char)AsciiIndex;
                 AsciiIndex++;
