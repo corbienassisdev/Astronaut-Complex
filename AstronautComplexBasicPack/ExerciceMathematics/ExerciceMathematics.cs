@@ -72,7 +72,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// </summary>
         public void AskQuestion()
         {
-            labelTitle.Text = string.Format("{0} ({1})", Title, Difficulty.ToString());
+            labelTitle.Text = string.Format("{0} ({1})", Title, ExerciceForm.GetLangString(Difficulty.ToString()));
             
             if (CurrentQuestion < Questions.Count)
             {
