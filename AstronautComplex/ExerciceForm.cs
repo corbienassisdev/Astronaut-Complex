@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
@@ -17,7 +18,7 @@ namespace AstronautComplex
         public int Exercice { get; protected set; }
 
         /// <summary>
-        /// Builds an AstronautComplex main form.
+        /// Builds the form.
         /// </summary>
         public ExerciceForm()
         {
@@ -32,46 +33,58 @@ namespace AstronautComplex
         {
             try
             {
+                Panel panelMenu = new Panel();
+                panelMenu.Dock = DockStyle.Left;
+                //panelMenu.AutoScroll = true
+                panelMenu.Padding = new Padding(20, 0, 0, 0);
+                panelMenu.Width = 326;
+                panelExercice.Controls.Add(panelMenu);
+
+                Label labelMenuTitle = new Label();
+                labelMenuTitle.Dock = DockStyle.Top;
+                labelMenuTitle.AutoSize = true;
+                labelMenuTitle.Padding = new Padding(0, 20, 0, 20);
+                labelMenuTitle.Text = "Astronaut Complex";
+                labelMenuTitle.Font = new Font(SystemFonts.DefaultFont.FontFamily, 24, FontStyle.Bold);
+                panelMenu.Controls.Add(labelMenuTitle);
+
                 foreach (string pathPlugin in Directory.GetFiles(Directory.GetCurrentDirectory() + DirectoryPlugins, "*.dll", SearchOption.AllDirectories))
                 {
                     foreach (Type type in Assembly.LoadFile(pathPlugin).GetTypes())
                     {
                         if (type.IsClass && !type.IsAbstract && type.IsSubclassOf(typeof(Exercice)))
                         {
-                            foreach(ExerciceDifficulty difficulty in Enum.GetValues(typeof(ExerciceDifficulty)))
+                            Exercice exercice = (Exercice)Activator.CreateInstance(type);
+                            exercice.Form = this;
+                            Exercices.Add(exercice);
+
+                            Action<object, EventArgs> onClick = new Action<object, EventArgs>((sender, e) =>
                             {
-                                string key = "MenuItemNew" + difficulty.ToString();
-
-                                ToolStripMenuItem menuItemDifficulty;
-                                if(!MenuItemNew.DropDownItems.ContainsKey(key))
-                                {
-                                    menuItemDifficulty = new ToolStripMenuItem();
-                                    menuItemDifficulty.Name = key;
-                                    menuItemDifficulty.Text = ExerciceForm.GetLangString(difficulty.ToString());
-                                    MenuItemNew.DropDownItems.Add(menuItemDifficulty);
-                                }
-                                else
-                                {
-                                    menuItemDifficulty = (ToolStripMenuItem)MenuItemNew.DropDownItems[key];
-                                }
-
-                                Exercice exercice = (Exercice)Activator.CreateInstance(type);
-                                exercice.Difficulty = difficulty;
-                                exercice.Form = this;
-                                Exercices.Add(exercice);
-
-                                ToolStripMenuItem menuItem = new ToolStripMenuItem();
-                                menuItem.Name = key + type.Name;
-                                menuItem.Text = exercice.Title;
-                                menuItem.Click += (sender, e) =>
+                                ExerciceDialogDifficulty dialog = new ExerciceDialogDifficulty();
+                                if(dialog.ShowDialog() == DialogResult.OK)
                                 {
                                     panelExercice.Controls.Clear();
                                     panelExercice.Controls.Add(exercice);
+                                    exercice.Difficulty = dialog.SelectedDifficulty;
                                     exercice.Initialize();
                                     exercice.Run();
-                                };
-                                menuItemDifficulty.DropDownItems.Add(menuItem);
-                            }
+                                }
+                            });
+
+                            ToolStripMenuItem menuItem = new ToolStripMenuItem();
+                            menuItem.Name = "MenuItemNew" + type.Name;
+                            menuItem.Text = exercice.Title;
+                            menuItem.Click += onClick.Invoke;
+                            MenuItemNew.DropDownItems.Add(menuItem);
+
+                            Button menuButton = new Button();
+                            menuButton.Name = "MenuButton" + type.Name;
+                            menuButton.Text = exercice.Title;
+                            menuButton.Dock = DockStyle.Top;
+                            menuButton.Height = 64;
+                            menuButton.Click += onClick.Invoke;
+                            panelMenu.Controls.Add(menuButton);
+                            menuButton.BringToFront();
                         }
                     }
                 }

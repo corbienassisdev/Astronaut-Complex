@@ -109,7 +109,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
                         AnswerQuestion(((Control)sender).TabIndex);
                     };
                     tableLayoutPanelAnswers.ColumnCount++;
-                    tableLayoutPanelAnswers.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100.0F));
+                    tableLayoutPanelAnswers.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
                     tableLayoutPanelAnswers.Controls.Add(button, tableLayoutPanelAnswers.ColumnCount - 1, 0);
                 }
             }

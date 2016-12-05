@@ -43,7 +43,7 @@
             this.MenuItemFile});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.Size = new System.Drawing.Size(784, 24);
+            this.menuStripMain.Size = new System.Drawing.Size(1008, 24);
             this.menuStripMain.TabIndex = 0;
             // 
             // MenuItemFile
@@ -72,22 +72,25 @@
             // 
             // panelExercice
             // 
+            this.panelExercice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelExercice.BackgroundImage")));
+            this.panelExercice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelExercice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelExercice.Location = new System.Drawing.Point(0, 24);
             this.panelExercice.Name = "panelExercice";
-            this.panelExercice.Size = new System.Drawing.Size(784, 587);
+            this.panelExercice.Size = new System.Drawing.Size(1008, 587);
             this.panelExercice.TabIndex = 1;
             // 
             // ExerciceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 611);
+            this.ClientSize = new System.Drawing.Size(1008, 611);
             this.Controls.Add(this.panelExercice);
             this.Controls.Add(this.menuStripMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "ExerciceForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Astronaut Complex";
             this.Load += new System.EventHandler(this.AstronautComplex_Load);

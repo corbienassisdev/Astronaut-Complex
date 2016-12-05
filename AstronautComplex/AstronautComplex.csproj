@@ -52,6 +52,12 @@
     <Compile Include="Exercice.Designer.cs">
       <DependentUpon>Exercice.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExerciceDialogDifficulty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExerciceDialogDifficulty.Designer.cs">
+      <DependentUpon>ExerciceDialogDifficulty.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExerciceDifficulty.cs" />
     <Compile Include="ExerciceForm.cs">
       <SubType>Form</SubType>
@@ -64,6 +70,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Exercice.resx">
       <DependentUpon>Exercice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExerciceDialogDifficulty.resx">
+      <DependentUpon>ExerciceDialogDifficulty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExerciceForm.resx">
       <DependentUpon>ExerciceForm.cs</DependentUpon>
@@ -90,6 +99,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\earth.png" />
+    <Content Include="Resources\logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
