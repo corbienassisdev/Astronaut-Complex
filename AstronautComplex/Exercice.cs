@@ -47,7 +47,7 @@ namespace AstronautComplex
         public void Finish()
         {
             MessageBox.Show(string.Format("L'exercice est fini ! Vous avez obtenu un score de {0} !", Score), "Exercice terminé !", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Form.ClearPanel();
+            Form.LoadExercices();
         }
     }
 }

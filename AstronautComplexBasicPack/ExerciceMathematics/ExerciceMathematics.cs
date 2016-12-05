@@ -40,12 +40,12 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
             Score = new ExerciceScore();
             Questions = new List<Question>();
             CurrentQuestion = 0;
-
+            
             panelDrawing.Paint += (sender, e) =>
             {
                 Graphics graphics = e.Graphics;
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                if(Questions.Count > 0 && CurrentQuestion >= 0)
+                if (Questions.Count > 0 && CurrentQuestion >= 0)
                 {
                     Questions[CurrentQuestion].BuildDrawing(graphics, panelDrawing.Width, panelDrawing.Height);
                 }
@@ -97,6 +97,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
                 tableLayoutPanelAnswers.Controls.Clear();
                 tableLayoutPanelAnswers.ColumnStyles.Clear();
                 tableLayoutPanelAnswers.ColumnCount = 0;
+                panelDrawing.Refresh();
 
                 for (int j = 0; j < question.Answers.Length; j++)
                 {

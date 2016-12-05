@@ -87,6 +87,7 @@
             this.ClientSize = new System.Drawing.Size(1008, 611);
             this.Controls.Add(this.panelExercice);
             this.Controls.Add(this.menuStripMain);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "ExerciceForm";

@@ -31,11 +31,13 @@ namespace AstronautComplex
         /// </summary>
         public void LoadExercices()
         {
+            MenuItemNew.DropDownItems.Clear();
+            panelExercice.Controls.Clear();
+
             try
             {
                 Panel panelMenu = new Panel();
                 panelMenu.Dock = DockStyle.Left;
-                //panelMenu.AutoScroll = true
                 panelMenu.Padding = new Padding(20, 0, 0, 0);
                 panelMenu.Width = 326;
                 panelExercice.Controls.Add(panelMenu);
@@ -93,14 +95,6 @@ namespace AstronautComplex
             {
                 DisplayError(exception.Message);
             }
-        }
-
-        /// <summary>
-        /// Clears the exercice panel.
-        /// </summary>
-        public void ClearPanel()
-        {
-            panelExercice.Controls.Clear();
         }
 
         /// <summary>

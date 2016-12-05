@@ -53,7 +53,6 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
             }
 
             GenerateTitle();
-            GenerateAnswers(random);
         }
 
         /// <summary>
