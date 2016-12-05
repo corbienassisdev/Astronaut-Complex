@@ -47,7 +47,7 @@ namespace AstronautComplex
                                 {
                                     menuItemDifficulty = new ToolStripMenuItem();
                                     menuItemDifficulty.Name = key;
-                                    menuItemDifficulty.Text = difficulty.ToString();
+                                    menuItemDifficulty.Text = ExerciceForm.GetLangString(difficulty.ToString());
                                     MenuItemNew.DropDownItems.Add(menuItemDifficulty);
                                 }
                                 else
@@ -65,10 +65,10 @@ namespace AstronautComplex
                                 menuItem.Text = exercice.Title;
                                 menuItem.Click += (sender, e) =>
                                 {
-                                    exercice.Initialize();
-                                    exercice.Run();
                                     panelExercice.Controls.Clear();
                                     panelExercice.Controls.Add(exercice);
+                                    exercice.Initialize();
+                                    exercice.Run();
                                 };
                                 menuItemDifficulty.DropDownItems.Add(menuItem);
                             }
@@ -117,6 +117,17 @@ namespace AstronautComplex
         private void MenuItemQuit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        /// <summary>
+        /// Gets the index localized string in the resources file.
+        /// </summary>
+        /// <param name="index">The lang string index.</param>
+        /// <returns>The string to translate (original index if not found).</returns>
+        public static string GetLangString(string index)
+        {
+            string str = Properties.Resources.ResourceManager.GetString("lang" + index);
+            return (str != null) ? str : index;
         }
     }
 }

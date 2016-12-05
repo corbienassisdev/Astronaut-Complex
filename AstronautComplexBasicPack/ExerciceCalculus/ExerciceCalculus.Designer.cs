@@ -30,12 +30,12 @@
         {
             this.SuspendLayout();
             // 
-            // AstronautTestCalculus
+            // ExerciceCalculus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "AstronautTestCalculus";
-            this.Size = new System.Drawing.Size(1495, 588);
+            this.Name = "ExerciceCalculus";
+            this.Size = new System.Drawing.Size(1256, 716);
             this.ResumeLayout(false);
 
         }

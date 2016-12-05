@@ -7,12 +7,21 @@ namespace AstronautComplex
 {
     public class ExerciceScore
     {
-        public int GoodAndswers { get; set; }
+        public int GoodAnswers { get; set; }
         public int TotalAnswers { get; set; }
+
+        /// <summary>
+        /// Creates an ExerciceScore object initializing values at 0. VS does it by default but here, it's clearer.
+        /// </summary>
+        public ExerciceScore()
+        {
+            GoodAnswers = 0;
+            TotalAnswers = 0;
+        }
 
         public override string ToString()
         {
-            return ((double)GoodAndswers / TotalAnswers) * 100 + " %";
+            return Math.Round(((double)GoodAnswers / TotalAnswers) * 100 ,2) + " %"; //round value at 2 decimals
         }
     }
 }

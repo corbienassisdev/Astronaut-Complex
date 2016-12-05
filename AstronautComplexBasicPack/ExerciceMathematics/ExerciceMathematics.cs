@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace AstronautComplexBasicPack.ExerciceMathematics
 {
@@ -12,8 +14,11 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
     {
         public static readonly Question[] PossibleQuestions = new Question[]
         {
-            new QuestionPercentage("Hors saison, un hôtel propose un chambre double à {0}€. En pleine saison, le prix augmente de {1}%. Quel est le prix d'une chambre double en pleine saison ?"),
-            new QuestionPercentage("Ma facture d'électricité a augmenté de {1}% ! Avant, elle était de {0}€. Combien vais-je devoir payer maintenant ?")
+            new QuestionPercentage("Hors saison, un hôtel propose un chambre double à {0}€. En pleine saison, le prix augmente de {1}%. Quel est le prix d'une chambre double en pleine saison ?", "€"),
+            new QuestionPercentage("Ma facture d'électricité a augmenté de {1}% ! Avant, elle était de {0}€. Combien vais-je devoir payer maintenant ?", "€"),
+            new QuestionPercentage("C'est les soldes ! Les chaussures que je voulaient, et qui coûtent habituellement {0}€, sont soldées à {1}%. Combien coûtent-elles maintenant ?", "€", true),
+            new QuestionHypothenuse("Pour aller à la piscine, je dois emprunter un chemin pendant {0}m, puis tourner de 90° vers l'est et continuer pendant encore {1}m. Quelle est la distance à vol d'oiseau entre mon point de départ et la piscine ?", "m"),
+            new QuestionVolume("Quel est l'objet qui a le plus grand volume ?", "m3")
         };
 
         public List<Question> Questions { get; protected set; }
@@ -33,11 +38,23 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         public override void Initialize()
         {
             Score = new ExerciceScore();
-            Score.GoodAndswers = 0;
             Questions = new List<Question>();
             CurrentQuestion = 0;
+
+            panelDrawing.Paint += (sender, e) =>
+            {
+                Graphics graphics = e.Graphics;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                if(Questions.Count > 0 && CurrentQuestion >= 0)
+                {
+                    Questions[CurrentQuestion].BuildDrawing(graphics, panelDrawing.Width, panelDrawing.Height);
+                }
+            };          
         }
 
+        /// <summary>
+        /// Runs the exercice.
+        /// </summary>
         public override void Run()
         {
             GenerateQuestions(20);
@@ -68,13 +85,14 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// </summary>
         public void AskQuestion()
         {
-            labelTitle.Text = string.Format("{0} ({1})", Title, Difficulty.ToString());
+            labelTitle.Text = string.Format("{0} ({1})", Title, ExerciceForm.GetLangString(Difficulty.ToString()));
             
             if (CurrentQuestion < Questions.Count)
             {
                 Question question = Questions[CurrentQuestion];
                 question.Build(Difficulty, Random);
 
+                textBoxQuestion.Height = TextRenderer.MeasureText(textBoxQuestion.Text, textBoxQuestion.Font).Height * textBoxQuestion.Lines.Length;
                 textBoxQuestion.Text = question.Title;
                 tableLayoutPanelAnswers.Controls.Clear();
                 tableLayoutPanelAnswers.ColumnStyles.Clear();
@@ -83,7 +101,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
                 for (int j = 0; j < question.Answers.Length; j++)
                 {
                     Button button = new Button();
-                    button.Text = question.Answers[j];
+                    button.Text = question.Answers[j].ToString();
                     button.Anchor = AnchorStyles.None;
                     button.TabIndex = j;
                     button.Click += (sender, e) =>
@@ -109,7 +127,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         {
             Score.TotalAnswers++;
             Question question = Questions[CurrentQuestion];
-            string correctAnswer = question.Answers[question.Answer];
+            string correctAnswer = question.Answers[question.Answer].ToString();
             string message;
             string caption;
             MessageBoxIcon icon;
@@ -118,7 +136,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
                 message = string.Format("Bonne réponse ! Il s'agissait bien de {0} !", correctAnswer);
                 caption = "Bravo !";
                 icon = MessageBoxIcon.Information;
-                Score.GoodAndswers++;
+                Score.GoodAnswers++;
             }
             else
             {

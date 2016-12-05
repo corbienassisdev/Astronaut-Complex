@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System;
 using System.Windows.Forms;
+using System.Timers;
+using System.Threading;
+using Microsoft.VisualBasic;
 
 namespace AstronautComplexBasicPack.ExercicePerception
 {
@@ -11,7 +14,12 @@ namespace AstronautComplexBasicPack.ExercicePerception
     /// </summary>
     public partial class ExercicePerception : Exercice
     {
-        public List<Component> Components { get; protected set; }
+        public Mask CurrentMask { get; set; }
+
+        public static int numberOfMasks = 3;
+
+        public static int timeHard = 2;
+        public static int timeEasy = 4;
 
         /// <summary>
         /// Builds an astronaut perception test.
@@ -23,77 +31,124 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         public override void Initialize()
         {
+            Score = new ExerciceScore();
             Form.MinimumSize = new Size(500, 600);
-            Components = new List<Component>();
+            CurrentMask = new Mask();
 
-            string startingInstruction = "Lors de ce test, des figures de forme et de couleur différentes vont être affichées à l'écran pendant X secondes.\n"
+            string secondes = (Difficulty == ExerciceDifficulty.Easy) ? timeEasy.ToString() : timeHard.ToString(); ;
+            string startingInstruction = "Lors de ce test, des figures de forme et de couleur différentes vont être affichées à l'écran pendant " + secondes + " secondes.\n"
                 + "Sur chaque figure est écrit un nombre variant de 0 à 9.\n\n"
-                + "Votre but est de retenir uniquement les nombres contenus dans les figures de forme X et de couleur Y\n"
-                + "Exemple : Retenez les nombres des figures de forme carrée et de couleur jaune).";
-            MessageBox.Show(startingInstruction, "Consigne générale", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                + "Votre but est de retenir uniquement les nombres contenus dans les figures de forme X et de couleur Y\n\n"
+                + "Exemple : Retenez la valeur des cercles jaunes";
+            MessageBox.Show(startingInstruction, "Consigne générale", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
         public override void Run()
         {
-            //TODO : For 1 to 10, Display successive screens (2 or 4 seconds according to the difficulty) and increment answers
-            //for (int i = 0; i < 1; i++) //mettre valeur 10 en variable 10101010101010
-            //{
-            //TODO : Give the instructions
-            MessageBox.Show("Retenez le nombre associé aux carrés jaunes", "Instruction", MessageBoxButtons.OK, MessageBoxIcon.None);
-            //je remplis ma liste de 12 composants
-            GenerateRandomComponents(12);
-            //TODO : shuffleComponents and AddLetterToComponents
-            //je les rajoute à mon tablelayoutpanel
-            AddComponentsToLayout();
-            //je les affiche 2 ou 4 secondes
-            ShowComponents();
-            //j'incremente les réponses
-            //}
-        }
-
-        private void GenerateRandomComponents(int numberOfComponents)
-        {
-            Color askedColor = Color.Yellow;
-            Shape askedShape = Shape.Square;
-            int numberOfFixedComponents = 4;
-
-            //generate and add to the list of components 3 or 4 components with specified color and shape
-            for (int i = 0; i < numberOfFixedComponents; i++)
-                Components.Add(Component.RandomComponentWith(askedColor, askedShape));
-
-            for (int i = 0; i < numberOfComponents - numberOfFixedComponents; i++)
-            { 
-                Components.Add(Component.RandomComponentWithoutBoth(askedColor, askedShape));
-            }
-        }
-
-        /// <summary>
-        /// Adds components form the list attribute in the tableLayoutPanel
-        /// </summary>
-        private void AddComponentsToLayout()
-        {
-            int index = 0;
-            for (int i = 0; i < tableLayoutPanelMask.RowCount; i++)
+            for (int i = 0; i < numberOfMasks; i++)
             {
-                for (int j = 0; j < tableLayoutPanelMask.ColumnCount; j++)
+                CurrentMask.SetRandomReferenceShapeAndColor();
+                GiveInstructions();
+                CurrentMask.ResetMask(tableLayoutPanel);
+                CurrentMask.ShowMask(Difficulty, tableLayoutPanel);
+                GetAnswers();
+            }
+            Finish();
+        }
+
+        private void GiveInstructions()
+        {
+            string shape;
+            switch(CurrentMask.ReferenceShape)
+            {
+                case Shape.Circle:
+                    shape = "cercle";
+                    break;
+                case Shape.Square:
+                    shape = "carré";
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+            string color = (CurrentMask.ReferenceColor == Color.Yellow)? "jaune":"bleu";
+
+            string instruction = "Retenez la valeur des " + shape + "s " + color + "s.";
+
+            MessageBox.Show(instruction, "Instruction", MessageBoxButtons.OK, MessageBoxIcon.None);
+        }
+
+        private void GetAnswers()
+        {
+            foreach(ComponentPerception c in CurrentMask.Components)
+            {
+                if(c.Shape == CurrentMask.ReferenceShape && c.Color == CurrentMask.ReferenceColor)
                 {
-                    tableLayoutPanelMask.Controls.Add(Components[index], j, i);
-                    index++;
+                    int n = AskDigitOfComponent(c);
+
+                    if(n == c.Digit)
+                        Score.GoodAnswers++;
+
+                    Score.TotalAnswers++;
                 }
             }
         }
 
-        /// <summary>
-        /// Displays the current interface with its components in the form.
-        /// </summary>
-        public void ShowComponents()
+        private int AskDigitOfComponent(ComponentPerception c)
         {
-            //tableLayoutPanelMask.Refresh(); //call the onPaint method of each component in the tableLayoutPanel
+            Form form = new Form();
+            Label label = new Label();
+            NumericUpDown updown = new NumericUpDown();
+            Button buttonOk = new Button();
+
+            #region Form creation
+            form.Text = "Figure " + c.Letter.ToString();
+            label.Text = "Quelle était la valeur associée\n à la figure " + c.Letter.ToString() + " ?";
+            updown.ResetText();
+
+            Panel buttonOkPanel = new Panel(); //only about aesthectics
+            buttonOkPanel.Dock = DockStyle.Bottom;
+            buttonOkPanel.Height = 50;
+            buttonOkPanel.BackColor = Color.WhiteSmoke;
+
+            buttonOk.Text = "OK";
+            buttonOk.DialogResult = DialogResult.OK;
+
+            label.Dock = DockStyle.Top;
+            label.Font = new Font("Arial", 11);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Dock = DockStyle.Top;
+            label.Height = 50;
+            label.BackColor = Color.White;
+
+            updown.Location = new Point(105, 60);
+            updown.Width = 75;
+            updown.TextAlign = HorizontalAlignment.Center;
+            updown.Minimum = 0;
+            updown.Maximum = 9;
+
+            buttonOk.Location = new Point(191, 13);
+            buttonOk.Width = 75;
+            buttonOk.Height = 25;
+            buttonOk.Text = "OK";
+
+            buttonOkPanel.Controls.Add(buttonOk);
+
+            form.ClientSize = new Size(280, 158);
+            form.Controls.AddRange(new Control[] { label, updown, buttonOkPanel });
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.BackColor = Color.White;
+            form.AcceptButton = buttonOk;
+            #endregion
+
+            form.ShowDialog();
+
+            return (int)updown.Value;
         }
 
         private void tableLayoutPanelMask_Resize(object sender, EventArgs e)
         {
-            tableLayoutPanelMask.Refresh();
+            tableLayoutPanel.Refresh();
         }
     }
 }

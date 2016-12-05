@@ -32,15 +32,6 @@ namespace AstronautComplex
         }
 
         /// <summary>
-        /// Finishes the exercice, displays the score and goes back to the home page.
-        /// </summary>
-        public void Finish()
-        {
-            MessageBox.Show(string.Format("L'exercice est fini ! Vous avez obtenu un score de {0} !", Score), "Exercice terminé !", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Form.ClearPanel();
-        }
-
-        /// <summary>
         /// Initializes the exercice. Needs to be implemented.
         /// </summary>
         public virtual void Initialize() { }
@@ -49,5 +40,14 @@ namespace AstronautComplex
         /// Runs the exercice. Needs to be implemented.
         /// </summary>
         public virtual void Run() { }
+
+        /// <summary>
+        /// Finishes the exercice, displays the score and goes back to the home page.
+        /// </summary>
+        public void Finish()
+        {
+            MessageBox.Show(string.Format("L'exercice est fini ! Vous avez obtenu un score de {0} !", Score), "Exercice terminé !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Form.ClearPanel();
+        }
     }
 }
