@@ -36,7 +36,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
             decimal randomRange = random.Next((int)correctAnswer / 10, (int)correctAnswer / 5);
 
             GenerateTitle(SideA, SideB);
-            GenerateAnswers(correctAnswer, randomRange, 3, 6, random);
+            GenerateAnswersWithRange(correctAnswer, randomRange, 3, 6, random);
         }
 
         /// <summary>

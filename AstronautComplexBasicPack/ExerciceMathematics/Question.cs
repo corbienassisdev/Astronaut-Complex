@@ -38,14 +38,34 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         }
 
         /// <summary>
-        /// Generates the question answers based on the correct answer.
+        /// Generates the questions answers based on possible answers.
+        /// </summary>
+        /// <param name="possibleAnswers">The possible answers.</param>
+        /// <param name="random">The exercice random number generator.</param>
+        public void GenerateAnswers(Random random, params string[] possibleAnswers)
+        {
+            Answer = random.Next(0, Answers.Length);
+
+            for (int i = 0; i < possibleAnswers.Length; i++)
+            {
+                int j = random.Next(0, possibleAnswers.Length);
+                string temp = possibleAnswers[i];
+                possibleAnswers[i] = possibleAnswers[j];
+                possibleAnswers[j] = temp;
+            }
+
+            Answers = possibleAnswers;
+        }
+
+        /// <summary>
+        /// Generates the question answers with a range based on the correct answer.
         /// </summary>
         /// <param name="correctAnswer">The correct answer.</param>
         /// <param name="randomRange">The random range in which the function can select random values.</param>
         /// <param name="minAnswers">The answers minimum number.</param>
         /// <param name="maxAnswers">The answers maximum number.</param>
         /// <param name="random">The exercice random number generator.</param>
-        public void GenerateAnswers(decimal correctAnswer, decimal randomRange, byte minAnswers, byte maxAnswers, Random random)
+        public void GenerateAnswersWithRange(decimal correctAnswer, decimal randomRange, byte minAnswers, byte maxAnswers, Random random)
         {
             Answers = new string[random.Next(minAnswers, maxAnswers)];
             Answer = random.Next(0, Answers.Length);
