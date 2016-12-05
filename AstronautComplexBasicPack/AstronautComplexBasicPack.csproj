@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="ExerciceMathematics\Polygon3D.cs" />
     <Compile Include="ExerciceMathematics\Polygon3DCube.cs" />
+    <Compile Include="ExerciceMathematics\Polygon3DCylinder.cs" />
     <Compile Include="ExerciceMathematics\QuestionHypothenuse.cs" />
     <Compile Include="ExerciceMathematics\QuestionPercentage.cs" />
     <Compile Include="ExerciceMathematics\QuestionVolume.cs" />

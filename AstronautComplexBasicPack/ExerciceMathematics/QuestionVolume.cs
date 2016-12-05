@@ -13,8 +13,8 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         {
             typeof(Polygon3DCube),
             typeof(Polygon3DCube),
-            typeof(Polygon3DCube),
-            typeof(Polygon3DCube)
+            typeof(Polygon3DCylinder),
+            typeof(Polygon3DCylinder)
         };
 
         /// <summary>
@@ -40,8 +40,9 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
             for (int i = 0; i < Answers.Length; i++)
             {
                 Polygon3D polygon = (Polygon3D)Activator.CreateInstance(PossiblePolygons[random.Next(0, PossiblePolygons.Length)], random);
+                polygon.Name += string.Format(" {0}", i);
 
-                decimal volume = polygon.ComputeVolume();
+                decimal volume = (decimal)polygon.ComputeVolume();
                 if (minimum > volume)
                 {
                     minimum = volume;

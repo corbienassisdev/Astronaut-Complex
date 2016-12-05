@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
 
 namespace AstronautComplexBasicPack.ExerciceMathematics
@@ -11,13 +8,13 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
     /// </summary>
     public class Polygon3DCube : Polygon3D
     {
-        public decimal Width { get; set; }
+        public double Width { get; set; }
 
         /// <summary>
         /// Builds the cube.
         /// </summary>
-        /// <param name="name">The width.</param>
-        public Polygon3DCube(decimal width) : base("Cube")
+        /// <param name="width">The width.</param>
+        public Polygon3DCube(double width) : base("Cube")
         {
             Width = width;
         }
@@ -34,9 +31,9 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// <summary>
         /// Computes the cube volume.
         /// </summary>
-        public override decimal ComputeVolume()
+        public override double ComputeVolume()
         {
-            return (decimal)Math.Pow((double)Width, 3);
+            return Math.Pow(Width, 3);
         }
 
         /// <summary>
@@ -49,8 +46,24 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         public override void Draw(Graphics graphics, int x, int y, int z = 1)
         {
             Pen pen = new Pen(Color.Navy, 1);
+
             int widthScaled = (int)(Width * z);
-            graphics.DrawRectangle(pen, x - widthScaled / 2, y - widthScaled, widthScaled, widthScaled);
+            int projection = widthScaled / 4;
+            Point ul = new Point(x - widthScaled / 2, y - widthScaled);
+            Point ur = new Point(ul.X + widthScaled, ul.Y);
+            Point bl = new Point(ul.X, ul.Y + widthScaled);
+            Point br = new Point(ul.X + widthScaled, ul.Y + widthScaled);
+            Point ulp = new Point(ul.X + projection, ul.Y - projection);
+            Point urp = new Point(ur.X + projection, ur.Y - projection);
+            Point brp = new Point(ul.X + widthScaled + projection, ul.Y + widthScaled - projection);
+            graphics.DrawRectangle(pen, ul.X, ul.Y, widthScaled, widthScaled);
+            graphics.DrawLine(pen, ul, ulp);
+            graphics.DrawLine(pen, ur, urp);
+            graphics.DrawLine(pen, ulp, urp);
+            graphics.DrawLine(pen, br, brp);
+            graphics.DrawLine(pen, brp, urp);
+
+            graphics.DrawString(string.Format("{0} \r\n - Width = {1}", Name, Width), SystemFonts.DefaultFont, new SolidBrush(Color.Navy), bl.X, bl.Y + 40);
         }
     }
 }

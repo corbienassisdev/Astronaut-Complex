@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
+﻿using System.Drawing;
 
 namespace AstronautComplexBasicPack.ExerciceMathematics
 {
@@ -11,7 +7,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
     /// </summary>
     public abstract class Polygon3D
     {
-        public string Name { get; protected set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Builds the polygon.
@@ -34,7 +30,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// <summary>
         /// Computes the polygon volume. Needs to be implemented.
         /// </summary>
-        public abstract decimal ComputeVolume();
+        public abstract double ComputeVolume();
 
         /// <summary>
         /// Draws the polygon.
