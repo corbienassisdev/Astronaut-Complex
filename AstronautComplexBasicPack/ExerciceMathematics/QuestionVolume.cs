@@ -9,6 +9,14 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
 {
     public class QuestionVolume : Question
     {
+        public Type[] PossiblePolygons = new Type[]
+        {
+            typeof(Polygon3DCube),
+            typeof(Polygon3DCube),
+            typeof(Polygon3DCube),
+            typeof(Polygon3DCube)
+        };
+
         /// <summary>
         /// Builds a multiple-answer question on an hypothenuse problem.
         /// </summary>
@@ -26,14 +34,25 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// <param name="random">The exercice random number generator.</param>
         public override void Build(ExerciceDifficulty difficulty, Random random)
         {
-            SideA = random.Next(1, 20);
-            SideB = random.Next(1, 20);
+            decimal minimum = decimal.MaxValue;
 
-            decimal correctAnswer = (decimal)Math.Round(Math.Sqrt(Math.Pow((double)SideA, 2) + Math.Pow((double)SideB, 2)), 2);
-            decimal randomRange = random.Next((int)correctAnswer / 10, (int)correctAnswer / 5);
+            Answers = new Polygon3D[random.Next(3, PossiblePolygons.Length + 1)];
+            for (int i = 0; i < Answers.Length; i++)
+            {
+                Polygon3D polygon = (Polygon3D)Activator.CreateInstance(PossiblePolygons[random.Next(0, PossiblePolygons.Length)], random);
+
+                decimal volume = polygon.ComputeVolume();
+                if (minimum > volume)
+                {
+                    minimum = volume;
+                    Answer = i;
+                }
+
+                Answers[i] = polygon;
+            }
 
             GenerateTitle();
-            GenerateAnswersWithRange(correctAnswer, s, 4, 4, random);
+            GenerateAnswers(random);
         }
 
         /// <summary>
@@ -44,7 +63,14 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// <param name="containerHeight">The container height.</param>
         public override void BuildDrawing(Graphics graphics, int containerWidth, int containerHeight)
         {
-            Pen pen = new Pen(Color.Navy, 1);
+            for (int i = 0; i < Answers.Length; i++)
+            {
+                Polygon3D polygon = (Polygon3D)Answers[i];
+
+                int subContainerWidth = containerWidth / Answers.Length;
+                int x = i * subContainerWidth + subContainerWidth / 2;
+                polygon.Draw(graphics, x, 300, 5);
+            }
         }
     }
 }

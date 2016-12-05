@@ -101,7 +101,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
                 for (int j = 0; j < question.Answers.Length; j++)
                 {
                     Button button = new Button();
-                    button.Text = question.Answers[j];
+                    button.Text = question.Answers[j].ToString();
                     button.Anchor = AnchorStyles.None;
                     button.TabIndex = j;
                     button.Click += (sender, e) =>
@@ -127,7 +127,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         {
             Score.TotalAnswers++;
             Question question = Questions[CurrentQuestion];
-            string correctAnswer = question.Answers[question.Answer];
+            string correctAnswer = question.Answers[question.Answer].ToString();
             string message;
             string caption;
             MessageBoxIcon icon;

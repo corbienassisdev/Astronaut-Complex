@@ -63,8 +63,11 @@
     <Compile Include="ExerciceCalculus\ExerciceCalculus.Designer.cs">
       <DependentUpon>ExerciceCalculus.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExerciceMathematics\Polygon3D.cs" />
+    <Compile Include="ExerciceMathematics\Polygon3DCube.cs" />
     <Compile Include="ExerciceMathematics\QuestionHypothenuse.cs" />
     <Compile Include="ExerciceMathematics\QuestionPercentage.cs" />
+    <Compile Include="ExerciceMathematics\QuestionVolume.cs" />
     <Compile Include="ExercicePerception\ComponentPerception.cs">
       <SubType>Component</SubType>
     </Compile>

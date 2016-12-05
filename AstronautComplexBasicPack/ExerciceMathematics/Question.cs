@@ -15,7 +15,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
 
         public string Title { get; protected set; }
         public int Answer { get; protected set; }
-        public string[] Answers { get; protected set; }
+        public object[] Answers { get; protected set; }
 
         /// <summary>
         /// Builds a multiple-answer question.
@@ -40,25 +40,29 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// <summary>
         /// Generates the questions answers based on possible answers.
         /// </summary>
-        /// <param name="possibleAnswers">The possible answers.</param>
         /// <param name="random">The exercice random number generator.</param>
-        public void GenerateAnswers(Random random, params string[] possibleAnswers)
+        public void GenerateAnswers(Random random)
         {
-            Answer = random.Next(0, Answers.Length);
-
-            for (int i = 0; i < possibleAnswers.Length; i++)
+            for (int i = 0; i < Answers.Length; i++)
             {
-                int j = random.Next(0, possibleAnswers.Length);
-                string temp = possibleAnswers[i];
-                possibleAnswers[i] = possibleAnswers[j];
-                possibleAnswers[j] = temp;
-            }
+                int j = random.Next(0, Answers.Length);
+                object temp = Answers[i];
+                Answers[i] = Answers[j];
+                Answers[j] = temp;
 
-            Answers = possibleAnswers;
+                if (Answer == i)
+                {
+                    Answer = j;
+                }
+                else if (Answer == j)
+                {
+                    Answer = i;
+                }
+            }
         }
 
         /// <summary>
-        /// Generates the question answers with a range based on the correct answer.
+        /// Generates the question answers, with a range based on the correct answer.
         /// </summary>
         /// <param name="correctAnswer">The correct answer.</param>
         /// <param name="randomRange">The random range in which the function can select random values.</param>
