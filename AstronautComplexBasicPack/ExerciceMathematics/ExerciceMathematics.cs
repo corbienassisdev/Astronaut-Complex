@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace AstronautComplexBasicPack.ExerciceMathematics
 {
@@ -36,7 +38,17 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         {
             Score = new ExerciceScore();
             Questions = new List<Question>();
-            CurrentQuestion = 0;                      
+            CurrentQuestion = 0;
+
+            panelDrawing.Paint += (sender, e) =>
+            {
+                Graphics graphics = e.Graphics;
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                if(Questions.Count > 0 && CurrentQuestion >= 0)
+                {
+                    Questions[CurrentQuestion].BuildDrawing(graphics, panelDrawing.Width, panelDrawing.Height);
+                }
+            };          
         }
 
         /// <summary>
@@ -79,6 +91,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
                 Question question = Questions[CurrentQuestion];
                 question.Build(Difficulty, Random);
 
+                textBoxQuestion.Height = TextRenderer.MeasureText(textBoxQuestion.Text, textBoxQuestion.Font).Height * textBoxQuestion.Lines.Length;
                 textBoxQuestion.Text = question.Title;
                 tableLayoutPanelAnswers.Controls.Clear();
                 tableLayoutPanelAnswers.ColumnStyles.Clear();

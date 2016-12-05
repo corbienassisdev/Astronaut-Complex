@@ -1,6 +1,7 @@
 ﻿using AstronautComplex;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace AstronautComplexBasicPack.ExerciceMathematics
 {
@@ -61,5 +62,13 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// <param name="difficulty">The exercice difficulty.</param>
         /// <param name="random">The exercice random number generator.</param>
         public abstract void Build(ExerciceDifficulty difficulty, Random random);
+
+        /// <summary>
+        /// Builds the question drawing. Needs to be implemented.
+        /// </summary>
+        /// <param name="graphics">The calling form graphics.</param>
+        /// <param name="containerWidth">The container width.</param>
+        /// <param name="containerHeight">The container height.</param>
+        public abstract void BuildDrawing(Graphics graphics, int containerWidth, int containerHeight);
     }
 }

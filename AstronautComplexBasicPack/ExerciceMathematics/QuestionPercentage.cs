@@ -1,5 +1,6 @@
 ﻿using AstronautComplex;
 using System;
+using System.Drawing;
 
 namespace AstronautComplexBasicPack.ExerciceMathematics
 {
@@ -33,6 +34,17 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
 
             GenerateTitle(startPrice, percentage);
             GenerateAnswers(correctAnswer, randomRange, 3, 6, random);
+        }
+
+        /// <summary>
+        /// Builds the question drawing.
+        /// </summary>
+        /// <param name="graphics">The calling form graphics.</param>
+        /// <param name="containerWidth">The container width.</param>
+        /// <param name="containerHeight">The container height.</param>
+        public override void BuildDrawing(Graphics graphics, int containerWidth, int containerHeight)
+        {
+
         }
     }
 }
