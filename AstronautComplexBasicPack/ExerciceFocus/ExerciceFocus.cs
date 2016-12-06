@@ -12,8 +12,8 @@ namespace AstronautComplexBasicPack.ExerciceFocus
     public partial class ExerciceFocus : Exercice
     {
         public List<SingleSeries> Series { get; set; }
-        public SingleSeries CurrentSeries { get; set; }
-        public ComponentFocus CurrentComponent { get; set; }
+        public int CurrentSeries { get; set; }
+        public int CurrentComponent { get; set; }
 
         public ExerciceFocus() : base("Attention et concentration")
         {
@@ -31,8 +31,8 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
             Series = GetSeriesFromXml("series.xml");
 
-            CurrentSeries = Series.First();
-            CurrentComponent = CurrentSeries.Components.First();
+            CurrentSeries = 0;
+            CurrentComponent = 0;
         }
 
         public override void Run()
@@ -49,7 +49,22 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
         private void DisplayCurrentComponent()
         {
-            componentFocusPanel.Controls.Add(CurrentComponent);
+            componentFocusPanel.Controls.Clear();
+
+            if (CurrentComponent == 0)
+            {
+                buttonSameColor.Visible = false;
+                buttonSameDotNumber.Visible = false;
+            }
+            else
+            {
+                buttonSameColor.Visible = true;
+                buttonSameDotNumber.Visible = true;
+            }
+            
+            componentFocusPanel.Controls.Add(Series[CurrentSeries].Components[CurrentComponent]);
+
+            componentFocusPanel.Refresh();
         }
 
         //TODO :
@@ -81,16 +96,39 @@ namespace AstronautComplexBasicPack.ExerciceFocus
         private void buttonSameColor_Click(object sender, EventArgs e)
         {
             //check answers
+            IncrementCurrentComponentOrSeries();
+            DisplayCurrentComponent();
         }
 
         private void buttonSameDotNumber_Click(object sender, EventArgs e)
         {
-
+            //check answers
+            IncrementCurrentComponentOrSeries();
+            DisplayCurrentComponent();
         }
 
         private void buttonOther_Click(object sender, EventArgs e)
         {
+            //check answers
+            IncrementCurrentComponentOrSeries();
+            DisplayCurrentComponent();
+        }
 
+        private void IncrementCurrentComponentOrSeries()
+        {
+            if (CurrentComponent < Series[CurrentSeries].Components.Count - 1)
+            {
+                CurrentComponent++;
+            }
+            else if (CurrentSeries < Series.Count - 1)
+            {
+                CurrentSeries++;
+                CurrentComponent = 0;
+            }
+            else
+            {
+                Finish();
+            }
         }
     }
 }
