@@ -5,10 +5,13 @@ using System.Text;
 
 namespace AstronautComplexBasicPack.ExerciceFocus
 {
-    public class Series
+    public class SingleSeries
     {
         public List<ComponentFocus> Components { get; set; }
 
-
+        public SingleSeries()
+        {
+            Components = new List<ComponentFocus>();
+        }
     }
 }

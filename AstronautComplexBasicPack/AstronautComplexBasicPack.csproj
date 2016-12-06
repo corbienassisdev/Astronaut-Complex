@@ -44,7 +44,7 @@
     <Compile Include="ExerciceFocus\ComponentFocus.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ExerciceFocus\Series.cs" />
+    <Compile Include="ExerciceFocus\SingleSeries.cs" />
     <Compile Include="ExerciceMathematics\ExerciceMathematics.cs">
       <SubType>UserControl</SubType>
     </Compile>

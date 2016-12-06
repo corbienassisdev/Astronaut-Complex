@@ -73,6 +73,7 @@
             this.buttonSameColor.TabIndex = 0;
             this.buttonSameColor.Text = "Bouton 1";
             this.buttonSameColor.UseVisualStyleBackColor = true;
+            this.buttonSameColor.Click += new System.EventHandler(this.buttonSameColor_Click);
             // 
             // buttonSameDotNumber
             // 
@@ -83,6 +84,7 @@
             this.buttonSameDotNumber.TabIndex = 1;
             this.buttonSameDotNumber.Text = "Bouton 2";
             this.buttonSameDotNumber.UseVisualStyleBackColor = true;
+            this.buttonSameDotNumber.Click += new System.EventHandler(this.buttonSameDotNumber_Click);
             // 
             // buttonOther
             // 
@@ -93,6 +95,7 @@
             this.buttonOther.TabIndex = 2;
             this.buttonOther.Text = "Bouton 3";
             this.buttonOther.UseVisualStyleBackColor = true;
+            this.buttonOther.Click += new System.EventHandler(this.buttonOther_Click);
             // 
             // tlpGlobal
             // 

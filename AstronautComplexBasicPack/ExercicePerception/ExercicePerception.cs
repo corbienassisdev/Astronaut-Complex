@@ -31,8 +31,9 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         public override void Initialize()
         {
-            Score = new ExerciceScore();
             Form.MinimumSize = new Size(500, 600);
+
+            Score = new ExerciceScore();
             CurrentMask = new Mask();
 
             string secondes = (Difficulty == ExerciceDifficulty.Easy) ? timeEasy.ToString() : timeHard.ToString(); ;

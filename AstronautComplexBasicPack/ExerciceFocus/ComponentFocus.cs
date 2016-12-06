@@ -15,7 +15,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
     }
 
     /// <summary>
-    /// Is a colored shape with the letter and digit associated
+    /// Is a colored shape with some dots inside.
     /// </summary>
     public class ComponentFocus : Panel
     {
@@ -32,62 +32,111 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             this.Color = color;
             this.DotNumber = dotNumber;
 
-            this.Dock = DockStyle.Fill;
+            Dock = DockStyle.Fill;
         }
 
         protected override void OnPaint(PaintEventArgs pe)
         {
-            this.shapeWidth = this.Width / 2;
-            this.shapeHeight = shapeWidth;
+            if (Shape == Shape.Circle || Shape == Shape.Square)
+            {
+                shapeWidth = shapeHeight = (int)(this.Width / 2.5);
+            }
+            else //Rectangle
+            {
+                shapeHeight = (int)(this.Height / 2.5);
+                shapeWidth = (int)(shapeHeight * 1.8);
+            }
 
-            SolidBrush brush = new SolidBrush(Color.Red);
+            SolidBrush brush = new SolidBrush(this.Color);
             Graphics graphics = this.CreateGraphics();
-            Rectangle rectangle = new Rectangle((this.Width - shapeWidth) / 2, (this.Height - shapeHeight) / 2, shapeHeight, shapeWidth);
-            graphics.FillRectangle(brush, rectangle);
-            graphics.DrawRectangle(Pens.Black, rectangle);
+
+            DrawShape(graphics, brush);
             DrawDots(graphics, brush);
 
             brush.Dispose();
             graphics.Dispose();
         }
 
+        private void DrawShape(Graphics graphics, SolidBrush brush)
+        {
+            Rectangle rectangle = new Rectangle((this.Width - shapeWidth) / 2, (this.Height - shapeHeight) / 2, shapeWidth, shapeHeight);
+
+            switch (Shape)
+            {
+                case Shape.Circle:
+                    graphics.FillEllipse(brush, rectangle);
+                    graphics.DrawEllipse(Pens.Black, rectangle);
+                    break;
+                case Shape.Square:
+                    graphics.FillRectangle(brush, rectangle);
+                    graphics.DrawRectangle(Pens.Black, rectangle);
+                    break;
+                case Shape.Rectangle:
+                    graphics.FillRectangle(brush, rectangle);
+                    graphics.DrawRectangle(Pens.Black, rectangle);
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
         private void DrawDots(Graphics graphics, SolidBrush brush)
         {
             brush.Color = Color.Black;
+
+            int dotSize = shapeHeight / 20;
+
             int xCenter = this.Width / 2;
             int yCenter = this.Height / 2;
 
-            int x;
-            int y;
+            int x = 0;
+            int y = 0;
 
-            DotNumber = 3;
+            /*for (int i = 0; i < DotNumber; i++)
+            {
+                double teta = ((2 * Math.PI) / DotNumber) * (i + 0.0);
+                x = (int)Math.Sin(teta) * shapeWidth / 2 + xCenter;
+                y = (int)Math.Cos(teta) * shapeHeight / 2 + yCenter;
+                
+            }
+
+            x = x - dotSize / 2; y = y - dotSize / 2;
+            graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));*/
 
             switch (DotNumber)
             {
                 case 1:
                     x = xCenter;
                     y = yCenter;
-                    graphics.FillEllipse(brush, new Rectangle(x, y, 10, 10));
+                    x = x - dotSize / 2; y = y - dotSize / 2;
+                    graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));
                     break;
                 case 2:
                     x = xCenter - (shapeWidth / 4);
                     y = yCenter;
-                    graphics.FillEllipse(brush, new Rectangle(x, y, 10, 10));
+                    x = x - dotSize / 2; y = y - dotSize / 2;
+                    graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));
                     x = xCenter + (shapeWidth / 4);
                     y = yCenter;
-                    graphics.FillEllipse(brush, new Rectangle(x, y, 10, 10));
+                    x = x - dotSize / 2; y = y - dotSize / 2;
+                    graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));
                     break;
                 case 3:
                     x = xCenter;
-                    y = yCenter - (shapeHeight / 4);
-                    graphics.FillEllipse(brush, new Rectangle(x, y, 10, 10));
-                    x = xCenter - (shapeWidth / 4);
-                    y = yCenter + (shapeHeight / 4);
-                    graphics.FillEllipse(brush, new Rectangle(x, y, 10, 10));
-                    x = xCenter + (shapeWidth / 4);
-                    y = yCenter + (shapeHeight / 4);
-                    graphics.FillEllipse(brush, new Rectangle(x, y, 10, 10));
+                    y = yCenter - (int)((shapeHeight / 4) / Math.Sqrt(2));
+                    x = x - dotSize / 2; y = y - dotSize / 2;
+                    graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));
+                    x = xCenter - (int)((shapeWidth / 4) / Math.Sqrt(2));
+                    y = yCenter + (int)((shapeHeight / 4) / Math.Sqrt(2));
+                    x = x - dotSize / 2; y = y - dotSize / 2;
+                    graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));
+                    x = xCenter + (int)((shapeWidth / 4) / Math.Sqrt(2));
+                    y = yCenter + (int)((shapeHeight / 4) / Math.Sqrt(2));
+                    x = x - dotSize / 2; y = y - dotSize / 2;
+                    graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));
                     break;
+                default:
+                    throw new NotImplementedException();
             }
         }
 
@@ -95,6 +144,5 @@ namespace AstronautComplexBasicPack.ExerciceFocus
         {
             this.Refresh();
         }
-
     }
 }
