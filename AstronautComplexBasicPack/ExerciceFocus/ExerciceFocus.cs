@@ -28,6 +28,8 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
         public override void Run()
         {
+            ComponentFocus cf = new ComponentFocus(Shape.Circle, Color.Yellow, 3);
+            componentFocusPanel.Controls.Add(cf);
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 5; j++)
