@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Drawing;
 using System.Linq;
+using System.Xml;
 
 namespace AstronautComplexBasicPack.ExerciceFocus
 {
@@ -14,6 +15,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
         public List<SingleSeries> Series { get; set; }
         public int CurrentSeries { get; set; }
         public int CurrentComponent { get; set; }
+        public int PreviousComponent { get; set; }
 
         public ExerciceFocus() : base("Attention et concentration")
         {
@@ -71,7 +73,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
         private List<SingleSeries> GetSeriesFromXml(string path)
         {
             List<SingleSeries> xmlSeries = new List<SingleSeries>();
-
+            
             SingleSeries s1 = new SingleSeries();
             SingleSeries s2 = new SingleSeries();
 
@@ -95,21 +97,54 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
         private void buttonSameColor_Click(object sender, EventArgs e)
         {
-            //check answers
+            Score.TotalAnswers++;
+
+            if (PreviousComponent != null)
+            {
+                ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
+                ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
+
+                if (current.Color == previous.Color)
+                    Score.GoodAnswers++;
+            }
+
+            PreviousComponent = CurrentComponent;
             IncrementCurrentComponentOrSeries();
             DisplayCurrentComponent();
         }
 
         private void buttonSameDotNumber_Click(object sender, EventArgs e)
         {
-            //check answers
+            Score.TotalAnswers++;
+
+            if (PreviousComponent != null)
+            {
+                ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
+                ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
+
+                if (current.DotNumber == previous.DotNumber)
+                    Score.GoodAnswers++;
+            }
+
+            PreviousComponent = CurrentComponent;
             IncrementCurrentComponentOrSeries();
             DisplayCurrentComponent();
         }
 
         private void buttonOther_Click(object sender, EventArgs e)
         {
-            //check answers
+            Score.TotalAnswers++;
+
+            if (PreviousComponent != null)
+            {
+                ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
+                ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
+
+                if (current.DotNumber != previous.DotNumber && current.Color != previous.Color)
+                    Score.GoodAnswers++;
+            }
+
+            PreviousComponent = CurrentComponent;
             IncrementCurrentComponentOrSeries();
             DisplayCurrentComponent();
         }
