@@ -102,6 +102,8 @@
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
+            this.MaximumSize = new System.Drawing.Size(1024, 650);
+            this.MinimumSize = new System.Drawing.Size(1024, 650);
             this.Name = "ExerciceForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
