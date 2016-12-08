@@ -34,9 +34,7 @@
             this.MenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.panelExercice = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStripMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -74,29 +72,19 @@
             // 
             // panelExercice
             // 
+            this.panelExercice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelExercice.BackgroundImage")));
             this.panelExercice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelExercice.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelExercice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelExercice.Location = new System.Drawing.Point(0, 24);
             this.panelExercice.Name = "panelExercice";
-            this.panelExercice.Size = new System.Drawing.Size(371, 587);
+            this.panelExercice.Size = new System.Drawing.Size(1008, 587);
             this.panelExercice.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(368, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(640, 587);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // ExerciceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 611);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelExercice);
             this.Controls.Add(this.menuStripMain);
             this.DoubleBuffered = true;
@@ -111,7 +99,6 @@
             this.Load += new System.EventHandler(this.AstronautComplex_Load);
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,7 +111,6 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItemQuit;
         private System.Windows.Forms.ToolStripMenuItem MenuItemNew;
         private System.Windows.Forms.Panel panelExercice;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

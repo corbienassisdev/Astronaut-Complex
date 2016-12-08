@@ -48,13 +48,13 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
             if (CurrentComponent == 0)
             {
-                buttonSameColor.Visible = false;
-                buttonSameDotNumber.Visible = false;
+                button1.Visible = false;
+                button2.Visible = false;
             }
             else
             {
-                buttonSameColor.Visible = true;
-                buttonSameDotNumber.Visible = true;
+                button1.Visible = true;
+                button2.Visible = true;
             }
             
             componentFocusPanel.Controls.Add(Series[CurrentSeries].Components[CurrentComponent]);
