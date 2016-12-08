@@ -47,7 +47,7 @@ namespace AstronautComplex
                 wmPlayer.Enabled = true;
                 ((System.ComponentModel.ISupportInitialize)(wmPlayer)).EndInit();
                 wmPlayer.uiMode = "none";
-                wmPlayer.URL = @"C:\Users\Corentin\Documents\Visual Studio 2015\Projects\Tests_divers\Resources\earth.mp4";
+                wmPlayer.URL = "earth.mp4";
                 wmPlayer.settings.setMode("loop", true);
                 wmPlayer.Ctlcontrols.play();
                 
