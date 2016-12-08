@@ -40,13 +40,6 @@ namespace AstronautComplexBasicPack.ExerciceFocus
         public override void Run()
         {
             DisplayCurrentComponent();
-            //For i from 1 to 3 (cause there is 3 series)
-            //For j from 1 to 5 (cause there is 5 objects for 1 serie)
-            //display object of serie i and at position j
-            //display buttons
-            //onclick buttons check answers
-            //end for
-            //end for
         }
 
         private void DisplayCurrentComponent()
@@ -97,33 +90,49 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
         private void buttonSameColor_Click(object sender, EventArgs e)
         {
-            Score.TotalAnswers++;
-
-            if (PreviousComponent != null)
+            if (CurrentComponent != 0)
             {
+                Score.TotalAnswers++;
+
                 ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
                 ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
 
                 if (current.Color == previous.Color)
+                {
                     Score.GoodAnswers++;
+                    MessageBox.Show("Bonne réponse !");
+                }
+                else
+                {
+                    int button = FindGoodAnswer();
+                    MessageBox.Show("Mauvaise réponse ! Il fallait cliquer sur le bouton " + button);
+                }
             }
 
             PreviousComponent = CurrentComponent;
             IncrementCurrentComponentOrSeries();
             DisplayCurrentComponent();
         }
-
+       
         private void buttonSameDotNumber_Click(object sender, EventArgs e)
         {
-            Score.TotalAnswers++;
-
-            if (PreviousComponent != null)
+            if (CurrentComponent != 0)
             {
+                Score.TotalAnswers++;
+
                 ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
                 ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
 
                 if (current.DotNumber == previous.DotNumber)
+                {
                     Score.GoodAnswers++;
+                    MessageBox.Show("Bonne réponse !");
+                }
+                else
+                {
+                    int button = FindGoodAnswer();
+                    MessageBox.Show("Mauvaise réponse ! Il fallait cliquer sur le bouton " + button);
+                }
             }
 
             PreviousComponent = CurrentComponent;
@@ -133,20 +142,40 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
         private void buttonOther_Click(object sender, EventArgs e)
         {
-            Score.TotalAnswers++;
-
-            if (PreviousComponent != null)
+            if (CurrentComponent != 0)
             {
+                Score.TotalAnswers++;
+
                 ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
                 ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
-
                 if (current.DotNumber != previous.DotNumber && current.Color != previous.Color)
+                {
                     Score.GoodAnswers++;
+                    MessageBox.Show("Bonne réponse !");
+                }
+                else
+                {
+                    int button = FindGoodAnswer();
+                    MessageBox.Show("Mauvaise réponse ! Il fallait cliquer sur le bouton " + button);
+                }
             }
 
             PreviousComponent = CurrentComponent;
             IncrementCurrentComponentOrSeries();
             DisplayCurrentComponent();
+        }
+
+        private int FindGoodAnswer()
+        {
+            ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
+            ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
+
+            if (current.Color == previous.Color)
+                return 1;
+            if (current.DotNumber == previous.DotNumber)
+                return 2;
+            else
+                return 3;
         }
 
         private void IncrementCurrentComponentOrSeries()

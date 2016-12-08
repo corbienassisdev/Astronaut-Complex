@@ -35,6 +35,8 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             Dock = DockStyle.Fill;
         }
 
+        public ComponentFocus() {}
+
         protected override void OnPaint(PaintEventArgs pe)
         {
             if (Shape == Shape.Circle || Shape == Shape.Square)
