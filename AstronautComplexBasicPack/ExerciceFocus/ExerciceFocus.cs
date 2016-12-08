@@ -88,7 +88,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             return xmlSeries;
         }
 
-        private void buttonSameColor_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             if (CurrentComponent != 0)
             {
@@ -114,7 +114,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             DisplayCurrentComponent();
         }
        
-        private void buttonSameDotNumber_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             if (CurrentComponent != 0)
             {
@@ -140,7 +140,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             DisplayCurrentComponent();
         }
 
-        private void buttonOther_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             if (CurrentComponent != 0)
             {

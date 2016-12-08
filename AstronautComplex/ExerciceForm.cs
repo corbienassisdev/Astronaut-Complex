@@ -36,6 +36,22 @@ namespace AstronautComplex
 
             try
             {
+                AxWMPLib.AxWindowsMediaPlayer wmPlayer = new AxWMPLib.AxWindowsMediaPlayer();
+                panelExercice.Controls.Add(wmPlayer);
+                wmPlayer.Dock = DockStyle.Right;
+                wmPlayer.Width = 664;
+                wmPlayer.CreateControl();
+                wmPlayer.enableContextMenu = false;
+                ((System.ComponentModel.ISupportInitialize)(wmPlayer)).BeginInit();
+                wmPlayer.Name = "wmPlayer";
+                wmPlayer.Enabled = true;
+                ((System.ComponentModel.ISupportInitialize)(wmPlayer)).EndInit();
+                wmPlayer.uiMode = "none";
+                wmPlayer.URL = @"C:\Users\Corentin\Documents\Visual Studio 2015\Projects\Tests_divers\Resources\earth.mp4";
+                wmPlayer.settings.setMode("loop", true);
+                wmPlayer.Ctlcontrols.play();
+                
+
                 Panel panelMenu = new Panel();
                 panelMenu.Dock = DockStyle.Left;
                 panelMenu.Padding = new Padding(20, 0, 0, 0);
@@ -63,6 +79,9 @@ namespace AstronautComplex
                             Action<object, EventArgs> onClick = new Action<object, EventArgs>((sender, e) =>
                             {
                                 ExerciceDialogDifficulty dialog = new ExerciceDialogDifficulty();
+                                dialog.Width = 300;
+                                dialog.Height = 150;
+                                dialog.Text = "Difficulté";
                                 if(dialog.ShowDialog() == DialogResult.OK)
                                 {
                                     panelExercice.Controls.Clear();
@@ -89,7 +108,7 @@ namespace AstronautComplex
                             menuButton.BringToFront();
                         }
                     }
-                }
+                }                
             }
             catch (Exception exception)
             {
