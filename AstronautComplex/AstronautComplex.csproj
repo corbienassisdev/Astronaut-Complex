@@ -55,6 +55,7 @@
     <Reference Include="AxInterop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libraries\AxInterop.WMPLib.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -131,24 +132,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Libraries\AxInterop.WMPLib.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Libraries\Interop.WMPLib.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Libraries\AxInterop.WMPLib.dll" />
+    <Content Include="Libraries\Interop.WMPLib.dll" />
     <Content Include="Resources\earth.png" />
     <Content Include="Resources\logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
     <PostBuildEvent Condition="'$(OS)' == 'Windows_NT' ">
-		xcopy "Libraries\Interop.WMPLib.dll" "$(SolutionDir)$(SolutionName)\$(OutDir)" /Y
+		xcopy "$(SolutionDir)$(SolutionName)\Libraries\Interop.WMPLib.dll" "$(SolutionDir)$(SolutionName)\$(OutDir)" /Y
 	</PostBuildEvent>
-    <PostBuildEvent Condition="'$(OS)' != 'Windows_NT'">
-    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
