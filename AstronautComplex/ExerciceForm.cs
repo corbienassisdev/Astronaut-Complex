@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxWMPLib;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -36,8 +37,7 @@ namespace AstronautComplex
 
             try
             {
-                AxWMPLib.AxWindowsMediaPlayer wmPlayer = new AxWMPLib.AxWindowsMediaPlayer();
-                panelExercice.Controls.Add(wmPlayer);
+                AxWindowsMediaPlayer wmPlayer = new AxWindowsMediaPlayer();
                 wmPlayer.Dock = DockStyle.Right;
                 wmPlayer.Width = 664;
                 wmPlayer.CreateControl();
@@ -47,10 +47,10 @@ namespace AstronautComplex
                 wmPlayer.Enabled = true;
                 ((System.ComponentModel.ISupportInitialize)(wmPlayer)).EndInit();
                 wmPlayer.uiMode = "none";
-                wmPlayer.URL = @"C:\Users\Corentin\Documents\Visual Studio 2015\Projects\Tests_divers\Resources\earth.mp4";
+                wmPlayer.URL = @"Resources\earth.mp4";
                 wmPlayer.settings.setMode("loop", true);
                 wmPlayer.Ctlcontrols.play();
-                
+                panelExercice.Controls.Add(wmPlayer);
 
                 Panel panelMenu = new Panel();
                 panelMenu.Dock = DockStyle.Left;
