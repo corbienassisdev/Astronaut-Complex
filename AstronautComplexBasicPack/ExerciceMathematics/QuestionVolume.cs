@@ -12,9 +12,8 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         public Type[] PossiblePolygons = new Type[]
         {
             typeof(Polygon3DCube),
-            typeof(Polygon3DCube),
             typeof(Polygon3DCylinder),
-            typeof(Polygon3DCylinder)
+            typeof(Polygon3DSphere)
         };
 
         /// <summary>

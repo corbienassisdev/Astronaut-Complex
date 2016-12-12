@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace AstronautComplexBasicPack.ExerciceMathematics
+namespace AstronautComplexBasicPack
 {
     /// <summary>
     /// Represents a multiple-answer question.

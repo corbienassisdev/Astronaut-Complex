@@ -66,8 +66,12 @@
     <Compile Include="ExerciceMathematics\ExerciceMathematics.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ExerciceMathematics\ExerciceMathematics.Designer.cs">
-      <DependentUpon>ExerciceMathematics.cs</DependentUpon>
+    <Compile Include="ExerciceMathematics\Polygon3DSphere.cs" />
+    <Compile Include="ExerciceQuestion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExerciceQuestion.Designer.cs">
+      <DependentUpon>ExerciceQuestion.cs</DependentUpon>
     </Compile>
     <Compile Include="ExerciceFocus\ExerciceFocus.cs">
       <SubType>UserControl</SubType>
@@ -98,7 +102,7 @@
     </Compile>
     <Compile Include="ExercicePerception\Mask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ExerciceMathematics\Question.cs" />
+    <Compile Include="Question.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AstronautComplex\AstronautComplex.csproj">
@@ -107,8 +111,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ExerciceMathematics\ExerciceMathematics.resx">
-      <DependentUpon>ExerciceMathematics.cs</DependentUpon>
+    <EmbeddedResource Include="ExerciceQuestion.resx">
+      <DependentUpon>ExerciceQuestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExerciceFocus\ExerciceFocus.resx">
       <DependentUpon>ExerciceFocus.cs</DependentUpon>

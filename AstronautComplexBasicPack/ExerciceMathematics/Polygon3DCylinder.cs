@@ -28,11 +28,21 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
 
         }
 
+        /// <summary>
+        /// Computes the cylinder volume.
+        /// </summary>
         public override double ComputeVolume()
         {
             return Math.PI * Math.Pow(Radius, 2.0) * Height;
         }
 
+        /// <summary>
+        /// Draws the cylinder.
+        /// </summary>
+        /// <param name="graphics">The graphics context in which to draw the polygon.</param>
+        /// <param name="x">The x center coordinate.</param>
+        /// <param name="y">The y center coordinate.</param>
+        /// <param name="z">The zoom factor.</param>
         public override void Draw(Graphics graphics, int x, int y, int z = 1)
         {
             Pen pen = new Pen(Color.Navy, 1);

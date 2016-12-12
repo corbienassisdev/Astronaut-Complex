@@ -37,7 +37,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         }
 
         /// <summary>
-        /// Draws the polygon.
+        /// Draws the cube.
         /// </summary>
         /// <param name="graphics">The graphics context in which to draw the polygon.</param>
         /// <param name="x">The x center coordinate.</param>
