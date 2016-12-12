@@ -71,6 +71,16 @@ namespace AstronautComplex.Properties {
         }
         
         /// <summary>
+        ///   Recherche une ressource localisée de type System.Byte[].
+        /// </summary>
+        public static byte[] earth_video {
+            get {
+                object obj = ResourceManager.GetObject("earth_video", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Facile.
         /// </summary>
         public static string langEasy {

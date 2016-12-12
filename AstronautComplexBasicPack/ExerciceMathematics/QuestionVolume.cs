@@ -16,14 +16,17 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
             typeof(Polygon3DSphere)
         };
 
+        public QuestionVolumeType Type { get; protected set; }
+
         /// <summary>
         /// Builds a multiple-answer question on an hypothenuse problem.
         /// </summary>
         /// <param name="titleFormat">The question title format.</param>
         /// <param name="suffixeAnswers">The answer suffixe (usually a measure unit).</param>
-        public QuestionVolume(string titleFormat, string suffixeAnswer) : base(titleFormat, suffixeAnswer)
+        /// <param name="type">The question variant type.</param>
+        public QuestionVolume(string titleFormat, string suffixeAnswer, QuestionVolumeType type) : base(titleFormat, suffixeAnswer)
         {
-
+            Type = type;
         }
 
         /// <summary>
@@ -33,6 +36,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// <param name="random">The exercice random number generator.</param>
         public override void Build(ExerciceDifficulty difficulty, Random random)
         {
+            decimal maximum = 0;
             decimal minimum = decimal.MaxValue;
 
             Answers = new Polygon3D[random.Next(3, PossiblePolygons.Length + 1)];
@@ -42,10 +46,23 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
                 polygon.Name += string.Format(" {0}", i);
 
                 decimal volume = (decimal)polygon.ComputeVolume();
-                if (minimum > volume)
+                switch (Type)
                 {
-                    minimum = volume;
-                    Answer = i;
+                    case QuestionVolumeType.Maximum:
+                        if (maximum < volume)
+                        {
+                            maximum = volume;
+                            Answer = i;
+                        }
+                        break;
+
+                    case QuestionVolumeType.Minimum:
+                        if (minimum > volume)
+                        {
+                            minimum = volume;
+                            Answer = i;
+                        }
+                        break;
                 }
 
                 Answers[i] = polygon;

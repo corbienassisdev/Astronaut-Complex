@@ -5,6 +5,8 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using WMPLib;
+using AstronautComplex.Properties;
 
 namespace AstronautComplex
 {
@@ -105,6 +107,10 @@ namespace AstronautComplex
 
         public void DisplayBackground()
         {
+            string fileTemp = "temp.mp4";
+            File.WriteAllBytes(fileTemp, Resources.earth_video);
+            File.SetAttributes(fileTemp, FileAttributes.Temporary | FileAttributes.Hidden);
+
             try
             {
                 AxWindowsMediaPlayer wmPlayer = new AxWindowsMediaPlayer();
@@ -117,24 +123,14 @@ namespace AstronautComplex
                 wmPlayer.Enabled = true;
                 ((System.ComponentModel.ISupportInitialize)(wmPlayer)).EndInit();
                 wmPlayer.uiMode = "none";
-                wmPlayer.URL = @"Resources\earth.mp4";
+                wmPlayer.URL = fileTemp;
                 wmPlayer.settings.setMode("loop", true);
                 wmPlayer.Ctlcontrols.play();
                 panelExercice.Controls.Add(wmPlayer);
             }
-            catch(Exception e)
-            {
-                DisplayMessage(string.Format("Impossible de charger les bibliothèques Windows Media Player. Le fond d'écran sera fixe ({0})", e.Message));
-            };
-        }
+            catch (Exception) { };
 
-        /// <summary>
-        /// Displays an notification message.
-        /// </summary>
-        /// <param name="message">The notification message.</param>
-        public void DisplayMessage(string message)
-        {
-            MessageBox.Show(message, "Mode fallback activé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            File.Delete(fileTemp);
         }
 
         /// <summary>

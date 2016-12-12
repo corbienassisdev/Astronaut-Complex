@@ -1,6 +1,6 @@
 ﻿namespace AstronautComplexBasicPack
 {
-    abstract partial class ExerciceQuestion
+    partial class ExerciceQuestion
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.

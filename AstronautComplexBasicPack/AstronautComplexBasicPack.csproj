@@ -63,10 +63,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ExerciceFocus\SingleSeries.cs" />
+    <Compile Include="ExerciceMathematics\QuestionPercentageType.cs" />
     <Compile Include="ExerciceMathematics\ExerciceMathematics.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ExerciceMathematics\Polygon3DSphere.cs" />
+    <Compile Include="ExerciceMathematics\QuestionVolumeType.cs" />
     <Compile Include="ExerciceQuestion.cs">
       <SubType>UserControl</SubType>
     </Compile>
