@@ -37,20 +37,7 @@ namespace AstronautComplex
 
             try
             {
-                AxWindowsMediaPlayer wmPlayer = new AxWindowsMediaPlayer();
-                wmPlayer.Dock = DockStyle.Right;
-                wmPlayer.Width = 664;
-                wmPlayer.CreateControl();
-                wmPlayer.enableContextMenu = false;
-                ((System.ComponentModel.ISupportInitialize)(wmPlayer)).BeginInit();
-                wmPlayer.Name = "wmPlayer";
-                wmPlayer.Enabled = true;
-                ((System.ComponentModel.ISupportInitialize)(wmPlayer)).EndInit();
-                wmPlayer.uiMode = "none";
-                wmPlayer.URL = @"Resources\earth.mp4";
-                wmPlayer.settings.setMode("loop", true);
-                wmPlayer.Ctlcontrols.play();
-                panelExercice.Controls.Add(wmPlayer);
+                DisplayBackground();
 
                 Panel panelMenu = new Panel();
                 panelMenu.Dock = DockStyle.Left;
@@ -114,6 +101,40 @@ namespace AstronautComplex
             {
                 DisplayError(exception.Message);
             }
+        }
+
+        public void DisplayBackground()
+        {
+            try
+            {
+                AxWindowsMediaPlayer wmPlayer = new AxWindowsMediaPlayer();
+                wmPlayer.Dock = DockStyle.Right;
+                wmPlayer.Width = 664;
+                wmPlayer.CreateControl();
+                wmPlayer.enableContextMenu = false;
+                ((System.ComponentModel.ISupportInitialize)(wmPlayer)).BeginInit();
+                wmPlayer.Name = "wmPlayer";
+                wmPlayer.Enabled = true;
+                ((System.ComponentModel.ISupportInitialize)(wmPlayer)).EndInit();
+                wmPlayer.uiMode = "none";
+                wmPlayer.URL = @"Resources\earth.mp4";
+                wmPlayer.settings.setMode("loop", true);
+                wmPlayer.Ctlcontrols.play();
+                panelExercice.Controls.Add(wmPlayer);
+            }
+            catch(Exception e)
+            {
+                DisplayMessage(string.Format("Impossible de charger les bibliothèques Windows Media Player. Le fond d'écran sera fixe ({0})", e.Message));
+            };
+        }
+
+        /// <summary>
+        /// Displays an notification message.
+        /// </summary>
+        /// <param name="message">The notification message.</param>
+        public void DisplayMessage(string message)
+        {
+            MessageBox.Show(message, "Mode fallback activé", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>

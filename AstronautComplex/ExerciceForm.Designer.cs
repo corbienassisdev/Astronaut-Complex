@@ -72,6 +72,7 @@
             // 
             // panelExercice
             // 
+            this.panelExercice.BackgroundImage = global::AstronautComplex.Properties.Resources.earth;
             this.panelExercice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelExercice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelExercice.Location = new System.Drawing.Point(0, 24);
