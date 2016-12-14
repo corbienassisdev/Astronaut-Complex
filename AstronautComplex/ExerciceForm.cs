@@ -113,6 +113,8 @@ namespace AstronautComplex
                 File.WriteAllBytes(FileVideoTemp, Resources.earth_video);
                 File.SetAttributes(FileVideoTemp, FileAttributes.Temporary | FileAttributes.Hidden);
 
+                throw new NotImplementedException();
+
                 AxWindowsMediaPlayer wmPlayer = new AxWindowsMediaPlayer();
                 panelExercice.Controls.Add(wmPlayer);
                 wmPlayer.Dock = DockStyle.Right;
@@ -127,6 +129,9 @@ namespace AstronautComplex
                 wmPlayer.URL = FileVideoTemp;
                 wmPlayer.settings.setMode("loop", true);
                 wmPlayer.Ctlcontrols.play();
+
+                this.MinimumSize = new Size(1024, 650);
+                this.MaximumSize = new Size(1024, 650);
             }
             catch (Exception)
             {
