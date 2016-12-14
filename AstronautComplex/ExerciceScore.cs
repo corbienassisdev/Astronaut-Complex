@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace AstronautComplex
 {
@@ -19,6 +16,10 @@ namespace AstronautComplex
             TotalAnswers = 0;
         }
 
+        /// <summary>
+        /// Converts the score to a readable string.
+        /// </summary>
+        /// <returns>The score value, in percentage.</returns>
         public override string ToString()
         {
             return Math.Round(((double)GoodAnswers / TotalAnswers) * 100 ,2) + " %"; //round value at 2 decimals
