@@ -112,9 +112,7 @@ namespace AstronautComplex
             {
                 File.WriteAllBytes(FileVideoTemp, Resources.earth_video);
                 File.SetAttributes(FileVideoTemp, FileAttributes.Temporary | FileAttributes.Hidden);
-
-                throw new NotImplementedException();
-
+                
                 AxWindowsMediaPlayer wmPlayer = new AxWindowsMediaPlayer();
                 panelExercice.Controls.Add(wmPlayer);
                 wmPlayer.Dock = DockStyle.Right;
