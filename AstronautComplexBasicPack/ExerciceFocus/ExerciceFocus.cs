@@ -128,7 +128,25 @@ namespace AstronautComplexBasicPack.ExerciceFocus
         {
             ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
             ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
-            if (current.DotNumber != previous.DotNumber && current.Color != previous.Color)
+
+            bool ok = false;
+
+            switch (button.Name)
+            {
+                case "buttonSameColor":
+                    ok = current.Color == previous.Color;
+                    break;
+                case "buttonSameDotNumber":
+                    ok = current.DotNumber == previous.DotNumber;
+                    break;
+                case "buttonOther":
+                    ok = current.Color != previous.Color && current.DotNumber != previous.DotNumber;
+                    break;
+                default:
+                    break;
+            }
+
+            if (ok)
             {
                 Score.GoodAnswers++;
                 MessageBox.Show("Bonne réponse !");
