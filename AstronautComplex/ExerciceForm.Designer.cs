@@ -30,9 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExerciceForm));
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
-            this.MenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemHome = new System.Windows.Forms.ToolStripMenuItem();
+            this.separatorBoxQuit = new System.Windows.Forms.ToolStripSeparator();
+            this.menuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.panelExercice = new System.Windows.Forms.Panel();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
@@ -40,35 +42,50 @@
             // menuStripMain
             // 
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemFile});
+            this.menuItemFile});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.Size = new System.Drawing.Size(1008, 24);
             this.menuStripMain.TabIndex = 0;
             // 
-            // MenuItemFile
+            // menuItemFile
             // 
-            this.MenuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemNew,
-            this.MenuItemQuit});
-            this.MenuItemFile.Name = "MenuItemFile";
-            this.MenuItemFile.Size = new System.Drawing.Size(54, 20);
-            this.MenuItemFile.Text = "Fichier";
+            this.menuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemNew,
+            this.menuItemHome,
+            this.separatorBoxQuit,
+            this.menuItemQuit});
+            this.menuItemFile.Name = "menuItemFile";
+            this.menuItemFile.Size = new System.Drawing.Size(54, 20);
+            this.menuItemFile.Text = "Fichier";
             // 
-            // MenuItemNew
+            // menuItemNew
             // 
-            this.MenuItemNew.Name = "MenuItemNew";
-            this.MenuItemNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.MenuItemNew.Size = new System.Drawing.Size(165, 22);
-            this.MenuItemNew.Text = "Nouveau";
+            this.menuItemNew.Name = "menuItemNew";
+            this.menuItemNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.menuItemNew.Size = new System.Drawing.Size(255, 22);
+            this.menuItemNew.Text = "Nouveau";
             // 
-            // MenuItemQuit
+            // menuItemHome
             // 
-            this.MenuItemQuit.Name = "MenuItemQuit";
-            this.MenuItemQuit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.MenuItemQuit.Size = new System.Drawing.Size(165, 22);
-            this.MenuItemQuit.Text = "Quitter";
-            this.MenuItemQuit.Click += new System.EventHandler(this.MenuItemQuit_Click);
+            this.menuItemHome.Name = "menuItemHome";
+            this.menuItemHome.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+            this.menuItemHome.Size = new System.Drawing.Size(255, 22);
+            this.menuItemHome.Text = "Revenir au menu principal";
+            this.menuItemHome.Click += new System.EventHandler(this.MenuItemHome_Click);
+            // 
+            // separatorBoxQuit
+            // 
+            this.separatorBoxQuit.Name = "separatorBoxQuit";
+            this.separatorBoxQuit.Size = new System.Drawing.Size(252, 6);
+            // 
+            // menuItemQuit
+            // 
+            this.menuItemQuit.Name = "menuItemQuit";
+            this.menuItemQuit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.menuItemQuit.Size = new System.Drawing.Size(255, 22);
+            this.menuItemQuit.Text = "Quitter";
+            this.menuItemQuit.Click += new System.EventHandler(this.MenuItemQuit_Click);
             // 
             // panelExercice
             // 
@@ -106,10 +123,12 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStripMain;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemFile;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemQuit;
-        private System.Windows.Forms.ToolStripMenuItem MenuItemNew;
+        private System.Windows.Forms.ToolStripMenuItem menuItemFile;
+        private System.Windows.Forms.ToolStripMenuItem menuItemQuit;
+        private System.Windows.Forms.ToolStripMenuItem menuItemNew;
         private System.Windows.Forms.Panel panelExercice;
+        private System.Windows.Forms.ToolStripMenuItem menuItemHome;
+        private System.Windows.Forms.ToolStripSeparator separatorBoxQuit;
     }
 }
 
