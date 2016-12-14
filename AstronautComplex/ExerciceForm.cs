@@ -105,6 +105,10 @@ namespace AstronautComplex
             }
         }
 
+        /// <summary>
+        /// Loads an exercice by asking its difficulty.
+        /// </summary>
+        /// <param name="exercice">The exercice to load.</param>
         public void LoadExercice(Exercice exercice)
         {
             ExerciceDialogDifficulty dialog = new ExerciceDialogDifficulty();
@@ -120,6 +124,9 @@ namespace AstronautComplex
             }
         }
 
+        /// <summary>
+        /// Displays the background. Will try to load the video by creating a hidden temporary file, and will delete the file if an exception is raised.
+        /// </summary>
         public void DisplayBackground()
         {
             try
