@@ -1,9 +1,12 @@
-﻿using System;
+﻿using AxWMPLib;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using WMPLib;
+using AstronautComplex.Properties;
 
 namespace AstronautComplex
 {
@@ -36,20 +39,7 @@ namespace AstronautComplex
 
             try
             {
-                AxWMPLib.AxWindowsMediaPlayer wmPlayer = new AxWMPLib.AxWindowsMediaPlayer();
-                panelExercice.Controls.Add(wmPlayer);
-                wmPlayer.Dock = DockStyle.Right;
-                wmPlayer.Width = 664;
-                wmPlayer.CreateControl();
-                wmPlayer.enableContextMenu = false;
-                ((System.ComponentModel.ISupportInitialize)(wmPlayer)).BeginInit();
-                wmPlayer.Name = "wmPlayer";
-                wmPlayer.Enabled = true;
-                ((System.ComponentModel.ISupportInitialize)(wmPlayer)).EndInit();
-                wmPlayer.uiMode = "none";
-                wmPlayer.URL = "earth.mp4";
-                wmPlayer.settings.setMode("loop", true);
-                wmPlayer.Ctlcontrols.play();
+                DisplayBackground();
 
                 Panel panelMenu = new Panel();
                 panelMenu.Dock = DockStyle.Left;
@@ -113,6 +103,34 @@ namespace AstronautComplex
             {
                 DisplayError(exception.Message);
             }
+        }
+
+        public void DisplayBackground()
+        {
+            string fileTemp = "temp.mp4";
+            File.WriteAllBytes(fileTemp, Resources.earth_video);
+            File.SetAttributes(fileTemp, FileAttributes.Temporary | FileAttributes.Hidden);
+
+            try
+            {
+                AxWindowsMediaPlayer wmPlayer = new AxWindowsMediaPlayer();
+                wmPlayer.Dock = DockStyle.Right;
+                wmPlayer.Width = 664;
+                wmPlayer.CreateControl();
+                wmPlayer.enableContextMenu = false;
+                ((System.ComponentModel.ISupportInitialize)(wmPlayer)).BeginInit();
+                wmPlayer.Name = "wmPlayer";
+                wmPlayer.Enabled = true;
+                ((System.ComponentModel.ISupportInitialize)(wmPlayer)).EndInit();
+                wmPlayer.uiMode = "none";
+                wmPlayer.URL = fileTemp;
+                wmPlayer.settings.setMode("loop", true);
+                wmPlayer.Ctlcontrols.play();
+                panelExercice.Controls.Add(wmPlayer);
+            }
+            catch (Exception) { };
+
+            File.Delete(fileTemp);
         }
 
         /// <summary>

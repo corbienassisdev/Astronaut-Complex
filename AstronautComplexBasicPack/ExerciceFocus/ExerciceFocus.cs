@@ -93,7 +93,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             if (CurrentComponent != 0)
             {
                 Score.TotalAnswers++;
-                CheckAnswer();
+                CheckAnswer((Button) sender);
             }
             PreviousComponent = CurrentComponent;
             IncrementCurrentComponentOrSeries();
@@ -105,7 +105,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             if (CurrentComponent != 0)
             {
                 Score.TotalAnswers++;
-                CheckAnswer();
+                CheckAnswer((Button) sender);
             }
             PreviousComponent = CurrentComponent;
             IncrementCurrentComponentOrSeries();
@@ -135,8 +135,8 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             }
             else
             {
-                int button = FindGoodAnswer();
-                MessageBox.Show("Mauvaise réponse ! Il fallait cliquer sur le bouton " + button);
+                int buttonNumber = FindGoodAnswer();
+                MessageBox.Show("Mauvaise réponse ! Il fallait cliquer sur le bouton " + buttonNumber);
             }
         }
 
