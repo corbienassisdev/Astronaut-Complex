@@ -7,6 +7,8 @@ using System.IO;
 using System.Drawing;
 using System.Linq;
 using System.Xml;
+using System.Threading.Tasks;
+using System.Timers;
 
 namespace AstronautComplexBasicPack.ExerciceFocus
 {
@@ -48,11 +50,14 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
             if (CurrentComponent == 0)
             {
+                DisplaySeriesRule();
                 buttonSameColor.Visible = false;
                 buttonSameDotNumber.Visible = false;
             }
             else
             {
+                if(Difficulty == ExerciceDifficulty.Hard)
+                    timer.Start();
                 buttonSameColor.Visible = true;
                 buttonSameDotNumber.Visible = true;
             }
@@ -90,6 +95,8 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
         private void buttonSameColor_Click(object sender, EventArgs e)
         {
+            timer.Stop();
+
             if (CurrentComponent != 0)
             {
                 Score.TotalAnswers++;
@@ -102,6 +109,8 @@ namespace AstronautComplexBasicPack.ExerciceFocus
        
         private void buttonSameDotNumber_Click(object sender, EventArgs e)
         {
+            timer.Stop();
+
             if (CurrentComponent != 0)
             {
                 Score.TotalAnswers++;
@@ -114,6 +123,8 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
         private void buttonOther_Click(object sender, EventArgs e)
         {
+            timer.Stop();
+
             if (CurrentComponent != 0)
             {
                 Score.TotalAnswers++;
@@ -129,24 +140,27 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
             ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
 
-            bool ok = false;
+            bool isRight = false;
 
             switch (button.Name)
             {
                 case "buttonSameColor":
-                    ok = current.Color == previous.Color;
+                    isRight = (current.Color == previous.Color);
+                    break;
+                case "buttonSameShape":
+                    isRight = (current.Shape == previous.Shape);
                     break;
                 case "buttonSameDotNumber":
-                    ok = current.DotNumber == previous.DotNumber;
+                    isRight = (current.DotNumber == previous.DotNumber);
                     break;
                 case "buttonOther":
-                    ok = current.Color != previous.Color && current.DotNumber != previous.DotNumber;
+                    isRight = (current.Color != previous.Color && current.DotNumber != previous.DotNumber);
                     break;
                 default:
                     break;
             }
 
-            if(ok)
+            if(isRight)
             {
                 Score.GoodAnswers++;
                 MessageBox.Show("Bonne réponse !");
@@ -154,7 +168,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             else
             {
                 int buttonNumber = FindGoodAnswer();
-                MessageBox.Show("Mauvaise réponse ! Il fallait cliquer sur le bouton " + buttonNumber);
+                MessageBox.Show("Mauvaise réponse ! Il fallait cliquer sur le bouton " + buttonNumber + ".");
             }
         }
 
@@ -186,6 +200,21 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             {
                 Finish();
             }
+        }
+
+        private void DisplaySeriesRule()
+        {
+            MessageBox.Show("ceci est la consigne de la serie");   
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            Score.TotalAnswers++;
+            int buttonNumber = FindGoodAnswer();
+            MessageBox.Show("Temps écoulé. Il fallait cliquer sur le bouton " + buttonNumber + ".");
+            IncrementCurrentComponentOrSeries();
+            DisplayCurrentComponent();
         }
     }
 }

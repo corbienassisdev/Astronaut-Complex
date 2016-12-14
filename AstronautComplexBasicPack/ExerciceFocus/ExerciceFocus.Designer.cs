@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.componentFocusPanel = new System.Windows.Forms.Panel();
             this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
             this.buttonSameColor = new System.Windows.Forms.Button();
             this.buttonSameDotNumber = new System.Windows.Forms.Button();
             this.buttonOther = new System.Windows.Forms.Button();
             this.tlpGlobal = new System.Windows.Forms.TableLayoutPanel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.tlpButtons.SuspendLayout();
             this.tlpGlobal.SuspendLayout();
             this.SuspendLayout();
@@ -44,7 +46,7 @@
             this.componentFocusPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.componentFocusPanel.Location = new System.Drawing.Point(3, 3);
             this.componentFocusPanel.Name = "componentFocusPanel";
-            this.componentFocusPanel.Size = new System.Drawing.Size(866, 710);
+            this.componentFocusPanel.Size = new System.Drawing.Size(866, 627);
             this.componentFocusPanel.TabIndex = 0;
             // 
             // tlpButtons
@@ -61,13 +63,13 @@
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpButtons.Size = new System.Drawing.Size(368, 710);
+            this.tlpButtons.Size = new System.Drawing.Size(368, 627);
             this.tlpButtons.TabIndex = 1;
             // 
             // buttonSameColor
             // 
             this.buttonSameColor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSameColor.Location = new System.Drawing.Point(129, 98);
+            this.buttonSameColor.Location = new System.Drawing.Point(129, 84);
             this.buttonSameColor.Name = "buttonSameColor";
             this.buttonSameColor.Size = new System.Drawing.Size(110, 40);
             this.buttonSameColor.TabIndex = 0;
@@ -78,7 +80,7 @@
             // buttonSameDotNumber
             // 
             this.buttonSameDotNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSameDotNumber.Location = new System.Drawing.Point(129, 334);
+            this.buttonSameDotNumber.Location = new System.Drawing.Point(129, 293);
             this.buttonSameDotNumber.Name = "buttonSameDotNumber";
             this.buttonSameDotNumber.Size = new System.Drawing.Size(110, 40);
             this.buttonSameDotNumber.TabIndex = 1;
@@ -89,7 +91,7 @@
             // buttonOther
             // 
             this.buttonOther.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonOther.Location = new System.Drawing.Point(129, 571);
+            this.buttonOther.Location = new System.Drawing.Point(129, 502);
             this.buttonOther.Name = "buttonOther";
             this.buttonOther.Size = new System.Drawing.Size(110, 40);
             this.buttonOther.TabIndex = 2;
@@ -109,8 +111,13 @@
             this.tlpGlobal.Name = "tlpGlobal";
             this.tlpGlobal.RowCount = 1;
             this.tlpGlobal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpGlobal.Size = new System.Drawing.Size(1246, 716);
+            this.tlpGlobal.Size = new System.Drawing.Size(1246, 633);
             this.tlpGlobal.TabIndex = 2;
+            // 
+            // timer
+            // 
+            this.timer.Interval = 3000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // ExerciceFocus
             // 
@@ -118,7 +125,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpGlobal);
             this.Name = "ExerciceFocus";
-            this.Size = new System.Drawing.Size(1246, 716);
+            this.Size = new System.Drawing.Size(1246, 633);
             this.tlpButtons.ResumeLayout(false);
             this.tlpGlobal.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -133,5 +140,6 @@
         private System.Windows.Forms.Button buttonSameDotNumber;
         private System.Windows.Forms.Button buttonOther;
         private System.Windows.Forms.TableLayoutPanel tlpGlobal;
+        private System.Windows.Forms.Timer timer;
     }
 }
