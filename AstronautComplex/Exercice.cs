@@ -8,7 +8,7 @@ namespace AstronautComplex
         public string Title { get; set; }
         public ExerciceDifficulty Difficulty { get; set; }
         public ExerciceForm Form { get; set; }
-        protected ExerciceScore Score { get; set; }
+        public ExerciceScore Score { get; protected set; }
         protected Random Random { get; set; }
 
         /// <summary>
@@ -40,14 +40,5 @@ namespace AstronautComplex
         /// Runs the exercice. Needs to be implemented.
         /// </summary>
         public virtual void Run() { }
-
-        /// <summary>
-        /// Finishes the exercice, displays the score and goes back to the home page.
-        /// </summary>
-        public void Finish()
-        {
-            MessageBox.Show(string.Format("L'exercice est fini ! Vous avez obtenu un score de {0} !", Score), "Exercice terminé !", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Form.LoadExercices();
-        }
     }
 }

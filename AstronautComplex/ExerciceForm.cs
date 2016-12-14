@@ -125,6 +125,20 @@ namespace AstronautComplex
         }
 
         /// <summary>
+        /// Finishes an exercice, displaying its score if asked to and reloading.
+        /// </summary>
+        /// <param name="exercice"></param>
+        public void FinishExercice(Exercice exercice, bool displayScore = true)
+        {
+            if(displayScore)
+            {
+                MessageBox.Show(string.Format("L'exercice est fini ! Vous avez obtenu un score de {0} !", exercice.Score), "Exercice terminé !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            LoadExercices();
+        }
+
+        /// <summary>
         /// Displays the background. Will try to load the video by creating a hidden temporary file, and will delete the file if an exception is raised.
         /// </summary>
         public void DisplayBackground()
@@ -207,7 +221,7 @@ namespace AstronautComplex
         {
             if(MessageBox.Show(MessageReturnHomeContent, MessageReturnHomeTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                LoadExercices();
+                FinishExercice(Exercices[CurrentExercice], false);
             }
         }
 

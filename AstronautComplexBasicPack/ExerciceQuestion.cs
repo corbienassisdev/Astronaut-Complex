@@ -110,7 +110,7 @@ namespace AstronautComplexBasicPack
             }
             else
             {
-                Finish();
+                Form.FinishExercice(this);
             }
         }
 

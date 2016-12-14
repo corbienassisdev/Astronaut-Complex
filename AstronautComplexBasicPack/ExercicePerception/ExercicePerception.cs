@@ -54,7 +54,8 @@ namespace AstronautComplexBasicPack.ExercicePerception
                 CurrentMask.ShowMask(Difficulty, tableLayoutPanel);
                 GetAnswers();
             }
-            Finish();
+
+            Form.FinishExercice(this);
         }
 
         private void GiveInstructions()

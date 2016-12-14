@@ -41,7 +41,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="AstronautComplex.ExerciceScore">
-    <Position X="9.5" Y="1.25" Width="1.5" />
+    <Position X="8.75" Y="1.25" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="AstronautComplex.ExerciceDialogDifficulty">
@@ -155,6 +155,7 @@
       <Method Name="IncrementCurrentComponentOrSeries" Hidden="true" />
       <Method Name="InitializeComponent" Hidden="true" />
       <Property Name="Series" Hidden="true" />
+      <Method Name="timer_Tick" Hidden="true" />
       <Field Name="tlpButtons" Hidden="true" />
       <Field Name="tlpGlobal" Hidden="true" />
     </Members>

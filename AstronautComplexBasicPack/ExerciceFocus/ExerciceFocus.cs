@@ -198,7 +198,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             }
             else
             {
-                Finish();
+                Form.FinishExercice(this);
             }
         }
 
