@@ -146,7 +146,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
                     break;
             }
 
-            if (ok)
+            if(ok)
             {
                 Score.GoodAnswers++;
                 MessageBox.Show("Bonne réponse !");
