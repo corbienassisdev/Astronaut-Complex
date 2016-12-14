@@ -48,7 +48,7 @@ namespace AstronautComplex
                 TableLayoutPanel tableLayoutPanelMenu = new TableLayoutPanel();
                 tableLayoutPanelMenu.Dock = DockStyle.Left;
                 tableLayoutPanelMenu.AutoSize = true;
-                tableLayoutPanelMenu.Padding = new Padding(20, 0, 0, 20);
+                tableLayoutPanelMenu.Padding = new Padding(20, 0, 0, 0);
                 tableLayoutPanelMenu.BackColor = Color.Transparent;
                 tableLayoutPanelMenu.ColumnCount = 1;
                 tableLayoutPanelMenu.RowStyles.Add(new RowStyle(SizeType.AutoSize));
@@ -85,7 +85,8 @@ namespace AstronautComplex
                             Button menuButton = new Button();
                             menuButton.Name = "menuButton" + type.Name;
                             menuButton.Text = exercice.Title;
-                            menuButton.Dock = DockStyle.Fill;
+                            menuButton.Height = 60;
+                            menuButton.Dock = DockStyle.Top;
                             menuButton.Click += onClick.Invoke;
                             tableLayoutPanelMenu.Controls.Add(menuButton);
 
@@ -127,7 +128,6 @@ namespace AstronautComplex
                 File.SetAttributes(FileVideoTemp, FileAttributes.Temporary | FileAttributes.Hidden);
                 
                 AxWindowsMediaPlayer wmPlayer = new AxWindowsMediaPlayer();
-                panelExercice.Controls.Add(wmPlayer);
                 wmPlayer.Dock = DockStyle.Right;
                 wmPlayer.Width = 664;
                 wmPlayer.CreateControl();
@@ -140,6 +140,7 @@ namespace AstronautComplex
                 wmPlayer.URL = FileVideoTemp;
                 wmPlayer.settings.setMode("loop", true);
                 wmPlayer.Ctlcontrols.play();
+                panelExercice.Controls.Add(wmPlayer);
 
                 this.MinimumSize = new Size(1024, 650);
                 this.MaximumSize = new Size(1024, 650);

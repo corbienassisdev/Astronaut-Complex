@@ -69,6 +69,9 @@
     </Compile>
     <Compile Include="ExerciceMathematics\Polygon3DSphere.cs" />
     <Compile Include="ExerciceMathematics\QuestionVolumeType.cs" />
+    <Compile Include="ExercicePhysics\ExercicePhysics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ExerciceQuestion.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,6 +132,10 @@
   <ItemGroup>
     <Content Include="ExerciceFocus\series.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Conception\Classes.cd" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

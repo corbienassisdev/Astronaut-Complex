@@ -31,7 +31,6 @@
             this.textBoxQuestion = new System.Windows.Forms.TextBox();
             this.panelQuestion = new System.Windows.Forms.Panel();
             this.panelDrawing = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanelAnswers = new System.Windows.Forms.TableLayoutPanel();
             this.labelTitle = new System.Windows.Forms.Label();
             this.panelQuestion.SuspendLayout();
@@ -54,7 +53,6 @@
             // 
             this.panelQuestion.Controls.Add(this.panelDrawing);
             this.panelQuestion.Controls.Add(this.textBoxQuestion);
-            this.panelQuestion.Controls.Add(this.flowLayoutPanel1);
             this.panelQuestion.Controls.Add(this.tableLayoutPanelAnswers);
             this.panelQuestion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelQuestion.Location = new System.Drawing.Point(0, 70);
@@ -70,15 +68,6 @@
             this.panelDrawing.Name = "panelDrawing";
             this.panelDrawing.Size = new System.Drawing.Size(1339, 328);
             this.panelDrawing.TabIndex = 3;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(27, 424);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1339, 0);
-            this.flowLayoutPanel1.TabIndex = 2;
             // 
             // tableLayoutPanelAnswers
             // 
@@ -127,7 +116,6 @@
         private System.Windows.Forms.TextBox textBoxQuestion;
         private System.Windows.Forms.Panel panelQuestion;
         protected System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAnswers;
         private System.Windows.Forms.Panel panelDrawing;
     }
