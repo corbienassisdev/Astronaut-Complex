@@ -94,7 +94,8 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Astronaut Complex";
-            this.Load += new System.EventHandler(this.AstronautComplex_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExerciceForm_FormClosing);
+            this.Load += new System.EventHandler(this.ExerciceForm_Load);
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.ResumeLayout(false);
