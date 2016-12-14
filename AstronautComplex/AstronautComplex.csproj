@@ -115,6 +115,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Conception\DiagramClasses.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -136,6 +137,7 @@
     <Content Include="Libraries\Interop.WMPLib.dll" />
     <Content Include="Resources\earth.png" />
     <Content Include="Resources\logo.ico" />
+    <Content Include="Resources\logo_title.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
