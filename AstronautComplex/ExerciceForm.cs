@@ -16,6 +16,7 @@ namespace AstronautComplex
     public partial class ExerciceForm : Form
     {
         public const string DirectoryPlugins = @"\Plugins";
+        public const string FileVideoTemp = "temp.mp4";
 
         public List<Exercice> Exercices { get; protected set; }
         public int Exercice { get; protected set; }
@@ -107,12 +108,11 @@ namespace AstronautComplex
 
         public void DisplayBackground()
         {
-            string fileTemp = "temp.mp4";
-            File.WriteAllBytes(fileTemp, Resources.earth_video);
-            File.SetAttributes(fileTemp, FileAttributes.Temporary | FileAttributes.Hidden);
-
             try
             {
+                File.WriteAllBytes(FileVideoTemp, Resources.earth_video);
+                File.SetAttributes(FileVideoTemp, FileAttributes.Temporary | FileAttributes.Hidden);
+
                 AxWindowsMediaPlayer wmPlayer = new AxWindowsMediaPlayer();
                 wmPlayer.Dock = DockStyle.Right;
                 wmPlayer.Width = 664;
@@ -123,14 +123,15 @@ namespace AstronautComplex
                 wmPlayer.Enabled = true;
                 ((System.ComponentModel.ISupportInitialize)(wmPlayer)).EndInit();
                 wmPlayer.uiMode = "none";
-                wmPlayer.URL = fileTemp;
+                wmPlayer.URL = FileVideoTemp;
                 wmPlayer.settings.setMode("loop", true);
                 wmPlayer.Ctlcontrols.play();
                 panelExercice.Controls.Add(wmPlayer);
             }
-            catch (Exception) { };
-
-            File.Delete(fileTemp);
+            catch (Exception)
+            {
+                DeleteVideo();
+            };
         }
 
         /// <summary>
@@ -143,13 +144,34 @@ namespace AstronautComplex
         }
 
         /// <summary>
+        /// Deletes the home video and frees memory.
+        /// </summary>
+        public void DeleteVideo()
+        {
+            if (File.Exists(FileVideoTemp))
+            {
+                File.Delete(FileVideoTemp);
+            }
+        }
+
+        /// <summary>
         /// Called on main form loading.
         /// </summary>
         /// <param name="sender">The event sender.</param>
         /// <param name="e">The event arguments.</param>
-        private void AstronautComplex_Load(object sender, EventArgs e)
+        private void ExerciceForm_Load(object sender, EventArgs e)
         {
             LoadExercices();
+        }
+
+        /// <summary>
+        /// Called on main form closing.
+        /// </summary>
+        /// <param name="sender">The event sender.</param>
+        /// <param name="e">The event arguments.</param>
+        private void ExerciceForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DeleteVideo();
         }
 
         /// <summary>
