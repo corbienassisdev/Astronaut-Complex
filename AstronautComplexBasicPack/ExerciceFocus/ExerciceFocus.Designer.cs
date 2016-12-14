@@ -30,9 +30,9 @@
         {
             this.componentFocusPanel = new System.Windows.Forms.Panel();
             this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonSameColor = new System.Windows.Forms.Button();
+            this.buttonSameDotNumber = new System.Windows.Forms.Button();
+            this.buttonOther = new System.Windows.Forms.Button();
             this.tlpGlobal = new System.Windows.Forms.TableLayoutPanel();
             this.tlpButtons.SuspendLayout();
             this.tlpGlobal.SuspendLayout();
@@ -44,58 +44,58 @@
             this.componentFocusPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.componentFocusPanel.Location = new System.Drawing.Point(3, 3);
             this.componentFocusPanel.Name = "componentFocusPanel";
-            this.componentFocusPanel.Size = new System.Drawing.Size(873, 710);
+            this.componentFocusPanel.Size = new System.Drawing.Size(817, 710);
             this.componentFocusPanel.TabIndex = 0;
             // 
             // tlpButtons
             // 
             this.tlpButtons.ColumnCount = 1;
             this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpButtons.Controls.Add(this.button1, 0, 0);
-            this.tlpButtons.Controls.Add(this.button2, 0, 1);
-            this.tlpButtons.Controls.Add(this.button3, 0, 2);
+            this.tlpButtons.Controls.Add(this.buttonSameColor, 0, 0);
+            this.tlpButtons.Controls.Add(this.buttonSameDotNumber, 0, 1);
+            this.tlpButtons.Controls.Add(this.buttonOther, 0, 2);
             this.tlpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpButtons.Location = new System.Drawing.Point(882, 3);
+            this.tlpButtons.Location = new System.Drawing.Point(826, 3);
             this.tlpButtons.Name = "tlpButtons";
             this.tlpButtons.RowCount = 3;
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpButtons.Size = new System.Drawing.Size(371, 710);
+            this.tlpButtons.Size = new System.Drawing.Size(347, 710);
             this.tlpButtons.TabIndex = 1;
             // 
-            // button1
+            // buttonSameColor
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(130, 98);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Bouton 1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSameColor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSameColor.Location = new System.Drawing.Point(118, 98);
+            this.buttonSameColor.Name = "buttonSameColor";
+            this.buttonSameColor.Size = new System.Drawing.Size(110, 40);
+            this.buttonSameColor.TabIndex = 0;
+            this.buttonSameColor.Text = "Bouton 1";
+            this.buttonSameColor.UseVisualStyleBackColor = true;
+            this.buttonSameColor.Click += new System.EventHandler(this.buttonSameColor_Click);
             // 
-            // button2
+            // buttonSameDotNumber
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Location = new System.Drawing.Point(130, 334);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 40);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Bouton 2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonSameDotNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSameDotNumber.Location = new System.Drawing.Point(118, 334);
+            this.buttonSameDotNumber.Name = "buttonSameDotNumber";
+            this.buttonSameDotNumber.Size = new System.Drawing.Size(110, 40);
+            this.buttonSameDotNumber.TabIndex = 1;
+            this.buttonSameDotNumber.Text = "Bouton 2";
+            this.buttonSameDotNumber.UseVisualStyleBackColor = true;
+            this.buttonSameDotNumber.Click += new System.EventHandler(this.buttonSameDotNumber_Click);
             // 
-            // button3
+            // buttonOther
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.Location = new System.Drawing.Point(130, 571);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 40);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Bouton 3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonOther.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonOther.Location = new System.Drawing.Point(118, 571);
+            this.buttonOther.Name = "buttonOther";
+            this.buttonOther.Size = new System.Drawing.Size(110, 40);
+            this.buttonOther.TabIndex = 2;
+            this.buttonOther.Text = "Bouton 3";
+            this.buttonOther.UseVisualStyleBackColor = true;
+            this.buttonOther.Click += new System.EventHandler(this.buttonOther_Click);
             // 
             // tlpGlobal
             // 
@@ -109,7 +109,7 @@
             this.tlpGlobal.Name = "tlpGlobal";
             this.tlpGlobal.RowCount = 1;
             this.tlpGlobal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpGlobal.Size = new System.Drawing.Size(1256, 716);
+            this.tlpGlobal.Size = new System.Drawing.Size(1176, 716);
             this.tlpGlobal.TabIndex = 2;
             // 
             // ExerciceFocus
@@ -118,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpGlobal);
             this.Name = "ExerciceFocus";
-            this.Size = new System.Drawing.Size(1256, 716);
+            this.Size = new System.Drawing.Size(1176, 716);
             this.tlpButtons.ResumeLayout(false);
             this.tlpGlobal.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -129,9 +129,9 @@
 
         private System.Windows.Forms.Panel componentFocusPanel;
         private System.Windows.Forms.TableLayoutPanel tlpButtons;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonSameColor;
+        private System.Windows.Forms.Button buttonSameDotNumber;
+        private System.Windows.Forms.Button buttonOther;
         private System.Windows.Forms.TableLayoutPanel tlpGlobal;
     }
 }

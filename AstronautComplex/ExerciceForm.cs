@@ -50,7 +50,6 @@ namespace AstronautComplex
                 wmPlayer.URL = "earth.mp4";
                 wmPlayer.settings.setMode("loop", true);
                 wmPlayer.Ctlcontrols.play();
-                
 
                 Panel panelMenu = new Panel();
                 panelMenu.Dock = DockStyle.Left;
