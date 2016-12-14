@@ -97,5 +97,15 @@ namespace AstronautComplex.Properties {
                 return ResourceManager.GetString("langHard", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap logo_title {
+            get {
+                object obj = ResourceManager.GetObject("logo_title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

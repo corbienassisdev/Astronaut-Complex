@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="AstronautComplex.ExerciceForm">
-    <Position X="4.75" Y="1.25" Width="1.5" />
+    <Position X="4.25" Y="1.5" Width="1.5" />
     <Members>
       <Field Name="components" Hidden="true" />
       <Method Name="DeleteVideo" Hidden="true" />
@@ -12,17 +12,82 @@
       <Field Name="FileVideoTemp" Hidden="true" />
       <Method Name="GetLangString" Hidden="true" />
       <Method Name="InitializeComponent" Hidden="true" />
-      <Field Name="MenuItemFile" Hidden="true" />
-      <Field Name="MenuItemNew" Hidden="true" />
-      <Field Name="MenuItemQuit" Hidden="true" />
+      <Field Name="menuItemFile" Hidden="true" />
+      <Field Name="menuItemHome" Hidden="true" />
+      <Method Name="MenuItemHome_Click" Hidden="true" />
+      <Field Name="menuItemNew" Hidden="true" />
+      <Field Name="menuItemQuit" Hidden="true" />
       <Method Name="MenuItemQuit_Click" Hidden="true" />
       <Field Name="menuStripMain" Hidden="true" />
+      <Field Name="MessageError" Hidden="true" />
+      <Field Name="MessageReturnHomeContent" Hidden="true" />
+      <Field Name="MessageReturnHomeTitle" Hidden="true" />
       <Field Name="panelExercice" Hidden="true" />
+      <Field Name="separatorBoxQuit" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAEAAQAAiAAIQAQAACAESACEAIAAwCAIAAAAAgAAAI=</HashCode>
+      <HashCode>AAAAAgQAAiAAoQAACACAFSACEAIAAwSAIAAAAAkABAA=</HashCode>
       <FileName>ExerciceForm.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Exercices" />
+    </ShowAsCollectionAssociation>
   </Class>
+  <Class Name="AstronautComplex.Exercice">
+    <Position X="10.25" Y="1.5" Width="2" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Difficulty" Type="AstronautComplex.ExerciceDifficulty" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.25" Y="3.954" />
+        <Point X="11.25" Y="4.813" />
+        <Point X="8.75" Y="4.813" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAUgAAACAAAACAAAABAAAAAAAAAEAAAo=</HashCode>
+      <FileName>Exercice.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Difficulty" />
+      <Property Name="Form" />
+      <Property Name="Score" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AstronautComplex.ExerciceScore">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>ExerciceScore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AstronautComplex.ExerciceDialogDifficulty">
+    <Position X="4.25" Y="4.25" Width="1.5" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="ExerciceDialogDifficulty_Load" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="labelDescription" Hidden="true" />
+      <Field Name="tableLayoutPanelDifficulties" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gAAAAQAAACAAAAAAAACEAAACAAAAAAABAAAIAAAAAAA=</HashCode>
+      <FileName>ExerciceDialogDifficulty.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SelectedDifficulty" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="AstronautComplex.ExerciceDifficulty">
+    <Position X="7.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ExerciceDifficulty.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

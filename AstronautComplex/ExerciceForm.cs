@@ -22,7 +22,7 @@ namespace AstronautComplex
         public const string FileVideoTemp = "temp.mp4";
 
         public List<Exercice> Exercices { get; protected set; }
-        public int Exercice { get; protected set; }
+        public int CurrentExercice { get; protected set; }
 
         /// <summary>
         /// Builds the form.
@@ -38,26 +38,31 @@ namespace AstronautComplex
         /// </summary>
         public void LoadExercices()
         {
-            MenuItemNew.DropDownItems.Clear();
+            menuItemNew.DropDownItems.Clear();
             panelExercice.Controls.Clear();
 
             try
             {
                 DisplayBackground();
 
-                Panel panelMenu = new Panel();
-                panelMenu.Dock = DockStyle.Left;
-                panelMenu.Padding = new Padding(20, 0, 0, 0);
-                panelMenu.Width = 326;
-                panelExercice.Controls.Add(panelMenu);
+                TableLayoutPanel tableLayoutPanelMenu = new TableLayoutPanel();
+                tableLayoutPanelMenu.Dock = DockStyle.Left;
+                tableLayoutPanelMenu.AutoSize = true;
+                tableLayoutPanelMenu.Padding = new Padding(20, 0, 0, 20);
+                tableLayoutPanelMenu.BackColor = Color.Transparent;
+                tableLayoutPanelMenu.ColumnCount = 1;
+                tableLayoutPanelMenu.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                panelExercice.Controls.Add(tableLayoutPanelMenu);
 
-                Label labelMenuTitle = new Label();
-                labelMenuTitle.Dock = DockStyle.Top;
-                labelMenuTitle.AutoSize = true;
-                labelMenuTitle.Padding = new Padding(0, 20, 0, 20);
-                labelMenuTitle.Text = "Astronaut Complex";
-                labelMenuTitle.Font = new Font(SystemFonts.DefaultFont.FontFamily, 24, FontStyle.Bold);
-                panelMenu.Controls.Add(labelMenuTitle);
+                Panel pictureBoxTitle = new Panel();
+                pictureBoxTitle.Dock = DockStyle.Top;
+                pictureBoxTitle.Width = 300;
+                pictureBoxTitle.Padding = new Padding(0, 20, 0, 20);
+                pictureBoxTitle.BackgroundImage = Resources.logo_title;
+                pictureBoxTitle.BackgroundImageLayout = ImageLayout.Zoom;
+                tableLayoutPanelMenu.Controls.Add(pictureBoxTitle, 0, 0);
+
+                int indexLoading = 0;
 
                 foreach (string pathPlugin in Directory.GetFiles(Directory.GetCurrentDirectory() + DirectoryPlugins, "*.dll", SearchOption.AllDirectories))
                 {
@@ -72,19 +77,23 @@ namespace AstronautComplex
                             Action<object, EventArgs> onClick = new Action<object, EventArgs>((sender, e) => { LoadExercice(exercice); });
 
                             ToolStripMenuItem menuItem = new ToolStripMenuItem();
-                            menuItem.Name = "MenuItemNew" + type.Name;
+                            menuItem.Name = "menuItemNew" + type.Name;
                             menuItem.Text = exercice.Title;
                             menuItem.Click += onClick.Invoke;
-                            MenuItemNew.DropDownItems.Add(menuItem);
+                            menuItemNew.DropDownItems.Add(menuItem);
 
                             Button menuButton = new Button();
-                            menuButton.Name = "MenuButton" + type.Name;
+                            menuButton.Name = "menuButton" + type.Name;
                             menuButton.Text = exercice.Title;
-                            menuButton.Dock = DockStyle.Top;
-                            menuButton.Height = 64;
+                            menuButton.Dock = DockStyle.Fill;
                             menuButton.Click += onClick.Invoke;
-                            panelMenu.Controls.Add(menuButton);
-                            menuButton.BringToFront();
+                            tableLayoutPanelMenu.Controls.Add(menuButton);
+
+                            tableLayoutPanelMenu.RowCount++;
+                            tableLayoutPanelMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+                            tableLayoutPanelMenu.Controls.Add(menuButton, 0, indexLoading + 1);
+
+                            indexLoading++;
                         }
                     }
                 }                
