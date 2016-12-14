@@ -34,6 +34,8 @@
             this.MenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemQuit = new System.Windows.Forms.ToolStripMenuItem();
             this.panelExercice = new System.Windows.Forms.Panel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.MenuItemHome = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +52,8 @@
             // 
             this.MenuItemFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItemNew,
+            this.MenuItemHome,
+            this.toolStripSeparator1,
             this.MenuItemQuit});
             this.MenuItemFile.Name = "MenuItemFile";
             this.MenuItemFile.Size = new System.Drawing.Size(54, 20);
@@ -59,14 +63,14 @@
             // 
             this.MenuItemNew.Name = "MenuItemNew";
             this.MenuItemNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.MenuItemNew.Size = new System.Drawing.Size(165, 22);
+            this.MenuItemNew.Size = new System.Drawing.Size(255, 22);
             this.MenuItemNew.Text = "Nouveau";
             // 
             // MenuItemQuit
             // 
             this.MenuItemQuit.Name = "MenuItemQuit";
             this.MenuItemQuit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.MenuItemQuit.Size = new System.Drawing.Size(165, 22);
+            this.MenuItemQuit.Size = new System.Drawing.Size(255, 22);
             this.MenuItemQuit.Text = "Quitter";
             this.MenuItemQuit.Click += new System.EventHandler(this.MenuItemQuit_Click);
             // 
@@ -79,6 +83,19 @@
             this.panelExercice.Name = "panelExercice";
             this.panelExercice.Size = new System.Drawing.Size(1008, 587);
             this.panelExercice.TabIndex = 1;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(252, 6);
+            // 
+            // MenuItemHome
+            // 
+            this.MenuItemHome.Name = "MenuItemHome";
+            this.MenuItemHome.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+            this.MenuItemHome.Size = new System.Drawing.Size(255, 22);
+            this.MenuItemHome.Text = "Revenir au menu principal";
+            this.MenuItemHome.Click += new System.EventHandler(this.MenuItemHome_Click);
             // 
             // ExerciceForm
             // 
@@ -110,6 +127,8 @@
         private System.Windows.Forms.ToolStripMenuItem MenuItemQuit;
         private System.Windows.Forms.ToolStripMenuItem MenuItemNew;
         private System.Windows.Forms.Panel panelExercice;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemHome;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

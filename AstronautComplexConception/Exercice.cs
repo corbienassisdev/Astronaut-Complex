@@ -5,21 +5,9 @@ using System.Text;
 
 namespace AstronautComplexConception
 {
-    public class ExerciceForm
+    public class Exercice
     {
-        public System.Collections.Generic.List<Exercice> Exercices
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public int Exercice
+        public string Title
         {
             get
             {

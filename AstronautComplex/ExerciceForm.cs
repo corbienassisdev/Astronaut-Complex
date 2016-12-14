@@ -15,6 +15,9 @@ namespace AstronautComplex
     /// </summary>
     public partial class ExerciceForm : Form
     {
+        public const string MessageError = "Erreur";
+        public const string MessageReturnHomeTitle = "Astronaut Complex - Retourner au menu principal";
+        public const string MessageReturnHomeContent = "Êtes-vous sûr de vouloir retourner au menu principal ? Toute progression dans cet exercice sera perdue.";
         public const string DirectoryPlugins = @"\Plugins";
         public const string FileVideoTemp = "temp.mp4";
 
@@ -66,21 +69,7 @@ namespace AstronautComplex
                             exercice.Form = this;
                             Exercices.Add(exercice);
 
-                            Action<object, EventArgs> onClick = new Action<object, EventArgs>((sender, e) =>
-                            {
-                                ExerciceDialogDifficulty dialog = new ExerciceDialogDifficulty();
-                                dialog.Width = 300;
-                                dialog.Height = 150;
-                                dialog.Text = "Difficulté";
-                                if(dialog.ShowDialog() == DialogResult.OK)
-                                {
-                                    panelExercice.Controls.Clear();
-                                    panelExercice.Controls.Add(exercice);
-                                    exercice.Difficulty = dialog.SelectedDifficulty;
-                                    exercice.Initialize();
-                                    exercice.Run();
-                                }
-                            });
+                            Action<object, EventArgs> onClick = new Action<object, EventArgs>((sender, e) => { LoadExercice(exercice); });
 
                             ToolStripMenuItem menuItem = new ToolStripMenuItem();
                             menuItem.Name = "MenuItemNew" + type.Name;
@@ -103,6 +92,21 @@ namespace AstronautComplex
             catch (Exception exception)
             {
                 DisplayError(exception.Message);
+            }
+        }
+
+        public void LoadExercice(Exercice exercice)
+        {
+            ExerciceDialogDifficulty dialog = new ExerciceDialogDifficulty();
+            dialog.Width = 300;
+            dialog.Height = 150;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                panelExercice.Controls.Clear();
+                panelExercice.Controls.Add(exercice);
+                exercice.Difficulty = dialog.SelectedDifficulty;
+                exercice.Initialize();
+                exercice.Run();
             }
         }
 
@@ -140,7 +144,7 @@ namespace AstronautComplex
         /// <param name="message">The error message.</param>
         public void DisplayError(string message)
         {
-            MessageBox.Show(message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(message, MessageError, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
@@ -172,6 +176,19 @@ namespace AstronautComplex
         private void ExerciceForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             DeleteVideo();
+        }
+
+        /// <summary>
+        /// Called on clicking the "Home" menu item.
+        /// </summary>
+        /// <param name="sender">The event sender.</param>
+        /// <param name="e">The event arguments.</param>
+        private void MenuItemHome_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show(MessageReturnHomeContent, MessageReturnHomeTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                LoadExercices();
+            }
         }
 
         /// <summary>

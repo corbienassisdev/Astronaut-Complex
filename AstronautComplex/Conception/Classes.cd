@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AstronautComplex.ExerciceForm">
+    <Position X="4.75" Y="1.25" Width="1.5" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="DeleteVideo" Hidden="true" />
+      <Method Name="DisplayBackground" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="ExerciceForm_FormClosing" Hidden="true" />
+      <Method Name="ExerciceForm_Load" Hidden="true" />
+      <Field Name="FileVideoTemp" Hidden="true" />
+      <Method Name="GetLangString" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="MenuItemFile" Hidden="true" />
+      <Field Name="MenuItemNew" Hidden="true" />
+      <Field Name="MenuItemQuit" Hidden="true" />
+      <Method Name="MenuItemQuit_Click" Hidden="true" />
+      <Field Name="menuStripMain" Hidden="true" />
+      <Field Name="panelExercice" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAEAAQAAiAAIQAQAACAESACEAIAAwCAIAAAAAgAAAI=</HashCode>
+      <FileName>ExerciceForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
