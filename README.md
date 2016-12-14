@@ -1,4 +1,3 @@
-﻿#AstronautComplex
 
 ![](https://raw.githubusercontent.com/Grox2006/AstronautComplex/master/AstronautComplex/Resources/logo_title.png)
 
