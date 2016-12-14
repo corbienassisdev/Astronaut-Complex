@@ -1,155 +1,35 @@
-﻿using AstronautComplex;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Drawing;
-using System.Drawing.Drawing2D;
+using System.Linq;
+using System.Text;
 
 namespace AstronautComplexBasicPack.ExerciceMathematics
 {
-    /// <summary>
-    /// Represents an astronaut mathematic exercice. Inherits from <see cref="Exercice"/>.
-    /// </summary>
-    public partial class ExerciceMathematics : Exercice
+    public class ExerciceMathematics : ExerciceQuestion
     {
-        public static readonly Question[] PossibleQuestions = new Question[]
-        {
-            new QuestionPercentage("Hors saison, un hôtel propose un chambre double à {0}€. En pleine saison, le prix augmente de {1}%. Quel est le prix d'une chambre double en pleine saison ?", "€"),
-            new QuestionPercentage("Ma facture d'électricité a augmenté de {1}% ! Avant, elle était de {0}€. Combien vais-je devoir payer maintenant ?", "€"),
-            new QuestionPercentage("C'est les soldes ! Les chaussures que je voulaient, et qui coûtent habituellement {0}€, sont soldées à {1}%. Combien coûtent-elles maintenant ?", "€", true),
-            new QuestionHypothenuse("Pour aller à la piscine, je dois emprunter un chemin pendant {0}m, puis tourner de 90° vers l'est et continuer pendant encore {1}m. Quelle est la distance à vol d'oiseau entre mon point de départ et la piscine ?", "m"),
-            new QuestionVolume("Quel est l'objet qui a le plus grand volume ?", "m3")
-        };
-
-        public List<Question> Questions { get; protected set; }
-        public int CurrentQuestion { get; protected set; }
-
         /// <summary>
         /// Builds an astronaut mathematic exercice.
         /// </summary>
         public ExerciceMathematics() : base("Mathématiques")
         {
-            InitializeComponent();
-        }
-
-        /// <summary>
-        /// Initializes the exercice.
-        /// </summary>
-        public override void Initialize()
-        {
-            Score = new ExerciceScore();
-            Questions = new List<Question>();
-            CurrentQuestion = 0;
             
-            panelDrawing.Paint += (sender, e) =>
-            {
-                Graphics graphics = e.Graphics;
-                graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                if (Questions.Count > 0 && CurrentQuestion >= 0)
-                {
-                    Questions[CurrentQuestion].BuildDrawing(graphics, panelDrawing.Width, panelDrawing.Height);
-                }
-            };          
         }
 
         /// <summary>
-        /// Runs the exercice.
+        /// Generates all possible questions for the mathematics exercice.
         /// </summary>
-        public override void Run()
+        /// <returns>The possible questions for the exercice.</returns>
+        public override Question[] GeneratePossibleQuestions()
         {
-            GenerateQuestions(20);
-            AskQuestion();
-        }
-
-        /// <summary>
-        /// Generates a set of questions to ask to the user.
-        /// </summary>
-        /// <param name="nbQuestions">The number of questions to generate.</param>
-        public void GenerateQuestions(int nbQuestions)
-        {
-            bool[] generated = new bool[PossibleQuestions.Length];
-            for (int i = 0; i < nbQuestions; i++)
+            return new Question[]
             {
-                int index = Random.Next(0, PossibleQuestions.Length);
-                if(!generated[index])
-                {
-                    Question question = PossibleQuestions[index];
-                    Questions.Add(question);
-                    generated[index] = true;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Asks a question to the user.
-        /// </summary>
-        public void AskQuestion()
-        {
-            labelTitle.Text = string.Format("{0} ({1})", Title, ExerciceForm.GetLangString(Difficulty.ToString()));
-            
-            if (CurrentQuestion < Questions.Count)
-            {
-                Question question = Questions[CurrentQuestion];
-                question.Build(Difficulty, Random);
-
-                textBoxQuestion.Height = TextRenderer.MeasureText(textBoxQuestion.Text, textBoxQuestion.Font).Height * textBoxQuestion.Lines.Length;
-                textBoxQuestion.Text = question.Title;
-                tableLayoutPanelAnswers.Controls.Clear();
-                tableLayoutPanelAnswers.ColumnStyles.Clear();
-                tableLayoutPanelAnswers.ColumnCount = 0;
-                panelDrawing.Refresh();
-
-                for (int j = 0; j < question.Answers.Length; j++)
-                {
-                    Button button = new Button();
-                    button.Text = question.Answers[j].ToString();
-                    button.Anchor = AnchorStyles.None;
-                    button.TabIndex = j;
-                    button.Click += (sender, e) =>
-                    {
-                        AnswerQuestion(((Control)sender).TabIndex);
-                    };
-                    tableLayoutPanelAnswers.ColumnCount++;
-                    tableLayoutPanelAnswers.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
-                    tableLayoutPanelAnswers.Controls.Add(button, tableLayoutPanelAnswers.ColumnCount - 1, 0);
-                }
-            }
-            else
-            {
-                Finish();
-            }
-        }
-
-        /// <summary>
-        /// Called when the user answers a question.
-        /// </summary>
-        /// <param name="index">The answer index.</param>
-        public void AnswerQuestion(int index)
-        {
-            Score.TotalAnswers++;
-            Question question = Questions[CurrentQuestion];
-            string correctAnswer = question.Answers[question.Answer].ToString();
-            string message;
-            string caption;
-            MessageBoxIcon icon;
-            if (question.Answer == index)
-            {
-                message = string.Format("Bonne réponse ! Il s'agissait bien de {0} !", correctAnswer);
-                caption = "Bravo !";
-                icon = MessageBoxIcon.Information;
-                Score.GoodAnswers++;
-            }
-            else
-            {
-                message = string.Format("Mauvaise réponse... Vous avez répondu {0} mais la bonne réponse était {1} !", question.Answers[index], correctAnswer);
-                caption = "Oups...";
-                icon = MessageBoxIcon.Error;
-            }
-
-            MessageBox.Show(message, caption, MessageBoxButtons.OK, icon);
-
-            CurrentQuestion++;
-            AskQuestion();
+                new QuestionPercentage("Hors saison, un hôtel propose un chambre double à {0}€. En pleine saison, le prix augmente de {1}%. Quel est le prix d'une chambre double en pleine saison ?", "€", QuestionPercentageType.Greater),
+                new QuestionPercentage("Ma facture d'électricité a augmenté de {1}% ! Avant, elle était de {0}€. Combien vais-je devoir payer maintenant ?", "€", QuestionPercentageType.Greater),
+                new QuestionPercentage("C'est les soldes ! Les chaussures que je voulaient, et qui coûtent habituellement {0}€, sont soldées à {1}%. Combien coûtent-elles maintenant ?", "€", QuestionPercentageType.Lesser),
+                new QuestionHypothenuse("Pour aller à la piscine, je dois emprunter un chemin pendant {0}m, puis tourner de 90° vers l'est et continuer pendant encore {1}m. Quelle est la distance à vol d'oiseau entre mon point de départ et la piscine ?", "m"),
+                new QuestionVolume("Quel est l'objet qui a le plus petit volume ?", "m3", QuestionVolumeType.Minimum),
+                new QuestionVolume("Quel est l'objet qui a le plus gros volume ?", "m3", QuestionVolumeType.Maximum)
+            };
         }
     }
 }

@@ -48,13 +48,13 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
             if (CurrentComponent == 0)
             {
-                button1.Visible = false;
-                button2.Visible = false;
+                buttonSameColor.Visible = false;
+                buttonSameDotNumber.Visible = false;
             }
             else
             {
-                button1.Visible = true;
-                button2.Visible = true;
+                buttonSameColor.Visible = true;
+                buttonSameDotNumber.Visible = true;
             }
             
             componentFocusPanel.Controls.Add(Series[CurrentSeries].Components[CurrentComponent]);
@@ -88,81 +88,56 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             return xmlSeries;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonSameColor_Click(object sender, EventArgs e)
         {
             if (CurrentComponent != 0)
             {
                 Score.TotalAnswers++;
-
-                ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
-                ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
-
-                if (current.Color == previous.Color)
-                {
-                    Score.GoodAnswers++;
-                    MessageBox.Show("Bonne réponse !");
-                }
-                else
-                {
-                    int button = FindGoodAnswer();
-                    MessageBox.Show("Mauvaise réponse ! Il fallait cliquer sur le bouton " + button);
-                }
+                CheckAnswer((Button) sender);
             }
-
             PreviousComponent = CurrentComponent;
             IncrementCurrentComponentOrSeries();
             DisplayCurrentComponent();
         }
        
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonSameDotNumber_Click(object sender, EventArgs e)
         {
             if (CurrentComponent != 0)
             {
                 Score.TotalAnswers++;
-
-                ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
-                ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
-
-                if (current.DotNumber == previous.DotNumber)
-                {
-                    Score.GoodAnswers++;
-                    MessageBox.Show("Bonne réponse !");
-                }
-                else
-                {
-                    int button = FindGoodAnswer();
-                    MessageBox.Show("Mauvaise réponse ! Il fallait cliquer sur le bouton " + button);
-                }
+                CheckAnswer((Button) sender);
             }
-
             PreviousComponent = CurrentComponent;
             IncrementCurrentComponentOrSeries();
             DisplayCurrentComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonOther_Click(object sender, EventArgs e)
         {
             if (CurrentComponent != 0)
             {
                 Score.TotalAnswers++;
-
-                ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
-                ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
-                if (current.DotNumber != previous.DotNumber && current.Color != previous.Color)
-                {
-                    Score.GoodAnswers++;
-                    MessageBox.Show("Bonne réponse !");
-                }
-                else
-                {
-                    int button = FindGoodAnswer();
-                    MessageBox.Show("Mauvaise réponse ! Il fallait cliquer sur le bouton " + button);
-                }
+                CheckAnswer((Button)sender);
             }
-
             PreviousComponent = CurrentComponent;
             IncrementCurrentComponentOrSeries();
             DisplayCurrentComponent();
+        }
+
+        private void CheckAnswer(Button button)
+        {
+            ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
+            ComponentFocus previous = Series[CurrentSeries].Components[PreviousComponent];
+            if (current.DotNumber != previous.DotNumber && current.Color != previous.Color)
+            {
+                Score.GoodAnswers++;
+                MessageBox.Show("Bonne réponse !");
+            }
+            else
+            {
+                int buttonNumber = FindGoodAnswer();
+                MessageBox.Show("Mauvaise réponse ! Il fallait cliquer sur le bouton " + buttonNumber);
+            }
         }
 
         private int FindGoodAnswer()
