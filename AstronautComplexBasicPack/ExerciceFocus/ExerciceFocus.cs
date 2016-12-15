@@ -41,7 +41,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             string startingInstruction = "Ceci est une consigne générale.";
             MessageBox.Show(startingInstruction, "Consigne générale", MessageBoxButtons.OK, MessageBoxIcon.None);
 
-            Series = GetSeriesFromXml("series.xml");
+            Series = GetSeriesFromXml("../../../AstronautComplexBasicPack/ExerciceFocus/series.xml");
 
             CurrentSeries = 0;
             CurrentComponent = 0;
@@ -130,39 +130,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
         private List<SingleSeries> GetSeriesFromXml(string path)
         {
             List<SingleSeries> xmlSeries = new List<SingleSeries>();
-
-            //List<ComponentFocus> components = new List<ComponentFocus>();
-            //List<Button> buttons = new List<Button>();
-
-            /*buttons.Add(buttonSameColor);
-            buttons.Add(buttonSameShape);
-            buttons.Add(buttonOther);
-
-            components.Add(new ComponentFocus(Shape.Rectangle, Color.Blue, 2));
-            components.Add(new ComponentFocus(Shape.Circle, Color.Blue, 3));
-            components.Add(new ComponentFocus(Shape.Square, Color.Yellow, 3));
-            components.Add(new ComponentFocus(Shape.Rectangle, Color.Red, 2));
-            components.Add(new ComponentFocus(Shape.Rectangle, Color.Blue, 2));
-
-            xmlSeries.Add(new SingleSeries(components, buttons));
-
-            buttons.Clear();
-            components.Clear();
-
-            buttons.Add(buttonSameDotNumber);
-            buttons.Add(buttonOther);
-            buttons.Add(buttonSameShape);
-
-            components.Add(new ComponentFocus(Shape.Circle, Color.Red, 2));
-            components.Add(new ComponentFocus(Shape.Circle, Color.Yellow, 3));
-            components.Add(new ComponentFocus(Shape.Circle, Color.Blue, 2));
-            components.Add(new ComponentFocus(Shape.Rectangle, Color.Red, 2));
-            components.Add(new ComponentFocus(Shape.Circle, Color.Blue, 3));
             
-            xmlSeries.Add(new SingleSeries(components, buttons));
-
-            return xmlSeries;*/
-
             List<ComponentFocus> components = new List<ComponentFocus>();
             List<Button> buttons = new List<Button>();
 
