@@ -118,6 +118,11 @@ namespace AstronautComplex
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 menuItemHome.Enabled = true;
+                string instructions;
+                if((instructions = exercice.GetInstructions()) != "")
+                {
+                    MessageBox.Show(instructions, "Consigne de l'exercice", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                }
                 panelExercice.Controls.Clear();
                 panelExercice.Controls.Add(exercice);
                 exercice.Difficulty = dialog.SelectedDifficulty;

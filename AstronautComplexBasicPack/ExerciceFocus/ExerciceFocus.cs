@@ -37,9 +37,6 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             Score = new ExerciceScore();
 
             InitializeButtons();
-            
-            string startingInstruction = "Ceci est une consigne générale.";
-            MessageBox.Show(startingInstruction, "Consigne générale", MessageBoxButtons.OK, MessageBoxIcon.None);
 
             Series = GetSeriesFromXml("../../../AstronautComplexBasicPack/ExerciceFocus/series.xml");
 
@@ -50,6 +47,11 @@ namespace AstronautComplexBasicPack.ExerciceFocus
         public override void Run()
         {
             DisplayCurrentComponent();
+        }
+
+        public override string GetInstructions()
+        {
+            return "Ceci est une consigne générale.";
         }
 
         private void InitializeButtons()

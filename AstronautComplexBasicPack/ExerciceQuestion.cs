@@ -56,6 +56,15 @@ namespace AstronautComplexBasicPack
         }
 
         /// <summary>
+        /// Gets the exercice instructions.
+        /// </summary>
+        /// <returns>The instructions.</returns>
+        public override string GetInstructions()
+        {
+            return "Dans ce test, vous devrez répondre à différentes questions, générées aléatoirement, qui vous serons posées. Un nombre aléatoire de réponses est possible ; choisissez l'unique bonne réponse en cliquant dessus !";
+        }
+
+        /// <summary>
         /// Generates a set of questions to ask to the user.
         /// </summary>
         /// <param name="nbQuestions">The number of questions to generate.</param>

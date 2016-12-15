@@ -11,6 +11,15 @@
         }
 
         /// <summary>
+        /// Gets the exercice instructions.
+        /// </summary>
+        /// <returns>The instructions.</returns>
+        public override string GetInstructions()
+        {
+            return base.GetInstructions() + "\n\nCet exercice concerne des problèmes de physique.";
+        }
+
+        /// <summary>
         /// Generates all possible questions for the mathematics exercice.
         /// </summary>
         /// <returns>The possible questions for the exercice.</returns>

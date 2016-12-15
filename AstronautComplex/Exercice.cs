@@ -40,5 +40,11 @@ namespace AstronautComplex
         /// Runs the exercice. Needs to be implemented.
         /// </summary>
         public virtual void Run() { }
+
+        /// <summary>
+        /// Gets the exercice instructions. Needs to be implemented.
+        /// </summary>
+        /// <returns>The instructions.</returns>
+        public virtual string GetInstructions() { return ""; }
     }
 }

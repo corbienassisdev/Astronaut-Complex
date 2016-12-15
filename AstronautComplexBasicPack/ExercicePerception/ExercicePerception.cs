@@ -36,12 +36,6 @@ namespace AstronautComplexBasicPack.ExercicePerception
             Score = new ExerciceScore();
             CurrentMask = new Mask();
 
-            string secondes = (Difficulty == ExerciceDifficulty.Easy) ? timeEasy.ToString() : timeHard.ToString(); ;
-            string startingInstruction = "Lors de ce test, des figures de forme et de couleur différentes vont être affichées à l'écran pendant " + secondes + " secondes.\n"
-                + "Sur chaque figure est écrit un nombre variant de 0 à 9.\n\n"
-                + "Votre but est de retenir uniquement les nombres contenus dans les figures de forme X et de couleur Y\n\n"
-                + "Exemple : Retenez la valeur des cercles jaunes";
-            MessageBox.Show(startingInstruction, "Consigne générale", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
         public override void Run()
@@ -56,6 +50,15 @@ namespace AstronautComplexBasicPack.ExercicePerception
             }
 
             Form.FinishExercice(this);
+        }
+
+        public override string GetInstructions()
+        {
+            string secondes = (Difficulty == ExerciceDifficulty.Easy) ? timeEasy.ToString() : timeHard.ToString();
+            return "Lors de ce test, des figures de forme et de couleur différentes vont être affichées à l'écran pendant " + secondes + " secondes.\n"
+                 + "Sur chaque figure est écrit un nombre variant de 0 à 9.\n\n"
+                 + "Votre but est de retenir uniquement les nombres contenus dans les figures de forme X et de couleur Y\n\n"
+                 + "Exemple : Retenez la valeur des cercles jaunes";
         }
 
         private void GiveInstructions()
