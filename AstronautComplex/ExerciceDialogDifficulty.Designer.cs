@@ -55,14 +55,14 @@
             this.tableLayoutPanelDifficulties.RowCount = 1;
             this.tableLayoutPanelDifficulties.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelDifficulties.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelDifficulties.Size = new System.Drawing.Size(621, 48);
+            this.tableLayoutPanelDifficulties.Size = new System.Drawing.Size(264, 48);
             this.tableLayoutPanelDifficulties.TabIndex = 1;
             // 
             // ExerciceDialogDifficulty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 71);
+            this.ClientSize = new System.Drawing.Size(284, 71);
             this.Controls.Add(this.tableLayoutPanelDifficulties);
             this.Controls.Add(this.labelDescription);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
