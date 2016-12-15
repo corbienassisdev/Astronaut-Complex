@@ -9,6 +9,7 @@ using System.Linq;
 using System.Xml;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Xml.Linq;
 
 namespace AstronautComplexBasicPack.ExerciceFocus
 {
@@ -40,7 +41,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             string startingInstruction = "Ceci est une consigne générale.";
             MessageBox.Show(startingInstruction, "Consigne générale", MessageBoxButtons.OK, MessageBoxIcon.None);
 
-            Series = GetSeriesFromXml("series.xml");
+            Series = GetSeriesFromXml("../../../AstronautComplexBasicPack/ExerciceFocus/series.xml");
 
             CurrentSeries = 0;
             CurrentComponent = 0;
@@ -76,7 +77,6 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             buttonOther.Click += new EventHandler(buttonOther_Click);
         }
         
-
         private void DisplayCurrentComponent()
         {
             componentFocusPanel.Controls.Clear();
@@ -130,40 +130,89 @@ namespace AstronautComplexBasicPack.ExerciceFocus
         private List<SingleSeries> GetSeriesFromXml(string path)
         {
             List<SingleSeries> xmlSeries = new List<SingleSeries>();
-
+            
             List<ComponentFocus> components = new List<ComponentFocus>();
             List<Button> buttons = new List<Button>();
 
-            buttons.Add(buttonSameColor);
-            buttons.Add(buttonSameShape);
-            buttons.Add(buttonOther);
+            XDocument document = XDocument.Load(path);
 
-            components.Add(new ComponentFocus(Shape.Rectangle, Color.Blue, 2));
-            components.Add(new ComponentFocus(Shape.Circle, Color.Blue, 3));
-            components.Add(new ComponentFocus(Shape.Square, Color.Yellow, 3));
-            components.Add(new ComponentFocus(Shape.Rectangle, Color.Red, 2));
-            components.Add(new ComponentFocus(Shape.Rectangle, Color.Blue, 2));
+            foreach (XElement a in document.Descendants("singleserie"))
+            {
+                buttons.Clear();
+                components.Clear();
 
-            xmlSeries.Add(new SingleSeries(components, buttons));
+                foreach (XElement b in a.Descendants("buttons"))
+                {
+                    foreach (XElement c in b.Descendants("button"))
+                    {
+                        switch (c.Value)
+                        {
+                            case "color":
+                                buttons.Add(this.buttonSameColor);
+                                break;
+                            case "dots":
+                                buttons.Add(this.buttonSameDotNumber);
+                                break;
+                            case "shape":
+                                buttons.Add(this.buttonSameShape);
+                                break;
+                            case "other":
+                                buttons.Add(this.buttonOther);
+                                break;
+                            default:
+                                throw new NotImplementedException();
+                        }
+                    }
+                }
 
-            buttons.Clear();
-            components.Clear();
+                foreach (XElement b in a.Descendants("component"))
+                {
+                    Color color;
+                    Shape shape;
+                    int dots;
 
-            buttons.Add(buttonSameDotNumber);
-            buttons.Add(buttonOther);
-            buttons.Add(buttonSameShape);
+                    switch (b.Descendants("color").First().Value)
+                    {
+                        case "blue":
+                            color = Color.Blue;
+                            break;
+                        case "red":
+                            color = Color.Red;
+                            break;
+                        case "yellow":
+                            color = Color.Yellow;
+                            break;
+                        default:
+                            color = Color.Black;
+                            break;
+                    }
 
-            components.Add(new ComponentFocus(Shape.Circle, Color.Red, 2));
-            components.Add(new ComponentFocus(Shape.Circle, Color.Yellow, 3));
-            components.Add(new ComponentFocus(Shape.Circle, Color.Blue, 2));
-            components.Add(new ComponentFocus(Shape.Rectangle, Color.Red, 2));
-            components.Add(new ComponentFocus(Shape.Circle, Color.Blue, 3));
+                    switch(b.Descendants("shape").First().Value)
+                    {
+                        case "circle":
+                            shape = Shape.Circle;
+                            break;
+                        case "square":
+                            shape = Shape.Square;
+                            break;
+                        case "rectangle":
+                            shape = Shape.Rectangle;
+                            break;
+                        default:
+                            shape = Shape.Circle;
+                            break;
+                    }
 
-            xmlSeries.Add(new SingleSeries(components, buttons));
+                    dots = int.Parse(b.Descendants("dotnumber").First().Value);
+
+                    components.Add(new ComponentFocus(shape, color, dots));
+                }
+
+                xmlSeries.Add(new SingleSeries(components, buttons));
+            }
 
             return xmlSeries;
         }
-
 
         private void buttonSameColor_Click(object sender, EventArgs e)
         {

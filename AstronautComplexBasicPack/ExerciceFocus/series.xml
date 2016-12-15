@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <series>
-  <serie>
+  <singleserie>
     <buttons>
       <button>color</button>
       <button>dots</button>
@@ -33,8 +33,8 @@
         <dotnumber>2</dotnumber>
       </component>
     </components>
-  </serie>
-  <serie>
+  </singleserie>
+  <singleserie>
     <buttons>
       <button>dots</button>
       <button>other</button>
@@ -67,8 +67,8 @@
         <dotnumber>2</dotnumber>
       </component>
     </components>
-  </serie>
-  <serie>
+  </singleserie>
+  <singleserie>
     <buttons>
       <button>shape</button>
       <button>color</button>
@@ -101,5 +101,5 @@
         <dotnumber>2</dotnumber>
       </component>
     </components>
-  </serie>
+  </singleserie>
 </series>
