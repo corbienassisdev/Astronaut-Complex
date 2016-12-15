@@ -130,7 +130,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ExerciceFocus\series.xml" />
+    <Content Include="ExerciceFocus\series.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="Conception\Classes.cd" />

@@ -31,12 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.componentFocusPanel = new System.Windows.Forms.Panel();
             this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonSameColor = new System.Windows.Forms.Button();
-            this.buttonSameDotNumber = new System.Windows.Forms.Button();
-            this.buttonOther = new System.Windows.Forms.Button();
             this.tlpGlobal = new System.Windows.Forms.TableLayoutPanel();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.tlpButtons.SuspendLayout();
             this.tlpGlobal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,9 +49,6 @@
             // 
             this.tlpButtons.ColumnCount = 1;
             this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpButtons.Controls.Add(this.buttonSameColor, 0, 0);
-            this.tlpButtons.Controls.Add(this.buttonSameDotNumber, 0, 1);
-            this.tlpButtons.Controls.Add(this.buttonOther, 0, 2);
             this.tlpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpButtons.Location = new System.Drawing.Point(875, 3);
             this.tlpButtons.Name = "tlpButtons";
@@ -65,39 +58,6 @@
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpButtons.Size = new System.Drawing.Size(368, 627);
             this.tlpButtons.TabIndex = 1;
-            // 
-            // buttonSameColor
-            // 
-            this.buttonSameColor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSameColor.Location = new System.Drawing.Point(129, 84);
-            this.buttonSameColor.Name = "buttonSameColor";
-            this.buttonSameColor.Size = new System.Drawing.Size(110, 40);
-            this.buttonSameColor.TabIndex = 0;
-            this.buttonSameColor.Text = "Bouton 1";
-            this.buttonSameColor.UseVisualStyleBackColor = true;
-            this.buttonSameColor.Click += new System.EventHandler(this.buttonSameColor_Click);
-            // 
-            // buttonSameDotNumber
-            // 
-            this.buttonSameDotNumber.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSameDotNumber.Location = new System.Drawing.Point(129, 293);
-            this.buttonSameDotNumber.Name = "buttonSameDotNumber";
-            this.buttonSameDotNumber.Size = new System.Drawing.Size(110, 40);
-            this.buttonSameDotNumber.TabIndex = 1;
-            this.buttonSameDotNumber.Text = "Bouton 2";
-            this.buttonSameDotNumber.UseVisualStyleBackColor = true;
-            this.buttonSameDotNumber.Click += new System.EventHandler(this.buttonSameDotNumber_Click);
-            // 
-            // buttonOther
-            // 
-            this.buttonOther.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonOther.Location = new System.Drawing.Point(129, 502);
-            this.buttonOther.Name = "buttonOther";
-            this.buttonOther.Size = new System.Drawing.Size(110, 40);
-            this.buttonOther.TabIndex = 2;
-            this.buttonOther.Text = "Bouton 3";
-            this.buttonOther.UseVisualStyleBackColor = true;
-            this.buttonOther.Click += new System.EventHandler(this.buttonOther_Click);
             // 
             // tlpGlobal
             // 
@@ -126,7 +86,6 @@
             this.Controls.Add(this.tlpGlobal);
             this.Name = "ExerciceFocus";
             this.Size = new System.Drawing.Size(1246, 633);
-            this.tlpButtons.ResumeLayout(false);
             this.tlpGlobal.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -136,9 +95,6 @@
 
         private System.Windows.Forms.Panel componentFocusPanel;
         private System.Windows.Forms.TableLayoutPanel tlpButtons;
-        private System.Windows.Forms.Button buttonSameColor;
-        private System.Windows.Forms.Button buttonSameDotNumber;
-        private System.Windows.Forms.Button buttonOther;
         private System.Windows.Forms.TableLayoutPanel tlpGlobal;
         private System.Windows.Forms.Timer timer;
     }

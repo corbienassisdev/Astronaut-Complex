@@ -149,6 +149,7 @@ namespace AstronautComplex
                 File.SetAttributes(FileVideoTemp, FileAttributes.Temporary | FileAttributes.Hidden);
                 
                 AxWindowsMediaPlayer wmPlayer = new AxWindowsMediaPlayer();
+                panelExercice.Controls.Add(wmPlayer);
                 wmPlayer.Dock = DockStyle.Right;
                 wmPlayer.Width = 664;
                 wmPlayer.CreateControl();
@@ -161,7 +162,6 @@ namespace AstronautComplex
                 wmPlayer.URL = FileVideoTemp;
                 wmPlayer.settings.setMode("loop", true);
                 wmPlayer.Ctlcontrols.play();
-                panelExercice.Controls.Add(wmPlayer);
 
                 this.MinimumSize = new Size(1024, 650);
                 this.MaximumSize = new Size(1024, 650);
