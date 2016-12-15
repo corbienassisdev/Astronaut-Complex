@@ -5,7 +5,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
 {
     public class Polygon3DSphere : Polygon3D
     {
-        public double Radius { get; set; }
+        public double Diameter { get; set; }
 
         /// <summary>
         /// Builds the sphere.
@@ -14,7 +14,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// <param name="height">The height.</param>
         public Polygon3DSphere(double radius) : base("Sphere")
         {
-            Radius = radius;
+            Diameter = radius;
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         /// </summary>
         public override double ComputeVolume()
         {
-            return (4.0 / 3.0) * Math.PI * Math.Pow(Radius, 3.0);
+            return (4.0 / 3.0) * Math.PI * Math.Pow(Diameter / 2, 3.0);
         }
 
         /// <summary>
@@ -45,12 +45,12 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
         {
             Pen pen = new Pen(Color.Navy, 1);
 
-            int radiusScaled = (int)(Radius * z);
+            int radiusScaled = (int)(Diameter * z) / 2;
             Point ul = new Point(x - radiusScaled / 2, y - radiusScaled);
             Point bl = new Point(ul.X, ul.Y + radiusScaled);
             graphics.DrawEllipse(pen, ul.X, ul.Y, 2 * radiusScaled, 2 * radiusScaled);
 
-            graphics.DrawString(string.Format("{0} \r\n - Radius = {1}", Name, Radius), SystemFonts.DefaultFont, new SolidBrush(Color.Navy), bl.X, bl.Y + 40);
+            graphics.DrawString(string.Format("{0} \r\n - Radius = {1}", Name, Diameter / 2), SystemFonts.DefaultFont, new SolidBrush(Color.Navy), bl.X, bl.Y + 40);
         }
     }
 }

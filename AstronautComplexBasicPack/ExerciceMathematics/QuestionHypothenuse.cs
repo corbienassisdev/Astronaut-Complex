@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AstronautComplex;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace AstronautComplexBasicPack.ExerciceMathematics
 {
@@ -54,6 +55,13 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
             Point B = new Point(A.X + width, A.Y);
             Point C = new Point(A.X, A.Y + height);
             graphics.DrawPolygon(pen, new Point[] { A, B, C });
+
+            string sideAStr = string.Format("{0} {1}", Math.Abs(SideA), SuffixeAnswer);
+            string sideBStr = string.Format("{0} {1}", Math.Abs(SideB), SuffixeAnswer);
+            Size sideAStrSize = TextRenderer.MeasureText(sideAStr, SystemFonts.DefaultFont);
+            Size sideBStrSize = TextRenderer.MeasureText(sideBStr, SystemFonts.DefaultFont);
+            graphics.DrawString(sideAStr, SystemFonts.DefaultFont, new SolidBrush(Color.Navy), A.X + width / 2 - sideAStrSize.Width / 2, A.Y + 10);
+            graphics.DrawString(sideBStr, SystemFonts.DefaultFont, new SolidBrush(Color.Navy), A.X - sideBStrSize.Width - 10, A.Y + height / 2 - sideBStrSize.Height / 2);
         }
     }
 }

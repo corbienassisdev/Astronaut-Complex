@@ -51,8 +51,8 @@
             // 
             // panelQuestion
             // 
-            this.panelQuestion.Controls.Add(this.panelDrawing);
             this.panelQuestion.Controls.Add(this.textBoxQuestion);
+            this.panelQuestion.Controls.Add(this.panelDrawing);
             this.panelQuestion.Controls.Add(this.tableLayoutPanelAnswers);
             this.panelQuestion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelQuestion.Location = new System.Drawing.Point(0, 70);
@@ -63,7 +63,7 @@
             // 
             // panelDrawing
             // 
-            this.panelDrawing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDrawing.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelDrawing.Location = new System.Drawing.Point(27, 96);
             this.panelDrawing.Name = "panelDrawing";
             this.panelDrawing.Size = new System.Drawing.Size(1441, 419);
