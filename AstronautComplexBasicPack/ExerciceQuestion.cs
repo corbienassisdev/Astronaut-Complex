@@ -86,8 +86,9 @@ namespace AstronautComplexBasicPack
                 Question question = Questions[CurrentQuestion];
                 question.Build(Difficulty, Random);
 
-                textBoxQuestion.Height = TextRenderer.MeasureText(textBoxQuestion.Text, textBoxQuestion.Font).Height * textBoxQuestion.Lines.Length;
                 textBoxQuestion.Text = question.Title;
+                //textBoxQuestion.Height = TextRenderer.MeasureText(textBoxQuestion.Text, textBoxQuestion.Font).Height * textBoxQuestion.Lines.Length;
+                
                 tableLayoutPanelAnswers.Controls.Clear();
                 tableLayoutPanelAnswers.ColumnStyles.Clear();
                 tableLayoutPanelAnswers.ColumnCount = 0;

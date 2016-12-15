@@ -72,6 +72,8 @@
     <Compile Include="ExercicePhysics\ExercicePhysics.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ExercicePhysics\QuestionCinetic.cs" />
+    <Compile Include="ExercicePhysics\QuestionAtmosphereToPascal.cs" />
     <Compile Include="ExerciceQuestion.cs">
       <SubType>UserControl</SubType>
     </Compile>

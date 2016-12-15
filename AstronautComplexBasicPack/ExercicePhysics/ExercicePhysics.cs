@@ -18,7 +18,8 @@
         {
             return new Question[]
             {
-                
+                new QuestionAtmosphereToPascal("Je suis arrivé sur une planète et mon baromètre indique que l'atmosphère a une pression de {0} Atmosphere ! Quelle est l'équivalent en Pascal ?", " Pa"),
+                new QuestionCinetic("Ma voiture roulant à {0} m/s ({1} km/h) et pesant {2} kg va heurter un mur ! Comme je suis un bon scientifique, je vais calculer son énergie cinétique au moment de l'impact avant de me retrouver à l'hôpital. Alors, combien ?", "J")
             };
         }
     }
