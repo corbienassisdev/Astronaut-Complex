@@ -39,6 +39,7 @@ namespace AstronautComplex
         public void LoadExercices()
         {
             menuItemNew.DropDownItems.Clear();
+            menuItemHome.Enabled = false;
             panelExercice.Controls.Clear();
 
             try
@@ -116,6 +117,7 @@ namespace AstronautComplex
             dialog.Height = 150;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
+                menuItemHome.Enabled = true;
                 panelExercice.Controls.Clear();
                 panelExercice.Controls.Add(exercice);
                 exercice.Difficulty = dialog.SelectedDifficulty;
