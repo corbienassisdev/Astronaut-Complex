@@ -17,7 +17,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
     }
 
     /// <summary>
-    /// Is a colored shape with some dots inside.
+    /// Is a colored shape with a specific color ans some dots inside.
     /// </summary>
     public class ComponentFocus : Panel
     {
@@ -39,6 +39,10 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
         public ComponentFocus() {}
 
+        /// <summary>
+        /// Draws the current component on the panel.
+        /// </summary>
+        /// <param name="pe">Data for Paint Event. Not used here.</param>
         protected override void OnPaint(PaintEventArgs pe)
         {
             SolidBrush brush = new SolidBrush(this.Color);
@@ -66,6 +70,11 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             graphics.Dispose();
         }
 
+        /// <summary>
+        /// Draws the shape in the panel.
+        /// </summary>
+        /// <param name="graphics">Graphics object used to draw.</param>
+        /// <param name="brush">Brush object used to draw.</param>
         private void DrawShape(Graphics graphics, SolidBrush brush)
         {
             Rectangle rectangle = new Rectangle((this.Width - shapeWidth) / 2, (this.Height - shapeHeight) / 2, shapeWidth, shapeHeight);
@@ -89,6 +98,11 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             }
         }
 
+        /// <summary>
+        /// Draws the dots in the shape according to the attribute DotNumber.
+        /// </summary>
+        /// <param name="graphics">Graphics object used to draw.</param>
+        /// <param name="brush">Brush object used to draw.</param>
         private void DrawDots(Graphics graphics, SolidBrush brush)
         {
             brush.Color = Color.Black;
@@ -100,17 +114,6 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
             int x = 0;
             int y = 0;
-
-            /*for (int i = 0; i < DotNumber; i++)
-            {
-                double teta = ((2 * Math.PI) / DotNumber) * (i + 0.0);
-                x = (int)Math.Sin(teta) * shapeWidth / 2 + xCenter;
-                y = (int)Math.Cos(teta) * shapeHeight / 2 + yCenter;
-                
-            }
-
-            x = x - dotSize / 2; y = y - dotSize / 2;
-            graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));*/
 
             switch (DotNumber)
             {
@@ -149,6 +152,10 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             }
         }
 
+        /// <summary>
+        /// Refresh the panel on Resize Event.
+        /// </summary>
+        /// <param name="eventargs"></param>
         protected override void OnResize(EventArgs eventargs)
         {
             this.Refresh();

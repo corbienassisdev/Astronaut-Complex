@@ -42,7 +42,7 @@
             this.componentFocusPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.componentFocusPanel.Location = new System.Drawing.Point(3, 3);
             this.componentFocusPanel.Name = "componentFocusPanel";
-            this.componentFocusPanel.Size = new System.Drawing.Size(866, 627);
+            this.componentFocusPanel.Size = new System.Drawing.Size(842, 627);
             this.componentFocusPanel.TabIndex = 0;
             // 
             // tlpButtons
@@ -50,13 +50,13 @@
             this.tlpButtons.ColumnCount = 1;
             this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpButtons.Location = new System.Drawing.Point(875, 3);
+            this.tlpButtons.Location = new System.Drawing.Point(851, 3);
             this.tlpButtons.Name = "tlpButtons";
             this.tlpButtons.RowCount = 3;
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpButtons.Size = new System.Drawing.Size(368, 627);
+            this.tlpButtons.Size = new System.Drawing.Size(358, 627);
             this.tlpButtons.TabIndex = 1;
             // 
             // tlpGlobal
@@ -71,7 +71,7 @@
             this.tlpGlobal.Name = "tlpGlobal";
             this.tlpGlobal.RowCount = 1;
             this.tlpGlobal.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpGlobal.Size = new System.Drawing.Size(1246, 633);
+            this.tlpGlobal.Size = new System.Drawing.Size(1212, 633);
             this.tlpGlobal.TabIndex = 2;
             // 
             // timer
@@ -85,7 +85,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpGlobal);
             this.Name = "ExerciceFocus";
-            this.Size = new System.Drawing.Size(1246, 633);
+            this.Size = new System.Drawing.Size(1212, 633);
             this.tlpGlobal.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -20,10 +20,12 @@ namespace AstronautComplexBasicPack.ExerciceFocus
         public int CurrentComponent { get; set; }
         public int PreviousComponent { get; set; }
 
-        public Button buttonSameColor = new Button();
-        public Button buttonSameShape = new Button();
-        public Button buttonSameDotNumber = new Button();
-        public Button buttonOther = new Button();
+        #region Buttons declaration
+        private Button buttonSameColor = new Button();
+        private Button buttonSameShape = new Button();
+        private Button buttonSameDotNumber = new Button();
+        private Button buttonOther = new Button();
+        #endregion
 
         public ExerciceFocus() : base("Attention et concentration")
         {
@@ -51,8 +53,12 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
         public override string GetInstructions()
         {
-            return "Ceci est une consigne générale.";
+            string instructions = "Des séries d'éléments vont vous être présentées. La forme de ces éléments, leur couleur, ou le nombre de points qu'elles contiennent va changer tout au long de chaque série.\n\n"
+                + "Sur votre droite, trois boutons seront affichés. une consigne vous indiquera au début de chaque série quel est le rôle de chaque bouton, et vous devrez cliquer sur celui qui correspond au point commun entre l'élément que vous avez sous les yeux et le précédent.\n\n"
+                + "Par exemple, Si le Bouton 1 correspond à la couleur, vous devrez cliquer dessus lorsque l'élément que vous voyez est de la même couleur que celui d'avant.";
+            return instructions;
         }
+
 
         private void InitializeButtons()
         {
@@ -87,10 +93,8 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             {
                 StartASeries();
                 foreach(Button button in tlpButtons.Controls)
-                {
                     if (tlpButtons.GetRow(button) != tlpButtons.RowCount - 1)
                         button.Visible = false;
-                }
             }
             else
             {
@@ -98,10 +102,8 @@ namespace AstronautComplexBasicPack.ExerciceFocus
                     timer.Start();
 
                 foreach (Button button in tlpButtons.Controls)
-                {
                     if (tlpButtons.GetRow(button) != tlpButtons.RowCount - 1)
                         button.Visible = true;
-                }
             }
             
             componentFocusPanel.Controls.Add(Series[CurrentSeries].Components[CurrentComponent]);
@@ -362,25 +364,25 @@ namespace AstronautComplexBasicPack.ExerciceFocus
                 switch(button.Name)
                 {
                     case "buttonSameColor":
-                        role = "même couleur";
+                        role = "Couleur identique.";
                         break;
                     case "buttonSameShape":
-                        role = "même forme";
+                        role = "Forme Identique";
                         break;
                     case "buttonSameDotNumber":
-                        role = "même nombre de points";
+                        role = "Nombre de points identique.";
                         break;
                     case "buttonOther":
-                        role = "autre";
+                        role = "Aucune des autres réponses.";
                         break;
                     default:
                         throw new NotImplementedException();
                 }
-                associations += "Bouton " + counter + " : " + role + " \n";
+                associations += "Bouton " + counter + "  -  " + role + " \n";
                 counter++;
             }
 
-            MessageBox.Show(associations);   
+            MessageBox.Show(associations, "Rôle de chaque bouton");   
         }
 
         private void timer_Tick(object sender, EventArgs e)
