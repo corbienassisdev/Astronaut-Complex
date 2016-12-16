@@ -59,6 +59,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExerciceCalculus\ExerciceCalculusType.cs" />
     <Compile Include="ExerciceFocus\ComponentFocus.cs">
       <SubType>Component</SubType>
     </Compile>
