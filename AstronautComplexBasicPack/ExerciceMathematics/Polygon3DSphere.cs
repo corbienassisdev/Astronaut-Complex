@@ -46,8 +46,8 @@ namespace AstronautComplexBasicPack.ExerciceMathematics
             Pen pen = new Pen(Color.Navy, 1);
 
             int radiusScaled = (int)(Diameter * z) / 2;
-            Point ul = new Point(x - radiusScaled / 2, y - radiusScaled);
-            Point bl = new Point(ul.X, ul.Y + radiusScaled);
+            Point ul = new Point(x - radiusScaled / 2, y - 2 * radiusScaled);
+            Point bl = new Point(ul.X, ul.Y + 2 * radiusScaled);
             graphics.DrawEllipse(pen, ul.X, ul.Y, 2 * radiusScaled, 2 * radiusScaled);
 
             graphics.DrawString(string.Format("{0} \r\n - Radius = {1}", Name, Diameter / 2), SystemFonts.DefaultFont, new SolidBrush(Color.Navy), bl.X, bl.Y + 40);

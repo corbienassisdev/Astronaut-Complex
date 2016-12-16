@@ -43,7 +43,12 @@ namespace AstronautComplexBasicPack
                 {
                     Questions[CurrentQuestion].BuildDrawing(graphics, panelDrawing.Width, panelDrawing.Height);
                 }
-            };          
+            };
+
+            panelDrawing.Resize += (sender, e) =>
+            {
+                panelDrawing.Refresh();
+            };
         }
 
         /// <summary>

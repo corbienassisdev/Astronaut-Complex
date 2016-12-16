@@ -46,7 +46,7 @@
             this.textBoxQuestion.Name = "textBoxQuestion";
             this.textBoxQuestion.ReadOnly = true;
             this.textBoxQuestion.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBoxQuestion.Size = new System.Drawing.Size(1158, 96);
+            this.textBoxQuestion.Size = new System.Drawing.Size(1482, 96);
             this.textBoxQuestion.TabIndex = 1;
             this.textBoxQuestion.Text = "textBoxQuestionTitle";
             // 
@@ -59,15 +59,17 @@
             this.panelQuestion.Location = new System.Drawing.Point(0, 70);
             this.panelQuestion.Name = "panelQuestion";
             this.panelQuestion.Padding = new System.Windows.Forms.Padding(27, 0, 27, 20);
-            this.panelQuestion.Size = new System.Drawing.Size(1212, 646);
+            this.panelQuestion.Size = new System.Drawing.Size(1536, 558);
             this.panelQuestion.TabIndex = 2;
             // 
             // panelDrawing
             // 
+            this.panelDrawing.BackColor = System.Drawing.SystemColors.Control;
             this.panelDrawing.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelDrawing.Location = new System.Drawing.Point(27, 139);
+            this.panelDrawing.Location = new System.Drawing.Point(27, 51);
+            this.panelDrawing.MinimumSize = new System.Drawing.Size(400, 0);
             this.panelDrawing.Name = "panelDrawing";
-            this.panelDrawing.Size = new System.Drawing.Size(1158, 419);
+            this.panelDrawing.Size = new System.Drawing.Size(1482, 419);
             this.panelDrawing.TabIndex = 3;
             // 
             // tableLayoutPanelAnswers
@@ -79,12 +81,12 @@
             this.tableLayoutPanelAnswers.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelAnswers.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanelAnswers.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
-            this.tableLayoutPanelAnswers.Location = new System.Drawing.Point(27, 558);
+            this.tableLayoutPanelAnswers.Location = new System.Drawing.Point(27, 470);
             this.tableLayoutPanelAnswers.Name = "tableLayoutPanelAnswers";
             this.tableLayoutPanelAnswers.RowCount = 1;
             this.tableLayoutPanelAnswers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelAnswers.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelAnswers.Size = new System.Drawing.Size(1158, 68);
+            this.tableLayoutPanelAnswers.Size = new System.Drawing.Size(1482, 68);
             this.tableLayoutPanelAnswers.TabIndex = 0;
             // 
             // labelTitle
@@ -95,7 +97,7 @@
             this.labelTitle.Location = new System.Drawing.Point(0, 0);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Padding = new System.Windows.Forms.Padding(20, 20, 0, 0);
-            this.labelTitle.Size = new System.Drawing.Size(1212, 70);
+            this.labelTitle.Size = new System.Drawing.Size(1536, 70);
             this.labelTitle.TabIndex = 1;
             this.labelTitle.Text = "labelTitle";
             // 
@@ -106,7 +108,7 @@
             this.Controls.Add(this.panelQuestion);
             this.Controls.Add(this.labelTitle);
             this.Name = "ExerciceQuestion";
-            this.Size = new System.Drawing.Size(1212, 716);
+            this.Size = new System.Drawing.Size(1536, 628);
             this.panelQuestion.ResumeLayout(false);
             this.panelQuestion.PerformLayout();
             this.ResumeLayout(false);
