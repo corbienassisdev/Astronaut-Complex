@@ -18,6 +18,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         public static int numberOfComponents = 12;
 
+
         public Mask()
         {
             Components = new List<ComponentPerception>();
@@ -67,6 +68,9 @@ namespace AstronautComplexBasicPack.ExercicePerception
             tlp.Visible = false;
         }
 
+        /// <summary>
+        /// Set random shape and color for the current mask, which will be ask to memorize to the user.
+        /// </summary>
         public void SetRandomReferenceShapeAndColor()
         {
             ReferenceShape = ComponentPerception.RandomEnumValue<Shape>();

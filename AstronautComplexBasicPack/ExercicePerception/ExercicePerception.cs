@@ -29,6 +29,9 @@ namespace AstronautComplexBasicPack.ExercicePerception
             InitializeComponent(); //not related to our component class
         }
 
+        /// <summary>
+        /// Initialize the current exercice. An overrided method.
+        /// </summary>
         public override void Initialize()
         {
             Form.MinimumSize = new Size(500, 600);
@@ -38,6 +41,9 @@ namespace AstronautComplexBasicPack.ExercicePerception
 
         }
 
+        /// <summary>
+        /// Launches the current exercice. An overrided method.
+        /// </summary>
         public override void Run()
         {
             for (int i = 0; i < numberOfMasks; i++)
@@ -52,6 +58,10 @@ namespace AstronautComplexBasicPack.ExercicePerception
             Form.FinishExercice(this);
         }
 
+        /// <summary>
+        /// Returns global instructions for the exercice.
+        /// </summary>
+        /// <returns>Instruction</returns>
         public override string GetInstructions()
         {
             string secondes = (Difficulty == ExerciceDifficulty.Easy) ? timeEasy.ToString() : timeHard.ToString();
@@ -61,6 +71,9 @@ namespace AstronautComplexBasicPack.ExercicePerception
                  + "Exemple : Retenez la valeur des cercles jaunes";
         }
 
+        /// <summary>
+        /// Displays instructions for the current mask in a MessageBox.
+        /// </summary>
         private void GiveInstructions()
         {
             string shape;
@@ -84,6 +97,9 @@ namespace AstronautComplexBasicPack.ExercicePerception
             MessageBox.Show(instruction, "Instruction", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
 
+        /// <summary>
+        /// Asks the answer and increment Scores.
+        /// </summary>
         private void GetAnswers()
         {
             foreach(ComponentPerception c in CurrentMask.Components)
@@ -100,6 +116,11 @@ namespace AstronautComplexBasicPack.ExercicePerception
             }
         }
 
+        /// <summary>
+        /// Displays a prompt in which the user can enter his answer.
+        /// </summary>
+        /// <param name="c">Component related to the answer asked.</param>
+        /// <returns>Number answered by the user.</returns>
         private int AskDigitOfComponent(ComponentPerception c)
         {
             Form form = new Form();
@@ -153,6 +174,11 @@ namespace AstronautComplexBasicPack.ExercicePerception
             return (int)updown.Value;
         }
 
+        /// <summary>
+        /// Refresh the TableLayoutPanel when resize.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tableLayoutPanelMask_Resize(object sender, EventArgs e)
         {
             tableLayoutPanel.Refresh();

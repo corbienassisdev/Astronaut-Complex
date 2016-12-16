@@ -58,7 +58,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
         }
 
         /// <summary>
-        /// Creates and returns a new random component with shape and color given.
+        /// Creates and returns a new random component without shape and color given.
         /// </summary>
         /// <param name="color">will be the color of the returned component</param>
         /// <param name="shape">will be the shape of the returned component</param>

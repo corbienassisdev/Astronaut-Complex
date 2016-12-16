@@ -11,7 +11,7 @@ namespace AstronautComplexTests
     public class Test_ComponentPerception
     {
         [TestMethod]
-        public void Test_RandomDigitGenerationWithSpecifiedShape()
+        public void Test_RandomDigitGenerationWithSpecifiedShapeAndColor()
         {
             Shape testShape = Shape.Circle;
             Color testColor = Color.Red;
@@ -19,17 +19,33 @@ namespace AstronautComplexTests
             List<ComponentPerception> components = new List<ComponentPerception>();
             
             for (int i = 0; i< 100; i++)
-            {
                 components.Add(ComponentPerception.RandomComponentWith(testShape, testColor));
-            }
 
             bool isOk = true;
 
             foreach(ComponentPerception c in components)
-            {
                 if (c.Shape != testShape || c.Color != testColor)
                     isOk = false;
-            }
+
+            Assert.AreEqual(true, isOk);
+        }
+
+        [TestMethod]
+        public void Test_RandomDigitGenerationWithoutSpecifiedShapeAndColor()
+        {
+            Shape testShape = Shape.Circle;
+            Color testColor = Color.Red;
+
+            List<ComponentPerception> components = new List<ComponentPerception>();
+
+            for (int i = 0; i < 100; i++)
+                components.Add(ComponentPerception.RandomComponentWithoutBoth(testShape, testColor));
+
+            bool isOk = true;
+
+            foreach (ComponentPerception c in components)
+                if (c.Shape == testShape && c.Color == testColor)
+                    isOk = false;
 
             Assert.AreEqual(true, isOk);
         }
