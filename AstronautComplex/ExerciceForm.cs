@@ -119,7 +119,7 @@ namespace AstronautComplex
                 string instructions;
                 if((instructions = exercice.GetInstructions()) != "")
                 {
-                    MessageBox.Show(instructions, "Consigne de l'exercice", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show(instructions, "Consigne de l'exercice", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                 }
                 panelExercice.Controls.Clear();
                 panelExercice.Controls.Add(exercice);

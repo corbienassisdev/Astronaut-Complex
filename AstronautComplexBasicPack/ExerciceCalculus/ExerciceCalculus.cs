@@ -40,6 +40,15 @@ namespace AstronautComplexBasicPack.ExerciceCalculus
         }
 
         /// <summary>
+        /// Gets the exercice instructions. Needs to be implemented.
+        /// </summary>
+        /// <returns>The instructions.</returns>
+        public override string GetInstructions()
+        {
+            return "Dans ce test, vous devrez calculer de tête différentes opérations, générées aléatoirement, qui vous serons posées. Au début, vous avez le choix entre une série de 10 additions, soustractions, multiplications ou divisions.";
+        }
+
+        /// <summary>
         /// Builds an operation.
         /// </summary>
         /// <param name="operation">The operation type.</param>
