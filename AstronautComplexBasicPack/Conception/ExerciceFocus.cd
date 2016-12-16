@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AstronautComplexBasicPack.ExerciceFocus.ExerciceFocus">
+    <Position X="4.75" Y="0.5" Width="2.25" />
+    <Members>
+      <Method Name="ArrangeButtons" Hidden="true" />
+      <Field Name="buttonOther" Hidden="true" />
+      <Method Name="buttonOther_Click" Hidden="true" />
+      <Field Name="buttonSameColor" Hidden="true" />
+      <Method Name="buttonSameColor_Click" Hidden="true" />
+      <Field Name="buttonSameDotNumber" Hidden="true" />
+      <Method Name="buttonSameDotNumber_Click" Hidden="true" />
+      <Field Name="buttonSameShape" Hidden="true" />
+      <Field Name="componentFocusPanel" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="timer" Hidden="true" />
+      <Method Name="timer_Tick" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AARCIEACgCAAAQAAgASCAEACKBAAAAJgQBACAAERggc=</HashCode>
+      <FileName>ExerciceFocus\ExerciceFocus.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Series" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AstronautComplexBasicPack.ExerciceFocus.ComponentFocus">
+    <Position X="8" Y="2" Width="1.5" />
+    <Members>
+      <Method Name="OnPaint" Hidden="true" />
+      <Method Name="OnResize" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AACEAAAAAAAAAAAASAAAAAAAAAAAAAAAIAACgAQAEAA=</HashCode>
+      <FileName>ExerciceFocus\ComponentFocus.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Shape" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AstronautComplexBasicPack.ExerciceFocus.SingleSeries">
+    <Position X="8" Y="0.5" Width="4" />
+    <Members>
+      <Property Name="Buttons" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExerciceFocus\SingleSeries.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Components" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Enum Name="AstronautComplexBasicPack.ExerciceFocus.Shape">
+    <Position X="10.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAggAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ExerciceFocus\ComponentFocus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
