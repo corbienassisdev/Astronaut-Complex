@@ -12,7 +12,11 @@ namespace AstronautComplexBasicPack.ExerciceCalculus
     /// </summary>
     public partial class ExerciceCalculus : Exercice
     {
+        private TextBox textBoxResult;
+
+        public int CorrectAnswer { get; protected set; }
         public int CurrentOperation { get; protected set; }
+        public ExerciceCalculusType CurrentOperationType { get; protected set; }
 
         /// <summary>
         /// Builds an astronaut calculus exercice.
@@ -51,15 +55,12 @@ namespace AstronautComplexBasicPack.ExerciceCalculus
         /// <summary>
         /// Builds an operation.
         /// </summary>
-        /// <param name="operation">The operation type.</param>
-        public void BuildOperation(ExerciceCalculusType operation)
+        public void BuildOperation()
         {
             string symbol = "";
             int operandLeft = 0;
             int operandRight = 0;
-            int correct = 0;
-
-            #region Initialization
+            
             tableLayoutPanelSelection.Controls.Clear();
             tableLayoutPanelSelection.RowStyles.Clear();
             tableLayoutPanelSelection.RowCount = 1;
@@ -74,94 +75,115 @@ namespace AstronautComplexBasicPack.ExerciceCalculus
             tableLayoutPanelSelection.Controls.Add(labelOperation, 0, 0);
             tableLayoutPanelSelection.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0F));
 
-            TextBox textBoxResult = new TextBox();
+            textBoxResult = new TextBox();
             textBoxResult.Anchor = AnchorStyles.Left;
             textBoxResult.Dock = DockStyle.None;
             textBoxResult.Font = new Font(FontFamily.GenericSansSerif, 18);
             textBoxResult.TextAlign = HorizontalAlignment.Right;
             textBoxResult.KeyPress += (sender, e) =>
             {
-                int result;
-                if (e.KeyChar == '\r' && int.TryParse(textBoxResult.Text, out result))
+                if(e.KeyChar == '\r')
                 {
-                    Score.TotalAnswers++;
-
-                    string message;
-                    string caption;
-                    MessageBoxIcon icon;
-                    if (result == correct)
-                    {
-                        message = string.Format("Bonne réponse ! Il s'agissait bien de {0} !", correct);
-                        caption = "Bravo !";
-                        icon = MessageBoxIcon.Information;
-                        Score.GoodAnswers++;
-                    }
-                    else
-                    {
-                        message = string.Format("Mauvaise réponse... Vous avez répondu {0} mais la bonne réponse était {1} !", result, correct);
-                        caption = "Oups...";
-                        icon = MessageBoxIcon.Error;
-                    }
-
-                    if (MessageBox.Show(message, caption, MessageBoxButtons.OK, icon) == DialogResult.OK)
-                    {
-                        if(CurrentOperation < 10)
-                        {
-                            BuildOperation(operation);
-                        }
-                        else
-                        {
-                            Form.FinishExercice(this);
-                        }
-                    }
+                    Answer();
                 }
-
-                if (Difficulty == ExerciceDifficulty.Hard)
-                    timer.Stop();
             };
             tableLayoutPanelSelection.Controls.Add(textBoxResult, 1, 0);
             tableLayoutPanelSelection.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0F));
-            #endregion
 
-            #region switch on operation
-            switch (operation)
+            switch (CurrentOperationType)
             {
                 case ExerciceCalculusType.Addition:
                     symbol = "+";
                     operandLeft = Random.Next(100, 999);
                     operandRight = Random.Next(100, 999);
-                    correct = operandLeft + operandRight;
+                    CorrectAnswer = operandLeft + operandRight;
                     break;
 
                 case ExerciceCalculusType.Subtraction:
                     symbol = "-";
                     operandLeft = Random.Next(100, 999);
                     operandRight = Random.Next(10, operandLeft);
-                    correct = operandLeft - operandRight;
+                    CorrectAnswer = operandLeft - operandRight;
                     break;
 
                 case ExerciceCalculusType.Multiplication:
                     symbol = "*";
                     operandLeft = Random.Next(1, 99);
                     operandRight = Random.Next(1, 9);
-                    correct = operandLeft * operandRight;
+                    CorrectAnswer = operandLeft * operandRight;
                     break;
 
                 case ExerciceCalculusType.Division:
                     symbol = "/";
                     operandLeft = Random.Next(10, 999);
                     operandRight = Random.Next(1, 9);
-                    correct = operandLeft / operandRight;
+                    CorrectAnswer = (int)Math.Round(operandLeft / (double)operandRight);
                     break;
             }
-            #endregion
 
             labelOperation.Text = string.Format("{0} {1} {2} =", operandLeft, symbol, operandRight);
 
             if (Difficulty == ExerciceDifficulty.Hard)
+            {
                 timer.Start();
+            }
 
             CurrentOperation++;
+        }
+
+        /// <summary>
+        /// Calls the question answering.
+        /// </summary>
+        /// <param name="correct">The correct answer.</param>
+        public void Answer()
+        {
+            if (Difficulty == ExerciceDifficulty.Hard)
+            {
+                timer.Stop();
+            }
+
+            int result = -1;
+            int.TryParse(textBoxResult.Text, out result);
+
+            string message;
+            string caption;
+            MessageBoxIcon icon;
+            if (result == CorrectAnswer)
+            {
+                message = string.Format("Bonne réponse ! Il s'agissait bien de {0} !", CorrectAnswer);
+                caption = "Bravo !";
+                icon = MessageBoxIcon.Information;
+                Score.GoodAnswers++;
+            }
+            else
+            {
+                if(result > 0)
+                {
+                    message = string.Format("Mauvaise réponse... Vous avez répondu {0} mais la bonne réponse était {1} !", result, CorrectAnswer);
+                    caption = "Oups...";
+                    icon = MessageBoxIcon.Error;
+                }
+                else
+                {
+                    message = string.Format("Vous n'avez spécifié aucune réponse ! La bonne réponse était {0} !", CorrectAnswer);
+                    caption = "Oups...";
+                    icon = MessageBoxIcon.Error;
+                }
+            }
+
+            Score.TotalAnswers++;
+
+            if (MessageBox.Show(message, caption, MessageBoxButtons.OK, icon) == DialogResult.OK)
+            {
+                if (CurrentOperation < 10)
+                {
+                    BuildOperation();
+                }
+                else
+                {
+                    Form.FinishExercice(this);
+                }
+            }
         }
 
         /// <summary>
@@ -175,16 +197,20 @@ namespace AstronautComplexBasicPack.ExerciceCalculus
             {
                 if (sender != null && ((Button)sender).Name.Replace("buttonSelection", "") == operation.ToString())
                 {
-                    BuildOperation(operation);
+                    CurrentOperationType = operation;
+                    BuildOperation();
                 }
             }
         }
 
+        /// <summary>
+        /// Called on timer tick.
+        /// </summary>
+        /// <param name="sender">The event sender.</param>
+        /// <param name="e">The event arguments.</param>
         private void timer_Tick(object sender, EventArgs e)
         {
-            timer.Stop();
-            MessageBox.Show("time s up");
-            
+            Answer();
         }
     }
 }

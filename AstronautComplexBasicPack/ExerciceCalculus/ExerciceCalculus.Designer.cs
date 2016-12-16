@@ -46,7 +46,7 @@
             this.labelTitle.Location = new System.Drawing.Point(0, 0);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Padding = new System.Windows.Forms.Padding(20, 20, 0, 0);
-            this.labelTitle.Size = new System.Drawing.Size(1212, 70);
+            this.labelTitle.Size = new System.Drawing.Size(1520, 70);
             this.labelTitle.TabIndex = 2;
             this.labelTitle.Text = "labelTitle";
             // 
@@ -67,13 +67,13 @@
             this.tableLayoutPanelSelection.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelSelection.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelSelection.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelSelection.Size = new System.Drawing.Size(1212, 563);
+            this.tableLayoutPanelSelection.Size = new System.Drawing.Size(1520, 459);
             this.tableLayoutPanelSelection.TabIndex = 3;
             // 
             // buttonSelectionDivision
             // 
             this.buttonSelectionDivision.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSelectionDivision.Location = new System.Drawing.Point(456, 401);
+            this.buttonSelectionDivision.Location = new System.Drawing.Point(610, 310);
             this.buttonSelectionDivision.Name = "buttonSelectionDivision";
             this.buttonSelectionDivision.Size = new System.Drawing.Size(300, 60);
             this.buttonSelectionDivision.TabIndex = 3;
@@ -84,7 +84,7 @@
             // buttonSelectionMultiplication
             // 
             this.buttonSelectionMultiplication.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSelectionMultiplication.Location = new System.Drawing.Point(456, 277);
+            this.buttonSelectionMultiplication.Location = new System.Drawing.Point(610, 212);
             this.buttonSelectionMultiplication.Name = "buttonSelectionMultiplication";
             this.buttonSelectionMultiplication.Size = new System.Drawing.Size(300, 60);
             this.buttonSelectionMultiplication.TabIndex = 2;
@@ -95,7 +95,7 @@
             // buttonSelectionSubtraction
             // 
             this.buttonSelectionSubtraction.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSelectionSubtraction.Location = new System.Drawing.Point(456, 154);
+            this.buttonSelectionSubtraction.Location = new System.Drawing.Point(610, 115);
             this.buttonSelectionSubtraction.Name = "buttonSelectionSubtraction";
             this.buttonSelectionSubtraction.Size = new System.Drawing.Size(300, 60);
             this.buttonSelectionSubtraction.TabIndex = 1;
@@ -106,7 +106,7 @@
             // buttonSelectionAddition
             // 
             this.buttonSelectionAddition.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSelectionAddition.Location = new System.Drawing.Point(456, 31);
+            this.buttonSelectionAddition.Location = new System.Drawing.Point(610, 18);
             this.buttonSelectionAddition.Name = "buttonSelectionAddition";
             this.buttonSelectionAddition.Size = new System.Drawing.Size(300, 60);
             this.buttonSelectionAddition.TabIndex = 0;
@@ -126,7 +126,7 @@
             this.Controls.Add(this.tableLayoutPanelSelection);
             this.Controls.Add(this.labelTitle);
             this.Name = "ExerciceCalculus";
-            this.Size = new System.Drawing.Size(1212, 633);
+            this.Size = new System.Drawing.Size(1520, 529);
             this.tableLayoutPanelSelection.ResumeLayout(false);
             this.ResumeLayout(false);
 
