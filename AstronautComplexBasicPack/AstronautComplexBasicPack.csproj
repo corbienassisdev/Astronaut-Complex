@@ -158,6 +158,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Conception\Classes.cd" />
+    <None Include="Conception\ExercicePerception.cd" />
+    <None Include="Conception\ExerciceFocus.cd" />
+    <None Include="Conception\ExerciceQuestion.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

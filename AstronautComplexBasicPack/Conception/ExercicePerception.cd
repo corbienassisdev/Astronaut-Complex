@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AstronautComplexBasicPack.ExercicePerception.ExercicePerception">
+    <Position X="3.5" Y="1.25" Width="2" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="numberOfMasks" Hidden="true" />
+      <Field Name="tableLayoutPanel" Hidden="true" />
+      <Method Name="tableLayoutPanelMask_Resize" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAACQAQQQAAACYAAACEEAAAAAAAAAAAAAAAgI=</HashCode>
+      <FileName>ExercicePerception\ExercicePerception.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CurrentMask" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AstronautComplexBasicPack.ExercicePerception.ComponentPerception">
+    <Position X="9.5" Y="1.25" Width="2.75" />
+    <Members>
+      <Method Name="OnPaint" Hidden="true" />
+    </Members>
+    <AssociationLine Name="Shape" Type="AstronautComplexBasicPack.ExercicePerception.Shape" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12.25" Y="3.062" />
+        <Point X="13.25" Y="3.062" />
+        <Point X="13.25" Y="2.296" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AADEAIAAAAQAAAAAAAAAAAEAQEAACAAAAAABgAgAAAA=</HashCode>
+      <FileName>ExercicePerception\ComponentPerception.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Shape" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AstronautComplexBasicPack.ExercicePerception.Mask">
+    <Position X="6.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAggAAAAAIBAAAAAAAAAUBAQAAAAAACAAAAIAAE=</HashCode>
+      <FileName>ExercicePerception\Mask.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Components" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Enum Name="AstronautComplexBasicPack.ExercicePerception.Shape">
+    <Position X="12.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>ExercicePerception\ComponentPerception.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
