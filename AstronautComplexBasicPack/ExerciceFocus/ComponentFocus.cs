@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 
 namespace AstronautComplexBasicPack.ExerciceFocus
 {
@@ -39,6 +41,14 @@ namespace AstronautComplexBasicPack.ExerciceFocus
 
         protected override void OnPaint(PaintEventArgs pe)
         {
+            SolidBrush brush = new SolidBrush(this.Color);
+            Graphics graphics = this.CreateGraphics();
+
+            #region Setting Properties
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
+            #endregion
+
             if (Shape == Shape.Circle || Shape == Shape.Square)
             {
                 shapeWidth = shapeHeight = (int)(this.Width / 2.5);
@@ -48,9 +58,6 @@ namespace AstronautComplexBasicPack.ExerciceFocus
                 shapeHeight = (int)(this.Height / 2.5);
                 shapeWidth = (int)(shapeHeight * 1.8);
             }
-
-            SolidBrush brush = new SolidBrush(this.Color);
-            Graphics graphics = this.CreateGraphics();
 
             DrawShape(graphics, brush);
             DrawDots(graphics, brush);

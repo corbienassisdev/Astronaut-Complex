@@ -57,7 +57,6 @@ namespace AstronautComplexBasicPack.ExercicePerception
             this.Dock = DockStyle.Fill;
         }
 
-
         /// <summary>
         /// Creates and returns a new random component with shape and color given.
         /// </summary>
@@ -98,7 +97,10 @@ namespace AstronautComplexBasicPack.ExercicePerception
             return c;
         }
 
-        
+        /// <summary>
+        /// Draw a component on a panel. Is called when the Refresh/Invalidate method is called on the parent form.s
+        /// </summary>
+        /// <param name="pe">Data for the Paint event. Not used here.</param>
         protected override void OnPaint(PaintEventArgs pe)
         {
             #region Intializing local variables
@@ -137,7 +139,6 @@ namespace AstronautComplexBasicPack.ExercicePerception
             int digitWidth = TextRenderer.MeasureText(this.Digit.ToString(), font).Width;
             graphics.DrawString(this.Digit.ToString(), font, brush, center.X - (digitWidth / 2 - 3), center.Y - 20 + 4, format);
             //concrete values here correspond to margins or offsets in order to get the perfect center.
-
 
             brush.Dispose();
             graphics.Dispose();

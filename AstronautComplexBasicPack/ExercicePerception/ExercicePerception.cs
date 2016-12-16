@@ -64,6 +64,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
         private void GiveInstructions()
         {
             string shape;
+
             switch(CurrentMask.ReferenceShape)
             {
                 case Shape.Circle:
@@ -75,6 +76,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
                 default:
                     throw new NotImplementedException();
             }
+
             string color = (CurrentMask.ReferenceColor == Color.Yellow)? "jaune":"bleu";
 
             string instruction = "Retenez la valeur des " + shape + "s " + color + "s.";
