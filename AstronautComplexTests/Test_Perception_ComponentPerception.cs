@@ -8,10 +8,10 @@ using System.Drawing;
 namespace AstronautComplexTests
 {
     [TestClass]
-    public class Test_ComponentPerception
+    public class Test_Perception_ComponentPerception
     {
         [TestMethod]
-        public void Test_RandomDigitGenerationWithSpecifiedShapeAndColor()
+        public void Test_Perception_RandomDigitGenerationWithSpecifiedShapeAndColor()
         {
             Shape testShape = Shape.Circle;
             Color testColor = Color.Red;
@@ -31,7 +31,7 @@ namespace AstronautComplexTests
         }
 
         [TestMethod]
-        public void Test_RandomDigitGenerationWithoutSpecifiedShapeAndColor()
+        public void Test_Perception_RandomDigitGenerationWithoutSpecifiedShapeAndColor()
         {
             Shape testShape = Shape.Circle;
             Color testColor = Color.Red;

@@ -13,24 +13,24 @@
         <dotnumber>2</dotnumber>
       </component>
       <component>
-        <shape>circle</shape>
-        <color>blue</color>
-        <dotnumber>3</dotnumber>
-      </component>
-      <component>
         <shape>square</shape>
-        <color>yellow</color>
-        <dotnumber>3</dotnumber>
-      </component>
-      <component>
-        <shape>rectangle</shape>
         <color>red</color>
         <dotnumber>2</dotnumber>
       </component>
       <component>
         <shape>rectangle</shape>
+        <color>red</color>
+        <dotnumber>3</dotnumber>
+      </component>
+      <component>
+        <shape>circle</shape>
+        <color>red</color>
+        <dotnumber>3</dotnumber>
+      </component>
+      <component>
+        <shape>rectangle</shape>
         <color>blue</color>
-        <dotnumber>2</dotnumber>
+        <dotnumber>1</dotnumber>
       </component>
     </components>
   </singleserie>
@@ -42,14 +42,14 @@
     </buttons>
     <components>
       <component>
-        <shape>rectangle</shape>
+        <shape>circle</shape>
         <color>yellow</color>
         <dotnumber>2</dotnumber>
       </component>
       <component>
-        <shape>square</shape>
+        <shape>circle</shape>
         <color>red</color>
-        <dotnumber>2</dotnumber>
+        <dotnumber>1</dotnumber>
       </component>
       <component>
         <shape>circle</shape>
@@ -58,13 +58,13 @@
       </component>
       <component>
         <shape>rectangle</shape>
-        <color>red</color>
-        <dotnumber>3</dotnumber>
+        <color>yellow</color>
+        <dotnumber>1</dotnumber>
       </component>
       <component>
-        <shape>rectangle</shape>
+        <shape>circle</shape>
         <color>red</color>
-        <dotnumber>2</dotnumber>
+        <dotnumber>1</dotnumber>
       </component>
     </components>
   </singleserie>
@@ -72,33 +72,33 @@
     <buttons>
       <button>shape</button>
       <button>color</button>
-      <button>dots</button>
+      <button>other</button>
     </buttons>
     <components>
       <component>
-        <shape>circle</shape>
-        <color>blue</color>
+        <shape>square</shape>
+        <color>yellow</color>
         <dotnumber>2</dotnumber>
       </component>
       <component>
         <shape>circle</shape>
-        <color>blue</color>
-        <dotnumber>3</dotnumber>
+        <color>yellow</color>
+        <dotnumber>1</dotnumber>
       </component>
       <component>
         <shape>square</shape>
-        <color>yellow</color>
-        <dotnumber>3</dotnumber>
+        <color>blue</color>
+        <dotnumber>1</dotnumber>
+      </component>
+      <component>
+        <shape>rectangle</shape>
+        <color>blue</color>
+        <dotnumber>2</dotnumber>
       </component>
       <component>
         <shape>rectangle</shape>
         <color>red</color>
-        <dotnumber>2</dotnumber>
-      </component>
-      <component>
-        <shape>rectangle</shape>
-        <color>blue</color>
-        <dotnumber>2</dotnumber>
+        <dotnumber>1</dotnumber>
       </component>
     </components>
   </singleserie>

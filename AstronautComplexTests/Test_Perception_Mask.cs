@@ -7,10 +7,10 @@ using System.Collections.Generic;
 namespace AstronautComplexTests
 {
     [TestClass]
-    public class Test_Mask
+    public class Test_Perception_Mask
     {
         [TestMethod]
-        public void Test_ResetMask()
+        public void Test_Perception_ResetMask()
         {
             TableLayoutPanel tlp = new TableLayoutPanel();
 

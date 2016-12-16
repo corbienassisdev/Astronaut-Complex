@@ -65,8 +65,8 @@
   <ItemGroup>
     <Compile Include="Test_ExerciceScore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test_ComponentPerception.cs" />
-    <Compile Include="Test_Mask.cs" />
+    <Compile Include="Test_Perception_ComponentPerception.cs" />
+    <Compile Include="Test_Perception_Mask.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AstronautComplexBasicPack\AstronautComplexBasicPack.csproj">

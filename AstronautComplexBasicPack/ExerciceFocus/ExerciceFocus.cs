@@ -59,7 +59,9 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             return instructions;
         }
 
-
+        /// <summary>
+        /// Initializes the 3 buttons (events, properties).
+        /// </summary>
         private void InitializeButtons()
         {
             List<Button> buttons = new List<Button>();
@@ -84,57 +86,16 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             buttonSameDotNumber.Click += new EventHandler(buttonSameDotNumber_Click);
             buttonOther.Click += new EventHandler(buttonOther_Click);
         }
-        
-        private void DisplayCurrentComponent()
-        {
-            componentFocusPanel.Controls.Clear();
 
-            if (CurrentComponent == 0)
-            {
-                StartASeries();
-                foreach(Button button in tlpButtons.Controls)
-                    if (tlpButtons.GetRow(button) != tlpButtons.RowCount - 1)
-                        button.Visible = false;
-            }
-            else
-            {
-                if(Difficulty == ExerciceDifficulty.Hard)
-                    timer.Start();
-
-                foreach (Button button in tlpButtons.Controls)
-                    if (tlpButtons.GetRow(button) != tlpButtons.RowCount - 1)
-                        button.Visible = true;
-            }
-            
-            componentFocusPanel.Controls.Add(Series[CurrentSeries].Components[CurrentComponent]);
-
-            componentFocusPanel.Refresh();
-        }
-
-        private void StartASeries()
-        {
-            ArrangeButtons();
-            DisplaySeriesRule();
-        }
-
-        private void ArrangeButtons()
-        {
-            tlpButtons.Controls.Clear();
-
-            int counter = 0;
-
-            foreach(Button button in Series[CurrentSeries].Buttons)
-            {
-                tlpButtons.Controls.Add(button, 0, counter);
-                counter++;
-                button.Text = "Bouton " + counter;
-            }
-        }
-
+        /// <summary>
+        /// Returns a list of series extracted form an xml file.
+        /// </summary>
+        /// <param name="path">Relative path to the file.</param>
+        /// <returns>the list of series extracted.</returns>
         private List<SingleSeries> GetSeriesFromXml(string path)
         {
             List<SingleSeries> xmlSeries = new List<SingleSeries>();
-            
+
             List<ComponentFocus> components = new List<ComponentFocus>();
             List<Button> buttons = new List<Button>();
 
@@ -191,7 +152,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
                             break;
                     }
 
-                    switch(b.Descendants("shape").First().Value)
+                    switch (b.Descendants("shape").First().Value)
                     {
                         case "circle":
                             shape = Shape.Circle;
@@ -216,6 +177,61 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             }
 
             return xmlSeries;
+        }
+
+        /// <summary>
+        /// Displays the current component according to its position in the series.
+        /// </summary>
+        private void DisplayCurrentComponent()
+        {
+            componentFocusPanel.Controls.Clear();
+
+            if (CurrentComponent == 0)
+            {
+                StartASeries();
+                foreach(Button button in tlpButtons.Controls)
+                    if (tlpButtons.GetRow(button) != tlpButtons.RowCount - 1)
+                        button.Visible = false;
+            }
+            else
+            {
+                if(Difficulty == ExerciceDifficulty.Hard)
+                    timer.Start();
+
+                foreach (Button button in tlpButtons.Controls)
+                    if (tlpButtons.GetRow(button) != tlpButtons.RowCount - 1)
+                        button.Visible = true;
+            }
+            
+            componentFocusPanel.Controls.Add(Series[CurrentSeries].Components[CurrentComponent]);
+
+            componentFocusPanel.Refresh();
+        }
+
+        /// <summary>
+        /// Arrange or re-arrange the position of buttons and displays the rules for the current series.
+        /// </summary>
+        private void StartASeries()
+        {
+            ArrangeButtons();
+            DisplaySeriesRule();
+        }
+
+        /// <summary>
+        /// Place the buttons according to their position in the button list of the current series.
+        /// </summary>
+        private void ArrangeButtons()
+        {
+            tlpButtons.Controls.Clear();
+
+            int counter = 0;
+
+            foreach(Button button in Series[CurrentSeries].Buttons)
+            {
+                tlpButtons.Controls.Add(button, 0, counter);
+                counter++;
+                button.Text = "Bouton " + counter;
+            }
         }
 
         private void buttonSameColor_Click(object sender, EventArgs e)
@@ -274,6 +290,10 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             DisplayCurrentComponent();
         }
         
+        /// <summary>
+        /// Checks if the right button was clicked according to the context and increments scores.
+        /// </summary>
+        /// <param name="button">The clicked button.</param>
         private void CheckAnswer(Button button)
         {
             ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
@@ -320,6 +340,10 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             }
         }
         
+        /// <summary>
+        /// Reserches and returns the number of the button which should have been clicked according to the context.
+        /// </summary>
+        /// <returns>number of the correct button</returns>
         private int FindGoodAnswer()
         {
             ComponentFocus current = Series[CurrentSeries].Components[CurrentComponent];
@@ -335,6 +359,9 @@ namespace AstronautComplexBasicPack.ExerciceFocus
                 return tlpButtons.GetRow(buttonOther) + 1;
         }
 
+        /// <summary>
+        /// Increments the current component according to its position in the series.
+        /// </summary>
         private void IncrementCurrentComponentOrSeries()
         {
             if (CurrentComponent < Series[CurrentSeries].Components.Count - 1)
@@ -352,6 +379,9 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             }
         }
 
+        /// <summary>
+        /// Displays instructions in a MessageBox.
+        /// </summary>
         private void DisplaySeriesRule()
         {
             string associations = "";
@@ -385,6 +415,11 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             MessageBox.Show(associations, "Rôle de chaque bouton");   
         }
 
+        /// <summary>
+        /// Displays correct answer when time is up (available for the Hard difficulty).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer_Tick(object sender, EventArgs e)
         {
             timer.Stop();
