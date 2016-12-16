@@ -150,7 +150,7 @@ namespace AstronautComplex
         {
             try
             {
-                File.WriteAllBytes(FileVideoTemp, Resources.earth_video);
+                /*File.WriteAllBytes(FileVideoTemp, Resources.earth_video);
                 File.SetAttributes(FileVideoTemp, FileAttributes.Temporary | FileAttributes.Hidden);
                 
                 AxWindowsMediaPlayer wmPlayer = new AxWindowsMediaPlayer();
@@ -169,11 +169,11 @@ namespace AstronautComplex
                 panelExercice.Controls.Add(wmPlayer);
 
                 //MinimumSize = new Size(1024, 650);
-                //MaximumSize = new Size(1024, 650);
+                //MaximumSize = new Size(1024, 650);*/
             }
             catch (Exception)
             {
-                DeleteVideo();
+                //DeleteVideo();
             };
         }
 

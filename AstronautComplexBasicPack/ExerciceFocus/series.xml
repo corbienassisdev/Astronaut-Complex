@@ -13,7 +13,7 @@
         <dotnumber>2</dotnumber>
       </component>
       <component>
-        <shape>square</shape>
+        <shape>triangle</shape>
         <color>red</color>
         <dotnumber>2</dotnumber>
       </component>

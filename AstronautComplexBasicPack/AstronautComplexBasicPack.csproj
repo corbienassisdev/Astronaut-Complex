@@ -153,6 +153,7 @@
   <ItemGroup>
     <Content Include="ExerciceFocus\series.xml">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

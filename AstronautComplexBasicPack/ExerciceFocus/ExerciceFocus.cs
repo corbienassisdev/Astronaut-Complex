@@ -13,6 +13,9 @@ using System.Xml.Linq;
 
 namespace AstronautComplexBasicPack.ExerciceFocus
 {
+    /// <summary>
+    /// Represents an astronaut focus test.
+    /// </summary>
     public partial class ExerciceFocus : Exercice
     {
         public List<SingleSeries> Series { get; set; }
@@ -161,6 +164,9 @@ namespace AstronautComplexBasicPack.ExerciceFocus
                             shape = Shape.Square;
                             break;
                         case "rectangle":
+                            shape = Shape.Rectangle;
+                            break;
+                        case "triangle":
                             shape = Shape.Rectangle;
                             break;
                         default:

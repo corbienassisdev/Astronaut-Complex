@@ -50,6 +50,7 @@ namespace AstronautComplexBasicPack.ExerciceCalculus
             int operandRight = 0;
             int correct = 0;
 
+            #region Initialization
             tableLayoutPanelSelection.Controls.Clear();
             tableLayoutPanelSelection.RowStyles.Clear();
             tableLayoutPanelSelection.RowCount = 1;
@@ -108,7 +109,9 @@ namespace AstronautComplexBasicPack.ExerciceCalculus
             };
             tableLayoutPanelSelection.Controls.Add(textBoxResult, 1, 0);
             tableLayoutPanelSelection.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0F));
-            
+            #endregion
+
+            #region switch on operation
             switch (operation)
             {
                 case ExerciceCalculusType.Addition:
@@ -139,11 +142,11 @@ namespace AstronautComplexBasicPack.ExerciceCalculus
                     correct = operandLeft / operandRight;
                     break;
             }
+            #endregion
 
             labelOperation.Text = string.Format("{0} {1} {2} =", operandLeft, symbol, operandRight);
 
             CurrentOperation++;
-
         }
 
         /// <summary>

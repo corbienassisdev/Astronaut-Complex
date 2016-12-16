@@ -13,6 +13,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
     {
         Square,
         Rectangle,
+        Triangle,
         Circle
     }
 
@@ -53,7 +54,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
             graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
             #endregion
 
-            if (Shape == Shape.Circle || Shape == Shape.Square)
+            if (Shape == Shape.Circle || Shape == Shape.Square || Shape == Shape.Triangle)
             {
                 shapeWidth = shapeHeight = (int)(this.Width / 2.5);
             }
@@ -92,6 +93,14 @@ namespace AstronautComplexBasicPack.ExerciceFocus
                 case Shape.Rectangle:
                     graphics.FillRectangle(brush, rectangle);
                     graphics.DrawRectangle(Pens.Black, rectangle);
+                    break;
+                case Shape.Triangle:
+                    Point[] points = new Point[3];
+                    points[0] = new Point(this.Width / 2, (this.Height - shapeHeight)/2);
+                    points[1] = new Point((this.Width - shapeWidth) / 2, Convert.ToInt32(this.Height - (shapeHeight / 1.4)));
+                    points[2] = new Point((this.Width + shapeWidth) / 2, Convert.ToInt32(this.Height - shapeHeight / 1.4));
+                    graphics.FillPolygon(brush, points);
+                    graphics.DrawPolygon(Pens.Black, points);
                     break;
                 default:
                     throw new NotImplementedException();

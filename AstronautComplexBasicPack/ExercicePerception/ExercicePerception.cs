@@ -16,7 +16,7 @@ namespace AstronautComplexBasicPack.ExercicePerception
     {
         public Mask CurrentMask { get; set; }
 
-        public static int numberOfMasks = 3;
+        public static int numberOfMasks = 10;
 
         public static int timeHard = 2;
         public static int timeEasy = 4;
