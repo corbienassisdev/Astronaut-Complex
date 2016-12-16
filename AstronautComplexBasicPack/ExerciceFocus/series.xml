@@ -14,12 +14,12 @@
       </component>
       <component>
         <shape>triangle</shape>
-        <color>red</color>
+        <color>green</color>
         <dotnumber>2</dotnumber>
       </component>
       <component>
         <shape>rectangle</shape>
-        <color>red</color>
+        <color>green</color>
         <dotnumber>3</dotnumber>
       </component>
       <component>
@@ -42,12 +42,12 @@
     </buttons>
     <components>
       <component>
-        <shape>circle</shape>
+        <shape>triangle</shape>
         <color>yellow</color>
         <dotnumber>2</dotnumber>
       </component>
       <component>
-        <shape>circle</shape>
+        <shape>triangle</shape>
         <color>red</color>
         <dotnumber>1</dotnumber>
       </component>
@@ -86,7 +86,7 @@
         <dotnumber>1</dotnumber>
       </component>
       <component>
-        <shape>square</shape>
+        <shape>triangle</shape>
         <color>blue</color>
         <dotnumber>1</dotnumber>
       </component>
@@ -97,7 +97,7 @@
       </component>
       <component>
         <shape>rectangle</shape>
-        <color>red</color>
+        <color>green</color>
         <dotnumber>1</dotnumber>
       </component>
     </components>

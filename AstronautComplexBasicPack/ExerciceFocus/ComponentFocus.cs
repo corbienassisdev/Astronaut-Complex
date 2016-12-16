@@ -133,11 +133,11 @@ namespace AstronautComplexBasicPack.ExerciceFocus
                     graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));
                     break;
                 case 2:
-                    x = xCenter - (shapeWidth / 4);
+                    x = xCenter - (shapeWidth / 5);
                     y = yCenter;
                     x = x - dotSize / 2; y = y - dotSize / 2;
                     graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));
-                    x = xCenter + (shapeWidth / 4);
+                    x = xCenter + (shapeWidth / 5);
                     y = yCenter;
                     x = x - dotSize / 2; y = y - dotSize / 2;
                     graphics.FillEllipse(brush, new Rectangle(x, y, dotSize, dotSize));

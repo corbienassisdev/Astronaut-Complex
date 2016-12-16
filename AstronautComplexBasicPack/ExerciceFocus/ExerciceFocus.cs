@@ -142,13 +142,16 @@ namespace AstronautComplexBasicPack.ExerciceFocus
                     switch (b.Descendants("color").First().Value)
                     {
                         case "blue":
-                            color = Color.Blue;
+                            color = Color.RoyalBlue;
                             break;
                         case "red":
-                            color = Color.Red;
+                            color = Color.Crimson;
                             break;
                         case "yellow":
                             color = Color.Yellow;
+                            break;
+                        case "green":
+                            color = Color.LimeGreen;
                             break;
                         default:
                             color = Color.Black;
@@ -167,7 +170,7 @@ namespace AstronautComplexBasicPack.ExerciceFocus
                             shape = Shape.Rectangle;
                             break;
                         case "triangle":
-                            shape = Shape.Rectangle;
+                            shape = Shape.Triangle;
                             break;
                         default:
                             shape = Shape.Circle;
