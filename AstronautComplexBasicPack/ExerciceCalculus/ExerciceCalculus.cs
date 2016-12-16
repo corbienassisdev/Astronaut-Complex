@@ -115,6 +115,9 @@ namespace AstronautComplexBasicPack.ExerciceCalculus
                         }
                     }
                 }
+
+                if (Difficulty == ExerciceDifficulty.Hard)
+                    timer.Stop();
             };
             tableLayoutPanelSelection.Controls.Add(textBoxResult, 1, 0);
             tableLayoutPanelSelection.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50.0F));
@@ -155,6 +158,9 @@ namespace AstronautComplexBasicPack.ExerciceCalculus
 
             labelOperation.Text = string.Format("{0} {1} {2} =", operandLeft, symbol, operandRight);
 
+            if (Difficulty == ExerciceDifficulty.Hard)
+                timer.Start();
+
             CurrentOperation++;
         }
 
@@ -172,6 +178,13 @@ namespace AstronautComplexBasicPack.ExerciceCalculus
                     BuildOperation(operation);
                 }
             }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            timer.Stop();
+            MessageBox.Show("time s up");
+            
         }
     }
 }
