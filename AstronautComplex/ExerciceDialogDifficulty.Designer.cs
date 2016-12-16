@@ -36,11 +36,13 @@
             // 
             this.labelDescription.AutoSize = true;
             this.labelDescription.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labelDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.labelDescription.Location = new System.Drawing.Point(10, 10);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(197, 13);
+            this.labelDescription.Size = new System.Drawing.Size(255, 17);
             this.labelDescription.TabIndex = 0;
-            this.labelDescription.Text = "Veuillez choisir la difficulté de l\'exercice :";
+            this.labelDescription.Text = "Veuillez choisir la difficulté de l\'exercice";
+            this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanelDifficulties
             // 
@@ -49,13 +51,13 @@
             this.tableLayoutPanelDifficulties.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelDifficulties.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelDifficulties.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
-            this.tableLayoutPanelDifficulties.Location = new System.Drawing.Point(10, 23);
+            this.tableLayoutPanelDifficulties.Location = new System.Drawing.Point(10, 27);
             this.tableLayoutPanelDifficulties.Name = "tableLayoutPanelDifficulties";
             this.tableLayoutPanelDifficulties.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
             this.tableLayoutPanelDifficulties.RowCount = 1;
             this.tableLayoutPanelDifficulties.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelDifficulties.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelDifficulties.Size = new System.Drawing.Size(264, 48);
+            this.tableLayoutPanelDifficulties.Size = new System.Drawing.Size(264, 44);
             this.tableLayoutPanelDifficulties.TabIndex = 1;
             // 
             // ExerciceDialogDifficulty

@@ -16,6 +16,8 @@ namespace AstronautComplex
         public ExerciceDialogDifficulty()
         {
             InitializeComponent();
+            this.Width = 300;
+            this.Height = 150;
         }
 
         /// <summary>
@@ -32,6 +34,7 @@ namespace AstronautComplex
 
                 Button button = new Button();
                 button.Text = ExerciceForm.GetLangString(difficulty.ToString());
+                button.Height = 40;
                 button.Anchor = AnchorStyles.None;
                 button.TabIndex = i;
                 button.DialogResult = DialogResult.OK;

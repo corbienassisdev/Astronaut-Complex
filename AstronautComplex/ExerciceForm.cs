@@ -113,8 +113,6 @@ namespace AstronautComplex
         public void LoadExercice(Exercice exercice)
         {
             ExerciceDialogDifficulty dialog = new ExerciceDialogDifficulty();
-            dialog.Width = 300;
-            dialog.Height = 150;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 menuItemHome.Enabled = true;
@@ -170,8 +168,8 @@ namespace AstronautComplex
                 wmPlayer.Ctlcontrols.play();
                 panelExercice.Controls.Add(wmPlayer);
 
-                MinimumSize = new Size(1024, 650);
-                MaximumSize = new Size(1024, 650);
+                //MinimumSize = new Size(1024, 650);
+                //MaximumSize = new Size(1024, 650);
             }
             catch (Exception)
             {
