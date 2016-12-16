@@ -107,6 +107,7 @@ namespace AstronautComplexBasicPack
                 {
                     Button button = new Button();
                     button.Text = question.Answers[j].ToString();
+                    button.Height = 40;
                     button.Anchor = AnchorStyles.None;
                     button.TabIndex = j;
                     button.Click += (sender, e) =>
