@@ -1,3 +1,4 @@
+<img src="https://github.com/corbienassisdev/Astronaut-Complex/blob/master/AstronautComplex/Resources/logo_title.png" width="400" />
 
 ## Astronaut Complex, a winform project to test ESA astronauts skills
 
@@ -11,5 +12,3 @@ This is an academic project coded in C# with Visual Studio. It countains some ex
 ## Academic report
 
 You can see the report by [clicking here](https://github.com/corbienassisdev/AstronautComplex/blob/master/Rapport_CorentinBIENASSIS_ThibaudLAURENT.pdf).
-
-[![Build Status](https://travis-ci.org/Grox2006/AstronautComplex.svg?branch=master)](https://travis-ci.org/Grox2006/AstronautComplex)
